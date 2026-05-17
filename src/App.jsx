@@ -1,21 +1,34 @@
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import About from "./components/About"
-import Skills from "./components/Skills"
-import Projects from "./components/Projects"
-import Contact from "./components/Contact"
-import Footer from "./components/Footer"
+// App.jsx
+
+import "./App.css"
+
+import Navbar from "./components/shared/Navbar"
+import Footer from "./components/shared/Footer"
+
+import Hero from "./sections/Hero/Hero"
+import About from "./sections/About/About"
+import Achievements from "./sections/Achievements/Achievements"
+import Skills from "./sections/Skills/Skills"
+import Projects from "./sections/Projects/Projects"
+import Contact from "./sections/Contact/Contact"
 
 export default function App() {
   return (
-    <div className="bg-[#0b0b0f] text-white">
+    <div style={{ background: "var(--bg)", color: "var(--text)" }} className="overflow-x-hidden">
+
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+
+      <main className="pt-24">
+        <Hero />
+        <About />
+        <Achievements />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+
       <Footer />
+
     </div>
   )
 }
