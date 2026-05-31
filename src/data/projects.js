@@ -80,5 +80,42 @@ export const projects = [
     ],
 
     status: "Production"
+  },
+
+  {
+    id: 4,
+
+    name: "Luzine Bakes",
+
+    subtitle: "Custom Bakery E-Commerce Solution",
+
+    type: "Production E-Commerce Platform",
+
+    description:
+      "A full-featured bakery e-commerce platform built with Next.js, integrated with an ERP system for product management, customer accounts, order processing, OTP authentication, delivery workflows, and multiple payment methods.",
+
+  stack: [
+    "Next.js",
+    "React.js",
+    "Tailwind CSS",
+    "REST APIs",
+    "ERP Integration",
+    "Razorpay"
+  ],
+
+  highlights: [
+  "Built complete customer authentication and OTP verification flow",
+  "Integrated ERP APIs across products, cart, checkout and profile modules",
+  "Developed full shopping cart and checkout experience",
+  "Implemented Razorpay and Cash on Delivery payment workflows",
+  "Built customer profile, address and order management system",
+  "Created product search, filtering and category navigation",
+  "Implemented WhatsApp order notification workflow",
+  "Developed responsive mobile-first UI across all pages",
+  "Handled API debugging, validation and production issue fixes",
+  "Built reusable components and scalable frontend architecture"
+],
+
+  status: "Production"
   }
 ]
