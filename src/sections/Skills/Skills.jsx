@@ -9,6 +9,7 @@ import {
   Wrench,
   Zap,
 } from "lucide-react"
+import SectionKicker from "../../components/svg/SectionKicker"
 import { skills } from "../../data/skills"
 
 const categoryIcons = {
@@ -27,14 +28,13 @@ export default function Skills() {
       <div className="section-container">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              className="section-kicker"
             >
-              Skill set
-            </motion.p>
+              <SectionKicker>Skill set</SectionKicker>
+            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}

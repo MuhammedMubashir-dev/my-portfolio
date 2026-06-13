@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { BriefcaseBusiness, CalendarDays, Code2, GitBranch, Wrench } from "lucide-react"
+import SectionKicker from "../../components/svg/SectionKicker"
 
 const responsibilities = [
   "Building and improving React, Next.js, and Flutter product features",
@@ -21,14 +22,13 @@ export default function Experience() {
       <div className="section-container">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              className="section-kicker"
             >
-              Experience
-            </motion.p>
+              <SectionKicker>Experience</SectionKicker>
+            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}

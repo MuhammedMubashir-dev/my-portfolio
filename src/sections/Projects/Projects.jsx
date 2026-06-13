@@ -1,13 +1,36 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, ChevronDown, Layers3 } from "lucide-react"
-import { useState } from "react"
+import { useMemo, useState } from "react"
+import SectionKicker from "../../components/svg/SectionKicker"
 import { projects } from "../../data/projects"
 
+const filters = [
+  { id: "all", label: "All work" },
+  { id: "commerce", label: "Commerce" },
+  { id: "mobile", label: "Mobile" },
+]
+
+function getProjectCategory(project) {
+  if (project.type.toLowerCase().includes("mobile")) return "mobile"
+  return "commerce"
+}
+
 export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState("all")
   const [expanded, setExpanded] = useState(projects[0]?.id ?? null)
+
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === "all") return projects
+    return projects.filter((project) => getProjectCategory(project) === activeFilter)
+  }, [activeFilter])
 
   const toggleProject = (projectId) => {
     setExpanded((current) => (current === projectId ? null : projectId))
+  }
+
+  const handleFilterChange = (filterId) => {
+    setActiveFilter(filterId)
+    setExpanded(null)
   }
 
   return (
@@ -15,14 +38,13 @@ export default function Projects() {
       <div className="section-container">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              className="section-kicker"
             >
-              Projects
-            </motion.p>
+              <SectionKicker>Projects</SectionKicker>
+            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -46,18 +68,46 @@ export default function Projects() {
           </motion.p>
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="mt-10 flex flex-wrap gap-2"
+          role="tablist"
+          aria-label="Filter projects"
+        >
+          {filters.map((filter) => {
+            const isActive = activeFilter === filter.id
+
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => handleFilterChange(filter.id)}
+                className={`filter-chip ${isActive ? "is-active" : ""}`}
+              >
+                {filter.label}
+              </button>
+            )
+          })}
+        </motion.div>
+
         <div className="mt-12 grid gap-4 lg:grid-cols-2">
-          {projects.map((project, index) => {
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => {
             const isOpen = expanded === project.id
             const visibleHighlights = isOpen ? project.highlights : project.highlights.slice(0, 3)
 
             return (
               <motion.article
                 key={project.id}
+                layout
                 initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ delay: index * 0.06, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16, scale: 0.98 }}
+                transition={{ delay: index * 0.04, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 className="project-card surface-panel relative p-6 md:p-7"
               >
                 <div className="relative">
@@ -147,6 +197,7 @@ export default function Projects() {
               </motion.article>
             )
           })}
+          </AnimatePresence>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { BriefcaseBusiness, CheckCircle2, Code2, Rocket } from "lucide-react"
+import SectionKicker from "../../components/svg/SectionKicker"
 
 const strengths = [
   {
@@ -32,14 +33,13 @@ export default function About() {
       <div className="section-container">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-5">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              className="section-kicker"
             >
-              About
-            </motion.p>
+              <SectionKicker>About</SectionKicker>
+            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}

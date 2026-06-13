@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Syne:wght@500;600;700;800&display=swap");
+@import "./styles/svg-animations.css";
 
 @tailwind base;
 @tailwind components;
@@ -174,6 +175,12 @@ button {
   text-transform: uppercase;
 }
 
+.section-kicker-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .section-title {
   max-width: 860px;
   margin-top: 14px;
@@ -259,6 +266,76 @@ button {
   color: var(--muted);
   font-size: 0.75rem;
   line-height: 1;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(246, 242, 232, 0.02);
+  padding: 0 16px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    transform 220ms var(--ease-out),
+    border-color 220ms var(--ease-out),
+    background 220ms var(--ease-out),
+    color 220ms var(--ease-out);
+}
+
+.filter-chip:hover {
+  border-color: rgba(255, 122, 47, 0.42);
+  color: var(--text);
+}
+
+.filter-chip.is-active {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(255, 122, 47, 0.45);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: rgba(27, 28, 22, 0.92);
+  color: var(--accent);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 220ms var(--ease-out),
+    border-color 220ms var(--ease-out),
+    background 220ms var(--ease-out);
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 122, 47, 0.42);
+  background: rgba(36, 37, 29, 0.96);
 }
 
 .divider-line {

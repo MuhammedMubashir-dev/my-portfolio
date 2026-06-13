@@ -1,5 +1,7 @@
 import { motion } from "framer-motion"
-import { ArrowRight, ArrowUpRight, Github, Mail, MessageCircle, Send } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Download, Github, Mail, MessageCircle, Send } from "lucide-react"
+import ContactNetwork from "../../components/svg/ContactNetwork"
+import SectionKicker from "../../components/svg/SectionKicker"
 
 const contacts = [
   {
@@ -32,15 +34,16 @@ export default function Contact() {
   return (
     <section id="contact" className="section-shell pb-20">
       <div className="section-container">
-        <div className="surface-panel w-full max-w-full overflow-hidden">
-          <div className="grid min-w-0 lg:grid-cols-12">
+        <div className="surface-panel relative w-full max-w-full overflow-hidden">
+          <ContactNetwork />
+          <div className="relative z-[1] grid min-w-0 lg:grid-cols-12">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               className="min-w-0 border-b border-[var(--border-soft)] p-6 md:p-10 lg:col-span-7 lg:border-b-0 lg:border-r"
             >
-              <p className="section-kicker">Contact</p>
+              <SectionKicker>Contact</SectionKicker>
               <h2 className="mt-4 max-w-full text-4xl md:text-6xl">
                 Have a product, feature, or workflow to build?
               </h2>
@@ -62,7 +65,7 @@ export default function Contact() {
                 ))}
               </div>
 
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a href="mailto:muhammedmubashirwork@gmail.com" className="button-primary">
                   <Send size={17} strokeWidth={2} />
                   Send email
@@ -74,6 +77,14 @@ export default function Contact() {
                   className="button-secondary"
                 >
                   Message on WhatsApp
+                </a>
+                <a
+                  href="/muhammed-mubashir-resume.docx"
+                  download="Muhammed-Mubashir-Resume.docx"
+                  className="button-secondary"
+                >
+                  <Download size={17} strokeWidth={2} />
+                  Download resume
                 </a>
               </div>
             </motion.div>

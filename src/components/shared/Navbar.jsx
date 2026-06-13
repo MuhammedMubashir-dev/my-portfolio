@@ -1,19 +1,24 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
+import AnimatedLogo from "../svg/AnimatedLogo"
+import useActiveSection from "../../hooks/useActiveSection"
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Impact", href: "#achievements" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "#about", sectionId: "about" },
+  { label: "Experience", href: "#experience", sectionId: "experience" },
+  { label: "Impact", href: "#achievements", sectionId: "achievements" },
+  { label: "Skills", href: "#skills", sectionId: "skills" },
+  { label: "Projects", href: "#projects", sectionId: "projects" },
+  { label: "Contact", href: "#contact", sectionId: "contact" },
 ]
+
+const sectionIds = navLinks.map((link) => link.sectionId)
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const activeSection = useActiveSection(sectionIds)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 28)
@@ -41,25 +46,34 @@ export default function Navbar() {
             style={{ fontFamily: "var(--font-display)" }}
             onClick={closeMenu}
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] text-sm">
-              MM
-            </span>
+            <AnimatedLogo className="flex-none rounded-lg" />
             <span className="hidden text-sm uppercase tracking-[0.18em] text-[var(--muted-strong)] sm:inline">
               Mubashir
             </span>
           </a>
 
           <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="group relative text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)] transition-colors hover:text-[var(--text)]"
-              >
-                {link.label}
-                <span className="absolute -bottom-2 left-0 h-px w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.sectionId
+
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`group relative text-xs font-bold uppercase tracking-[0.18em] transition-colors ${
+                    isActive ? "text-[var(--text)]" : "text-[var(--muted)] hover:text-[var(--text)]"
+                  }`}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute -bottom-2 left-0 h-px bg-[var(--accent)] transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </a>
+              )
+            })}
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
@@ -108,28 +122,35 @@ export default function Navbar() {
               aria-label="Mobile navigation"
               className="section-container"
             >
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.href}
-                  variants={{
-                    hidden: { opacity: 0, y: 18 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  href={link.href}
-                  onClick={closeMenu}
-                  className="group flex items-center gap-5 border-b border-[var(--border-soft)] py-5"
-                >
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span
-                    className="text-4xl font-bold transition-transform group-hover:translate-x-1"
-                    style={{ fontFamily: "var(--font-display)" }}
+              {navLinks.map((link, index) => {
+                const isActive = activeSection === link.sectionId
+
+                return (
+                  <motion.a
+                    key={link.href}
+                    variants={{
+                      hidden: { opacity: 0, y: 18 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    href={link.href}
+                    onClick={closeMenu}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`group flex items-center gap-5 border-b border-[var(--border-soft)] py-5 ${
+                      isActive ? "text-[var(--text)]" : ""
+                    }`}
                   >
-                    {link.label}
-                  </span>
-                </motion.a>
-              ))}
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className="text-4xl font-bold transition-transform group-hover:translate-x-1"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {link.label}
+                    </span>
+                  </motion.a>
+                )
+              })}
 
               <motion.a
                 variants={{

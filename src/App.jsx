@@ -1,7 +1,9 @@
 import "./App.css"
 
+import BackToTop from "./components/shared/BackToTop"
 import Footer from "./components/shared/Footer"
 import Navbar from "./components/shared/Navbar"
+import ScrollProgress from "./components/shared/ScrollProgress"
 import About from "./sections/About/About"
 import Achievements from "./sections/Achievements/Achievements"
 import Contact from "./sections/Contact/Contact"
@@ -16,6 +18,7 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
+      <ScrollProgress />
       <Navbar />
       <main id="main">
         <Hero />
@@ -27,6 +30,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   )
 }

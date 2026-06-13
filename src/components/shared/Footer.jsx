@@ -1,4 +1,5 @@
 import { ArrowUpRight, Github, Mail, MessageCircle } from "lucide-react"
+import AnimatedLogo from "../svg/AnimatedLogo"
 
 const links = [
   {
@@ -27,9 +28,10 @@ export default function Footer() {
         <div>
           <a
             href="#hero"
-            className="font-bold"
+            className="inline-flex items-center gap-3 font-bold"
             style={{ fontFamily: "var(--font-display)" }}
           >
+            <AnimatedLogo className="flex-none rounded-lg" />
             Mubashir<span className="accent">.</span>
           </a>
           <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">

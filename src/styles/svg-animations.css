@@ -1,0 +1,175 @@
+.hero-ambient {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-ambient svg {
+  position: absolute;
+  top: 50%;
+  right: -8%;
+  width: min(72vw, 620px);
+  height: auto;
+  transform: translateY(-52%);
+  opacity: 0.55;
+}
+
+.contact-network {
+  position: absolute;
+  top: 50%;
+  right: -12%;
+  width: min(52vw, 360px);
+  transform: translateY(-50%);
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.svg-orbit-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: svg-orbit 28s linear infinite;
+}
+
+.svg-orbit-ring-reverse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: svg-orbit 36s linear infinite reverse;
+}
+
+.svg-draw-path {
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: svg-draw 4.8s var(--ease-out) infinite alternate;
+}
+
+.svg-flow-path {
+  stroke-dasharray: 8 14;
+  animation: svg-flow 1.8s linear infinite;
+}
+
+.svg-pulse-node,
+.svg-pulse-node-delayed,
+.svg-pulse-node-slow {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.svg-pulse-node {
+  animation: svg-pulse 3.2s ease-in-out infinite;
+}
+
+.svg-pulse-node-delayed {
+  animation: svg-pulse 3.2s ease-in-out infinite;
+  animation-delay: 1.1s;
+}
+
+.svg-pulse-node-slow {
+  animation: svg-pulse 4.4s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.svg-logo-accent {
+  animation: svg-logo-pulse 2.8s ease-in-out infinite;
+}
+
+.svg-logo-mark {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: svg-logo-draw 2.4s var(--ease-out) forwards;
+}
+
+.section-accent-line {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+}
+
+.section-accent-line.is-visible {
+  animation: svg-draw-once 1.1s var(--ease-out) forwards;
+}
+
+@keyframes svg-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes svg-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes svg-draw-once {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes svg-flow {
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+@keyframes svg-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes svg-logo-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes svg-logo-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-ambient svg {
+    right: -28%;
+    width: min(92vw, 520px);
+    opacity: 0.34;
+  }
+
+  .contact-network {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svg-orbit-ring,
+  .svg-orbit-ring-reverse,
+  .svg-draw-path,
+  .svg-flow-path,
+  .svg-pulse-node,
+  .svg-pulse-node-delayed,
+  .svg-pulse-node-slow,
+  .svg-logo-accent,
+  .svg-logo-mark,
+  .section-accent-line.is-visible {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: none;
+  }
+}

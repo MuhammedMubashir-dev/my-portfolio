@@ -1,5 +1,6 @@
 import { animate, motion, useInView, useMotionValue, useTransform } from "framer-motion"
 import { useEffect, useRef } from "react"
+import SectionKicker from "../../components/svg/SectionKicker"
 import { achievements } from "../../data/achievements"
 
 function CountUp({ value }) {
@@ -33,14 +34,13 @@ export default function Achievements() {
   return (
     <section id="achievements" className="section-shell">
       <div className="section-container">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          className="section-kicker"
         >
-          Impact
-        </motion.p>
+          <SectionKicker>Impact</SectionKicker>
+        </motion.div>
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
