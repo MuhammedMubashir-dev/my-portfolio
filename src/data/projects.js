@@ -2,120 +2,81 @@ export const projects = [
   {
     id: 1,
     name: "FUNZCART",
-
     subtitle: "Built on ENKEPOS Platform",
-
     type: "Commerce Platform",
-
+    role: "Frontend and product engineering",
+    year: "2025",
     description:
       "A production commerce platform where I worked on dynamic filters, theme architecture, product reviews, search improvements, and reusable admin components.",
-
-    stack: [
-      "React.js",
-      "Next.js",
-      "TypeScript",
-      "REST APIs"
-    ],
-
+    stack: ["React.js", "Next.js", "TypeScript", "REST APIs"],
     highlights: [
       "Built dynamic property filter architecture",
       "Created custom theme layouts",
       "Implemented product review system",
       "Added review image uploads",
       "Improved category filtering",
-      "Enhanced search workflows"
+      "Enhanced search workflows",
     ],
-
-    status: "Production"
+    status: "Production",
   },
-
   {
     id: 2,
     name: "Ganvin",
-
     type: "Mobile Application",
-
+    role: "Flutter development and API integration",
+    year: "2025",
     description:
       "A production mobile app where I worked on delivery workflows, API integrations, pagination, maps integration, and backend issue debugging.",
-
-    stack: [
-      "Flutter",
-      "Dart",
-      "REST APIs",
-      "Postman"
-    ],
-
+    stack: ["Flutter", "Dart", "REST APIs", "Postman"],
     highlights: [
       "Implemented infinite scroll pagination",
       "Integrated Google Maps navigation",
       "Fixed API filter issues",
       "Debugged timezone mismatch bugs",
-      "Improved pickup and delivery workflows"
+      "Improved pickup and delivery workflows",
     ],
-
-    status: "Production"
+    status: "Production",
   },
-
   {
     id: 3,
     name: "Juice World",
-
     type: "E-Commerce Platform",
-
+    role: "Storefront UI and performance",
+    year: "2025",
     description:
       "A modern e-commerce frontend focused on responsive UI, product discovery, filtering, and performance optimization.",
-
-    stack: [
-      "React.js",
-      "Next.js",
-      "Tailwind CSS"
-    ],
-
+    stack: ["React.js", "Next.js", "Tailwind CSS"],
     highlights: [
       "Built responsive storefront UI",
       "Implemented product filtering",
       "Optimized images",
       "Used ISR rendering",
-      "Improved UI and UX"
+      "Improved UI and UX",
     ],
-
-    status: "Production"
+    status: "Production",
   },
-
   {
     id: 4,
-
     name: "Luzine Bakes",
-
     subtitle: "Custom Bakery E-Commerce Solution",
-
     type: "Production E-Commerce Platform",
-
+    role: "Full shopping flow and ERP integration",
+    year: "2025",
     description:
-      "A full-featured bakery e-commerce platform built with Next.js, integrated with an ERP system for product management, customer accounts, order processing, OTP authentication, delivery workflows, and multiple payment methods.",
-
-  stack: [
-    "Next.js",
-    "React.js",
-    "Tailwind CSS",
-    "REST APIs",
-    "ERP Integration",
-    "Razorpay"
-  ],
-
-  highlights: [
-  "Built complete customer authentication and OTP verification flow",
-  "Integrated ERP APIs across products, cart, checkout and profile modules",
-  "Developed full shopping cart and checkout experience",
-  "Implemented Razorpay and Cash on Delivery payment workflows",
-  "Built customer profile, address and order management system",
-  "Created product search, filtering and category navigation",
-  "Implemented WhatsApp order notification workflow",
-  "Developed responsive mobile-first UI across all pages",
-  "Handled API debugging, validation and production issue fixes",
-  "Built reusable components and scalable frontend architecture"
-],
-
-  status: "Production"
-  }
+      "A full-featured bakery e-commerce platform built with Next.js and integrated with an ERP system for product management, customer accounts, order processing, OTP authentication, delivery workflows, and multiple payment methods.",
+    stack: ["Next.js", "React.js", "Tailwind CSS", "REST APIs", "ERP Integration", "Razorpay"],
+    highlights: [
+      "Built complete customer authentication and OTP verification flow",
+      "Integrated ERP APIs across products, cart, checkout, and profile modules",
+      "Developed full shopping cart and checkout experience",
+      "Implemented Razorpay and Cash on Delivery payment workflows",
+      "Built customer profile, address, and order management system",
+      "Created product search, filtering, and category navigation",
+      "Implemented WhatsApp order notification workflow",
+      "Developed responsive mobile-first UI across all pages",
+      "Handled API debugging, validation, and production issue fixes",
+      "Built reusable components and scalable frontend architecture",
+    ],
+    status: "Production",
+  },
 ]

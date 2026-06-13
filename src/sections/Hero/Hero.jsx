@@ -1,225 +1,168 @@
-// sections/Hero/Hero.jsx
+import { AnimatePresence, motion } from "framer-motion"
+import { ArrowRight, Github, Mail, MapPin, Sparkles } from "lucide-react"
+import { useEffect, useState } from "react"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowDownRight, Sparkles } from "lucide-react"
+const roles = ["Product Engineer", "React Developer", "Flutter Builder", "API Integrator"]
+
+const techStack = ["React", "Next.js", "TypeScript", "Flutter", "REST APIs", "Tailwind"]
+
+const profileRows = [
+  { label: "Based in", value: "Kerala, India", icon: MapPin },
+  { label: "Current focus", value: "Production web and mobile apps", icon: Sparkles },
+  { label: "Working with", value: "React, Next.js, Flutter, APIs", icon: ArrowRight },
+]
+
+const proofPoints = [
+  { value: "4+", label: "Production projects" },
+  { value: "10+", label: "API integrations" },
+  { value: "40+", label: "Production fixes" },
+]
 
 export default function Hero() {
-  const roles = ["Product Engineer", "React Developer", "Flutter Builder", "API Integrator"]
   const [currentRole, setCurrentRole] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length)
+    const interval = window.setInterval(() => {
+      setCurrentRole((previous) => (previous + 1) % roles.length)
     }, 2200)
-    return () => clearInterval(interval)
+
+    return () => window.clearInterval(interval)
   }, [])
 
-  const techStack = ["React", "Next.js", "TypeScript", "Flutter", "REST APIs"]
-
-  // Staggered letter animation for the name
-  const letterVariants = {
-    hidden: { opacity: 0, y: 60, rotateX: -30 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: {
-        delay: i * 0.04,
-        duration: 0.6,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    }),
-  }
-
-  const firstName = "Muhammed"
-  const lastName  = "Mubashir - K"
-
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex flex-col justify-between px-6 pt-20 md:pt-32 pb-12"
-      style={{ background: "var(--bg)" }}
-    >
-      <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center">
-
-        {/* TOP LABEL */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-3 mb-10"
-        >
-          <span
-            className="w-2 h-2 rounded-full animate-pulse"
-            style={{ background: "var(--accent)" }}
-          />
-          <p
-            className="text-xs uppercase tracking-[0.25em]"
-            style={{ color: "var(--muted)" }}
+    <section id="hero" className="section-shell flex min-h-screen items-center pt-32 md:pt-36">
+      <div className="section-container w-full">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-end xl:gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="min-w-0 lg:col-span-7"
           >
-            Available for work • Kerala, India
-          </p>
-        </motion.div>
+            <div className="mb-8 inline-flex max-w-full items-center gap-3 rounded-full border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-2">
+              <span className="h-2 w-2 flex-none rounded-full bg-[var(--success)]" />
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
+                Available for freelance and full-time
+              </p>
+            </div>
 
-        {/* MAIN HEADING — letter by letter */}
-        <div className="mb-10 overflow-hidden">
+            <h1 className="hero-name font-bold">
+              Muhammed
+              <span className="block text-[var(--accent)]">Mubashir</span>
+            </h1>
 
-          {/* FIRST NAME */}
-          <div
-            className="flex flex-wrap leading-none tracking-tight"
-            style={{
-              fontSize: "clamp(3rem, 10vw, 9rem)",
-              fontFamily: "var(--font-display)",
-              color: "var(--text)",
-            }}
-          >
-            {firstName.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                custom={i}
-                variants={letterVariants}
-                initial="hidden"
-                animate="visible"
-                style={{ display: "inline-block" }}
+            <div className="mt-7 flex h-8 items-center gap-3 overflow-hidden">
+              <Sparkles size={16} strokeWidth={1.8} className="text-[var(--accent)]" />
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={roles[currentRole]}
+                  initial={{ y: 24, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -24, opacity: 0 }}
+                  transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--muted-strong)] md:text-base"
+                >
+                  {roles[currentRole]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)] md:text-xl">
+              I build production-ready web and mobile experiences across React, Next.js, Flutter,
+              and REST APIs, with a practical focus on shipping features, fixing real issues, and
+              making product workflows easier to use.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a href="#projects" className="button-primary">
+                View projects
+                <ArrowRight size={18} strokeWidth={2} />
+              </a>
+              <a href="mailto:muhammedmubashirwork@gmail.com" className="button-secondary">
+                <Mail size={18} strokeWidth={2} />
+                Contact me
+              </a>
+              <a
+                href="https://github.com/MuhammedMubashir-dev"
+                target="_blank"
+                rel="noreferrer"
+                className="button-secondary"
+                aria-label="Open GitHub profile"
               >
-                {char}
-              </motion.span>
-            ))}
-          </div>
+                <Github size={18} strokeWidth={2} />
+                GitHub
+              </a>
+            </div>
+          </motion.div>
 
-          {/* LAST NAME — accent color, slight delay */}
-          <div
-            className="flex flex-wrap leading-none tracking-tight"
-            style={{
-              fontSize: "clamp(3rem, 10vw, 9rem)",
-              fontFamily: "var(--font-display)",
-              color: "var(--accent)",
-            }}
+          <motion.aside
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.18, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="surface-panel min-w-0 lg:col-span-5 xl:ml-4"
           >
-            {lastName.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                custom={firstName.length + i}
-                variants={letterVariants}
-                initial="hidden"
-                animate="visible"
-                style={{ display: "inline-block" }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </div>
+            <div className="p-6 md:p-8">
+              <p className="section-kicker">Profile signal</p>
+              <h2 className="mt-4 text-3xl md:text-4xl">
+                Frontend craft with production ownership.
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
+                Comfortable moving from UI details to API debugging, delivery workflows, checkout
+                flows, search behavior, and performance improvements.
+              </p>
+            </div>
 
+            <div className="border-t border-[var(--border-soft)]">
+              {profileRows.map(({ label, value, icon: Icon }) => (
+                <div
+                  key={label}
+                  className="flex items-start gap-4 border-b border-[var(--border-soft)] px-6 py-4 last:border-b-0 md:px-8"
+                >
+                  <Icon size={17} strokeWidth={1.8} className="mt-1 text-[var(--accent)]" />
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+                      {label}
+                    </p>
+                    <p className="mt-1 text-sm text-[var(--text)]">{value}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-3 border-t border-[var(--border-soft)]">
+              {proofPoints.map((item) => (
+                <div
+                  key={item.label}
+                  className="border-r border-[var(--border-soft)] p-4 last:border-r-0 md:p-5"
+                >
+                  <p className="font-display text-3xl font-bold text-[var(--accent)]">
+                    {item.value}
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </motion.aside>
         </div>
 
-        {/* ANIMATED ROLE */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mb-10 flex items-center gap-3 overflow-hidden h-8"
-        >
-          <Sparkles
-            size={14}
-            strokeWidth={1.5}
-            style={{ color: "var(--accent)", flexShrink: 0 }}
-          />
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={currentRole}
-              initial={{ y: 24, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -24, opacity: 0 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="text-base md:text-lg uppercase tracking-widest"
-              style={{ color: "var(--muted)" }}
-            >
-              {roles[currentRole]}
-            </motion.p>
-          </AnimatePresence>
-        </motion.div>
-
-        {/* DESCRIPTION + BUTTONS */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
+          transition={{ delay: 0.38, duration: 0.6 }}
+          className="mt-16 border-t border-[var(--border-soft)] pt-6"
         >
-          <p
-            className="text-lg leading-relaxed max-w-lg"
-            style={{ color: "var(--muted)" }}
-          >
-            Shipping real features, debugging real problems,
-            and building production applications
-            for web and mobile.
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <motion.button
-              data-hover
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => window.location.href = "#projects"}
-              className="flex items-center gap-2 px-8 py-4 rounded-full font-medium"
-              style={{ background: "var(--accent)", color: "#111111" }}
-            >
-              View Projects
-              <ArrowDownRight size={16} strokeWidth={2} />
-            </motion.button>
-
-            <motion.button
-              data-hover
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => window.location.href = "#contact"}
-              className="px-8 py-4 rounded-full font-medium transition-all duration-300"
-              style={{
-                border: "1px solid var(--border)",
-                color: "var(--text)",
-              }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = "var(--text)"}
-              onMouseLeave={e => e.currentTarget.style.borderColor = "var(--border)"}
-            >
-              Contact Me
-            </motion.button>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
+              Core stack
+            </span>
+            {techStack.map((tech) => (
+              <span key={tech} className="chip">
+                {tech}
+              </span>
+            ))}
           </div>
         </motion.div>
-
       </div>
-
-      {/* BOTTOM — TECH STACK STRIP */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9 }}
-        className="max-w-7xl mx-auto w-full mt-16 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3"
-        style={{ borderTop: "1px solid var(--border)" }}
-      >
-        <span
-          className="text-xs uppercase tracking-widest"
-          style={{ color: "var(--border)" }}
-        >
-          Stack
-        </span>
-
-        {techStack.map((tech, index) => (
-          <motion.span
-            key={tech}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 + index * 0.08 }}
-            className="text-sm transition duration-300"
-            style={{ color: "var(--muted)" }}
-            onMouseEnter={e => e.currentTarget.style.color = "var(--accent)"}
-            onMouseLeave={e => e.currentTarget.style.color = "var(--muted)"}
-          >
-            {tech}
-          </motion.span>
-        ))}
-      </motion.div>
-
     </section>
   )
 }

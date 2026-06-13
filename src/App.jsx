@@ -1,34 +1,32 @@
-// App.jsx
-
 import "./App.css"
 
-import Navbar from "./components/shared/Navbar"
 import Footer from "./components/shared/Footer"
-
-import Hero from "./sections/Hero/Hero"
+import Navbar from "./components/shared/Navbar"
 import About from "./sections/About/About"
 import Achievements from "./sections/Achievements/Achievements"
-import Skills from "./sections/Skills/Skills"
-import Projects from "./sections/Projects/Projects"
 import Contact from "./sections/Contact/Contact"
+import Experience from "./sections/Experience/Experience"
+import Hero from "./sections/Hero/Hero"
+import Projects from "./sections/Projects/Projects"
+import Skills from "./sections/Skills/Skills"
 
 export default function App() {
   return (
-    <div style={{ background: "var(--bg)", color: "var(--text)" }} className="overflow-x-hidden">
-
+    <div className="page-shell">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Navbar />
-
-      <main className="pt-24">
+      <main id="main">
         <Hero />
         <About />
+        <Experience />
         <Achievements />
         <Skills />
         <Projects />
         <Contact />
       </main>
-
       <Footer />
-
     </div>
   )
 }

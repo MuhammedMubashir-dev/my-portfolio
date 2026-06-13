@@ -1,162 +1,125 @@
-// sections/About/About.jsx
-
 import { motion } from "framer-motion"
-import { Briefcase, ArrowRight } from "lucide-react"
+import { BriefcaseBusiness, CheckCircle2, Code2, Rocket } from "lucide-react"
+
+const strengths = [
+  {
+    title: "Feature ownership",
+    description: "I can take a product requirement through UI, API states, edge cases, and release.",
+    icon: Rocket,
+  },
+  {
+    title: "Production debugging",
+    description: "I trace problems through frontend behavior, API responses, filters, and data shape.",
+    icon: Code2,
+  },
+  {
+    title: "Web and mobile range",
+    description: "I work across React, Next.js, and Flutter without losing sight of the user flow.",
+    icon: CheckCircle2,
+  },
+]
+
+const experienceRows = [
+  "Commerce storefronts and admin workflows",
+  "Search, filtering, cart, checkout, and profile modules",
+  "OTP authentication, payment flows, and order notifications",
+  "Mobile delivery, maps, pagination, and API issue debugging",
+]
 
 export default function About() {
-  const highlights = [
-    "Building production applications",
-    "Debugging real API issues",
-    "Creating scalable UI systems",
-    "Working across web and mobile"
-  ]
-
   return (
-    <section
-      id="about"
-      className="py-16 md:py-16 lg:py-32 px-6 overflow-hidden"
+    <section id="about" className="section-shell">
+      <div className="section-container">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
+          <div className="lg:col-span-5">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              className="section-kicker"
+            >
+              About
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ delay: 0.08 }}
+              className="section-title"
+            >
+              Product-minded developer for practical, shipped software.
+            </motion.h2>
+          </div>
 
-      style={{ background: "var(--bg)" }}
-    >
-      <div className="max-w-7xl mx-auto">
-
-        {/* HEADER */}
-        <div className="mb-10 md:mb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xs uppercase tracking-[0.25em] mb-4"
-            style={{ color: "var(--muted)" }}
-          >
-            About
-          </motion.p>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold leading-none"
-            style={{ fontFamily: "var(--font-display)", color: "var(--text)" }}
-          >
-            More than
-            <br />
-            <span style={{ color: "var(--accent)" }}>just frontend.</span>
-          </motion.h2>
-        </div>
-
-        {/* BODY */}
-        <div className="grid lg:grid-cols-12 gap-10 md:gap-20 items-start">
-
-          {/* LEFT — PARAGRAPHS */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="lg:col-span-7 space-y-6"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: 0.14 }}
+            className="lg:col-span-7"
           >
-            <p className="text-xl leading-relaxed" style={{ color: "var(--muted)" }}>
-              I'm Muhammed Mubashir, a product-focused developer
-              from Kerala currently building real-world applications
-              at ENKE Consulting Services.
-            </p>
-
-            <p className="text-xl leading-relaxed" style={{ color: "var(--muted)" }}>
-              I work across React, Next.js, and Flutter —
-              building features, integrating APIs,
-              solving production bugs,
-              and improving user experiences in live products.
-            </p>
-
-            <p className="text-xl leading-relaxed" style={{ color: "var(--muted)" }}>
-              My experience includes commerce platforms,
-              business applications, mobile workflows,
-              search systems, and performance-focused interfaces.
-            </p>
-          </motion.div>
-
-          {/* RIGHT — HIGHLIGHTS + COMPANY */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="lg:col-span-5"
-          >
-
-            {/* HIGHLIGHT ROWS */}
-            <div style={{ borderTop: "1px solid var(--border)" }}>
-              {highlights.map((item, index) => (
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  className="group flex items-center justify-between py-5"
-                  style={{ borderBottom: "1px solid var(--border)" }}
-                >
-                  <p
-                    className="transition duration-300"
-                    style={{ color: "var(--muted)" }}
-                    onMouseEnter={e => e.currentTarget.style.color = "var(--text)"}
-                    onMouseLeave={e => e.currentTarget.style.color = "var(--muted)"}
-                  >
-                    {item}
-                  </p>
-                  <ArrowRight
-                    size={16}
-                    strokeWidth={1.5}
-                    className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"
-                    style={{ color: "var(--accent)" }}
-                  />
-                </motion.div>
-              ))}
+            <div className="space-y-6 text-lg leading-8 text-[var(--muted)] md:text-xl">
+              <p>
+                I am Muhammed Mubashir, a Kerala-based developer currently building real-world
+                applications at ENKE Consulting Services.
+              </p>
+              <p>
+                My work sits close to the product: React and Next.js interfaces, Flutter screens,
+                REST API integrations, search and filtering systems, checkout flows, payment states,
+                and the production bugs that appear when real users meet real business rules.
+              </p>
             </div>
 
-            {/* COMPANY TAG */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.7 }}
-              className="mt-8 flex items-center gap-4 px-5 py-4 rounded-2xl"
-              style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-            >
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "var(--accent-dim)", border: "1px solid var(--accent)" }}
-              >
-                <Briefcase size={15} strokeWidth={1.5} style={{ color: "var(--accent)" }} />
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-widest mb-0.5" style={{ color: "var(--muted)" }}>
-                  Currently at
-                </p>
-                <p className="text-sm font-semibold" style={{ color: "var(--accent)", fontFamily: "var(--font-display)" }}>
-                  ENKE Consulting Services
-                </p>
-              </div>
-
-              {/* LIVE DOT */}
-              <div className="ml-auto flex items-center gap-1.5">
-                <span
-                  className="w-1.5 h-1.5 rounded-full animate-pulse"
-                  style={{ background: "var(--accent)" }}
-                />
-                <span className="text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>
-                  Active
-                </span>
-              </div>
-            </motion.div>
-
+            <div className="mt-10 grid gap-3 md:grid-cols-3">
+              {strengths.map(({ title, description, icon: Icon }, index) => (
+                <motion.article
+                  key={title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ delay: 0.18 + index * 0.06 }}
+                  className="surface-panel p-5"
+                >
+                  <Icon size={19} strokeWidth={1.8} className="text-[var(--accent)]" />
+                  <h3 className="mt-5 text-xl">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{description}</p>
+                </motion.article>
+              ))}
+            </div>
           </motion.div>
-
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="mt-16 grid gap-8 border-t border-[var(--border-soft)] pt-10 lg:grid-cols-12"
+        >
+          <div className="lg:col-span-4">
+            <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] px-4 py-2">
+              <BriefcaseBusiness size={16} strokeWidth={1.8} className="text-[var(--accent)]" />
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+                Currently at ENKE Consulting Services
+              </span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-8">
+            <div className="border-t border-[var(--border-soft)]">
+              {experienceRows.map((item, index) => (
+                <div
+                  key={item}
+                  className="flex gap-5 border-b border-[var(--border-soft)] py-5"
+                >
+                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-[var(--muted-strong)]">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

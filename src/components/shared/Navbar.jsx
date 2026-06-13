@@ -1,200 +1,148 @@
-// components/shared/Navbar.jsx
+import { AnimatePresence, motion } from "framer-motion"
+import { Menu, X } from "lucide-react"
+import { useEffect, useState } from "react"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Impact", href: "#achievements" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+]
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
-  const navLinks = [
-    { label: "About",    href: "#about"    },
-    { label: "Skills",   href: "#skills"   },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact",  href: "#contact"  },
-  ]
-
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener("scroll", onScroll)
+    const onScroll = () => setScrolled(window.scrollY > 28)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : ""
-    return () => { document.body.style.overflow = "" }
+    return () => {
+      document.body.style.overflow = ""
+    }
   }, [menuOpen])
 
-  const handleNav = (href) => {
-    window.location.href = href
-    setMenuOpen(false)
-  }
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <>
-      <header
-        style={{
-          background: scrolled ? "rgba(17,17,17,0.92)" : "transparent",
-          borderBottom: scrolled ? "1px solid #2A2A2A" : "1px solid transparent",
-          transition: "background 0.4s ease, border-color 0.4s ease",
-        }}
-        className="fixed top-0 left-0 w-full z-50 backdrop-blur-md"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
-          {/* LOGO */}
-          <button
-            data-hover
-            onClick={() => handleNav("#hero")}
-            className="text-xl font-bold tracking-tight hover:opacity-70 transition duration-300"
-            style={{ fontFamily: "var(--font-display)", color: "var(--text)" }}
+      <header className={`site-nav ${scrolled ? "is-scrolled" : ""}`}>
+        <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-5 md:px-8">
+          <a
+            href="#hero"
+            className="flex items-center gap-3 font-bold"
+            style={{ fontFamily: "var(--font-display)" }}
+            onClick={closeMenu}
           >
-            Mubashir
-            <span style={{ color: "var(--accent)" }}>.</span>
-          </button>
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] text-sm">
+              MM
+            </span>
+            <span className="hidden text-sm uppercase tracking-[0.18em] text-[var(--muted-strong)] sm:inline">
+              Mubashir
+            </span>
+          </a>
 
-          {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
             {navLinks.map((link) => (
-              <button
-                key={link.label}
-                data-hover
-                onClick={() => handleNav(link.href)}
-                className="relative text-xs uppercase tracking-widest transition duration-300 group"
-                style={{ color: "var(--muted)" }}
-                onMouseEnter={e => e.currentTarget.style.color = "var(--text)"}
-                onMouseLeave={e => e.currentTarget.style.color = "var(--muted)"}
+              <a
+                key={link.href}
+                href={link.href}
+                className="group relative text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)] transition-colors hover:text-[var(--text)]"
               >
                 {link.label}
-                <span
-                  className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full transition-all duration-300"
-                  style={{ background: "var(--accent)" }}
-                />
-              </button>
+                <span className="absolute -bottom-2 left-0 h-px w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+              </a>
             ))}
-
-            <button
-              data-hover
-              onClick={() => handleNav("#contact")}
-              className="px-5 py-2 rounded-full text-xs font-medium uppercase tracking-widest transition-all duration-300"
-              style={{
-                border: "1px solid var(--accent)",
-                color: "var(--accent)",
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.background = "var(--accent)"
-                e.currentTarget.style.color = "#111111"
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.background = "transparent"
-                e.currentTarget.style.color = "var(--accent)"
-              }}
-            >
-              Hire Me
-            </button>
           </nav>
 
-          {/* HAMBURGER BUTTON — mobile only */}
-          <button
-            data-hover
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
-            aria-label="Toggle menu"
-          >
-            <motion.span
-              animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="block w-6 h-px origin-center"
-              style={{ background: "var(--text)" }}
-            />
-            <motion.span
-              animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.2 }}
-              className="block w-6 h-px"
-              style={{ background: "var(--text)" }}
-            />
-            <motion.span
-              animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="block w-6 h-px origin-center"
-              style={{ background: "var(--text)" }}
-            />
-          </button>
+          <div className="hidden items-center gap-3 lg:flex">
+            <span className="chip border-[var(--border-soft)]">
+              <span className="h-2 w-2 rounded-full bg-[var(--success)]" />
+              Available
+            </span>
+            <a href="#contact" className="button-primary min-h-10 px-5 text-sm">
+              Hire me
+            </a>
+          </div>
 
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] lg:hidden"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((value) => !value)}
+          >
+            {menuOpen ? <X size={19} /> : <Menu size={19} />}
+          </button>
         </div>
       </header>
 
-      {/* FULLSCREEN MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 md:hidden flex flex-col justify-center px-8"
-            style={{ background: "var(--bg)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            className="fixed inset-0 z-40 bg-[var(--bg)] px-5 pt-28 lg:hidden"
           >
-            {/* NAV LINKS */}
-            <nav className="flex flex-col gap-2">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <button
-                    onClick={() => handleNav(link.href)}
-                    className="group flex items-center gap-4 py-4 w-full border-b"
-                    style={{ borderColor: "var(--border)" }}
-                  >
-                    <span
-                      className="text-xs uppercase tracking-widest transition duration-300"
-                      style={{ color: "var(--muted)" }}
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span
-                      className="text-4xl font-bold tracking-tight transition duration-300 group-hover:translate-x-2"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        color: "var(--text)",
-                        display: "inline-block",
-                        transition: "transform 0.3s ease, color 0.3s ease",
-                      }}
-                      onMouseEnter={e => e.currentTarget.style.color = "var(--accent)"}
-                      onMouseLeave={e => e.currentTarget.style.color = "var(--text)"}
-                    >
-                      {link.label}
-                    </span>
-                    <span
-                      className="ml-auto text-xl opacity-0 group-hover:opacity-100 transition duration-300"
-                      style={{ color: "var(--accent)" }}
-                    >
-                      →
-                    </span>
-                  </button>
-                </motion.div>
-              ))}
-            </nav>
-
-            {/* BOTTOM — CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="mt-12"
+            <motion.nav
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                hidden: { opacity: 0, y: 16 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { staggerChildren: 0.05, delayChildren: 0.05 },
+                },
+              }}
+              aria-label="Mobile navigation"
+              className="section-container"
             >
-              <button
-                onClick={() => handleNav("#contact")}
-                className="px-8 py-4 rounded-full text-sm font-medium uppercase tracking-widest"
-                style={{ background: "var(--accent)", color: "#111111" }}
+              {navLinks.map((link, index) => (
+                <motion.a
+                  key={link.href}
+                  variants={{
+                    hidden: { opacity: 0, y: 18 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className="group flex items-center gap-5 border-b border-[var(--border-soft)] py-5"
+                >
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className="text-4xl font-bold transition-transform group-hover:translate-x-1"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {link.label}
+                  </span>
+                </motion.a>
+              ))}
+
+              <motion.a
+                variants={{
+                  hidden: { opacity: 0, y: 18 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                href="#contact"
+                onClick={closeMenu}
+                className="button-primary mt-8 w-full"
               >
-                Hire Me
-              </button>
-            </motion.div>
+                Start a conversation
+              </motion.a>
+            </motion.nav>
           </motion.div>
         )}
       </AnimatePresence>

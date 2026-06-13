@@ -1,164 +1,132 @@
-// sections/Contact/Contact.jsx
-
 import { motion } from "framer-motion"
-import { Mail, MessageCircle, Github, ArrowUpRight, Send } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Github, Mail, MessageCircle, Send } from "lucide-react"
+
+const contacts = [
+  {
+    label: "Email",
+    value: "muhammedmubashirwork@gmail.com",
+    href: "mailto:muhammedmubashirwork@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "WhatsApp",
+    value: "+91 8089433955",
+    href: "https://wa.me/918089433955",
+    icon: MessageCircle,
+  },
+  {
+    label: "GitHub",
+    value: "MuhammedMubashir-dev",
+    href: "https://github.com/MuhammedMubashir-dev",
+    icon: Github,
+  },
+]
+
+const fitItems = [
+  "React or Next.js product interfaces",
+  "Flutter app screens and workflows",
+  "API integrations, checkout, auth, search, and production fixes",
+]
 
 export default function Contact() {
-  const contacts = [
-    { label: "Email",    value: "muhammedmubashirwork@gmail.com", href: "mailto:muhammedmubashirwork@gmail.com", icon: Mail },
-    { label: "WhatsApp", value: "+91 8089433955",                 href: "https://wa.me/918089433955",            icon: MessageCircle },
-    { label: "GitHub",   value: "MuhammedMubashir-dev",           href: "https://github.com/MuhammedMubashir-dev", icon: Github },
-  ]
-
   return (
-    <section
-      id="contact"
-      className="py-20 md:py-32 px-5 md:px-6 overflow-hidden"
-      style={{ background: "var(--bg)" }}
-    >
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="section-shell pb-20">
+      <div className="section-container">
+        <div className="surface-panel w-full max-w-full overflow-hidden">
+          <div className="grid min-w-0 lg:grid-cols-12">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="min-w-0 border-b border-[var(--border-soft)] p-6 md:p-10 lg:col-span-7 lg:border-b-0 lg:border-r"
+            >
+              <p className="section-kicker">Contact</p>
+              <h2 className="mt-4 max-w-full text-4xl md:text-6xl">
+                Have a product, feature, or workflow to build?
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+                I am open to freelance work and full-time opportunities where the work is practical,
+                user-facing, and close to real product needs.
+              </p>
 
-        {/* HEADER */}
-        <div className="mb-12 md:mb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xs uppercase tracking-[0.25em] mb-4"
-            style={{ color: "var(--muted)" }}
-          >
-            Contact
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-bold leading-none"
-            style={{ fontFamily: "var(--font-display)", color: "var(--text)" }}
-          >
-            Let's build
-            <br />
-            <span style={{ color: "var(--accent)" }}>something real.</span>
-          </motion.h2>
-        </div>
+              <div className="mt-9 space-y-4">
+                {fitItems.map((item) => (
+                  <div key={item} className="flex min-w-0 gap-3 text-[var(--muted-strong)]">
+                    <ArrowRight
+                      size={17}
+                      strokeWidth={1.8}
+                      className="mt-1 flex-none text-[var(--accent)]"
+                    />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
 
-        {/* SPLIT LAYOUT */}
-        <div className="grid lg:grid-cols-2 gap-10 md:gap-20 items-start">
-
-          {/* LEFT */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <p className="text-base md:text-xl leading-relaxed mb-8 md:mb-10" style={{ color: "var(--muted)" }}>
-              Whether it's a product, a business platform,
-              or a mobile application — I'm always excited
-              to work on meaningful ideas.
-            </p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <a href="mailto:muhammedmubashirwork@gmail.com" className="button-primary">
+                  <Send size={17} strokeWidth={2} />
+                  Send email
+                </a>
+                <a
+                  href="https://wa.me/918089433955"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button-secondary"
+                >
+                  Message on WhatsApp
+                </a>
+              </div>
+            </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.35 }}
-              className="inline-flex items-center gap-3 px-4 md:px-5 py-2.5 md:py-3 rounded-full"
-              style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: 0.08 }}
+              className="min-w-0 lg:col-span-5"
             >
-              <span className="w-2 h-2 rounded-full animate-pulse flex-shrink-0" style={{ background: "var(--accent)" }} />
-              <span className="text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>
-                Open to freelance & full-time
-              </span>
-            </motion.div>
-          </motion.div>
+              <div className="p-6 md:p-10">
+                <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] px-4 py-2">
+                  <span className="h-2 w-2 rounded-full bg-[var(--success)]" />
+                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+                    Response within 24 hours
+                  </span>
+                </div>
 
-          {/* RIGHT — CONTACT ROWS */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            style={{ borderTop: "1px solid var(--border)" }}
-          >
-            {contacts.map((contact, index) => {
-              const Icon = contact.icon
-              return (
-                <motion.div
-                  key={contact.label}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  data-hover
-                  className="group flex items-center justify-between py-5 md:py-6 cursor-pointer"
-                  style={{ borderBottom: "1px solid var(--border)" }}
-                  onClick={() => window.open(contact.href, "_blank")}
-                >
-                  <div className="flex items-center gap-3 md:gap-4 min-w-0">
-                    <div
-                      className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300"
-                      style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.background = "var(--accent-dim)"
-                        e.currentTarget.style.borderColor = "var(--accent)"
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.background = "var(--surface)"
-                        e.currentTarget.style.borderColor = "var(--border)"
-                      }}
+                <div className="mt-8 border-t border-[var(--border-soft)]">
+                  {contacts.map(({ label, value, href, icon: Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel={href.startsWith("http") ? "noreferrer" : undefined}
+                      className="group flex items-center justify-between gap-4 border-b border-[var(--border-soft)] py-5"
                     >
-                      <Icon size={15} strokeWidth={1.5} style={{ color: "var(--muted)" }} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs uppercase tracking-widest mb-0.5" style={{ color: "var(--muted)" }}>
-                        {contact.label}
-                      </p>
-                      <p className="text-sm md:text-base truncate transition duration-300" style={{ color: "var(--text)" }}>
-                        {contact.value}
-                      </p>
-                    </div>
-                  </div>
-
-                  <ArrowUpRight
-                    size={16}
-                    strokeWidth={1.5}
-                    className="opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-1 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0 ml-3"
-                    style={{ color: "var(--accent)" }}
-                  />
-                </motion.div>
-              )
-            })}
-          </motion.div>
-
+                      <div className="flex min-w-0 items-center gap-4">
+                        <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)] text-[var(--accent)] transition-colors group-hover:border-[var(--accent)]">
+                          <Icon size={18} strokeWidth={1.8} />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+                            {label}
+                          </span>
+                          <span className="mt-1 block truncate text-sm text-[var(--text)] md:text-base">
+                            {value}
+                          </span>
+                        </span>
+                      </div>
+                      <ArrowUpRight
+                        size={17}
+                        strokeWidth={1.8}
+                        className="flex-none text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
-
-        {/* BOTTOM CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-14 md:mt-20 pt-8 md:pt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 md:gap-6"
-          style={{ borderTop: "1px solid var(--border)" }}
-        >
-          <p className="text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>
-            Response within 24 hours
-          </p>
-          <motion.button
-            data-hover
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={() => window.open("mailto:muhammedmubashirwork@gmail.com", "_blank")}
-            className="flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 rounded-full font-medium text-sm md:text-base"
-            style={{ background: "var(--accent)", color: "#111111" }}
-          >
-            <Send size={14} strokeWidth={2} />
-            Get In Touch
-          </motion.button>
-        </motion.div>
-
       </div>
     </section>
   )

@@ -1,31 +1,25 @@
-# 👋 Muhammed Mubashir - Portfolio
+# Muhammed Mubashir Portfolio
 
-Welcome to my personal portfolio website built to showcase my projects, skills, and experience as a Full Stack Developer.
+Personal portfolio website for Muhammed Mubashir, a product-focused developer working across
+React, Next.js, Flutter, REST APIs, and production business applications.
 
----
+## Live Website
 
-## 🔗 Live Website
-👉 https://muhammed-mubashir-portfolio.netlify.app/
+https://muhammed-mubashir-portfolio.netlify.app/
 
----
+## Tech Stack
 
-## 🚀 Tech Stack
+- React.js
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- Netlify
 
-- ⚛️ React.js
-- ⚡ Vite
-- 🎨 Tailwind CSS
-- 🌐 Netlify (Deployment)
-- 🗂 Git & GitHub (Version Control)
+## Features
 
----
-
-## 📂 Features
-
-- ✅ Responsive design (mobile + desktop)
-- ✅ Modern UI/UX
-- ✅ Project showcase section
-- ✅ Skills section
-- ✅ Contact section
-
----
-
+- Responsive portfolio layout
+- Project case-study cards
+- Skills and production impact sections
+- Accessible navigation and contact links
+- SEO-friendly document metadata

@@ -1,250 +1,153 @@
-// sections/Projects/Projects.jsx
-
+import { AnimatePresence, motion } from "framer-motion"
+import { ArrowRight, CheckCircle2, ChevronDown, Layers3 } from "lucide-react"
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import { projects } from "../../data/projects"
-import { ArrowUpRight, ChevronDown, Layers, CheckCircle2 } from "lucide-react"
 
 export default function Projects() {
-  const [expanded, setExpanded] = useState(null)
+  const [expanded, setExpanded] = useState(projects[0]?.id ?? null)
 
-  const toggle = (id) => setExpanded((prev) => (prev === id ? null : id))
+  const toggleProject = (projectId) => {
+    setExpanded((current) => (current === projectId ? null : projectId))
+  }
 
   return (
-    <section
-      id="projects"
-      className="py-32 px-6 overflow-hidden"
-      style={{ background: "var(--bg)" }}
-    >
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="section-shell">
+      <div className="section-container">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              className="section-kicker"
+            >
+              Projects
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ delay: 0.08 }}
+              className="section-title"
+            >
+              Production work with real constraints and real users.
+            </motion.h2>
+          </div>
 
-        {/* HEADER */}
-        <div className="mb-20">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xs uppercase tracking-[0.25em] mb-4"
-            style={{ color: "var(--muted)" }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ delay: 0.14 }}
+            className="lg:col-span-4 text-base leading-7 text-[var(--muted)]"
           >
-            Projects
+            These projects highlight the kind of work I like most: business logic, clean interfaces,
+            API integration, and practical fixes that make products easier to operate.
           </motion.p>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold leading-none"
-            style={{ fontFamily: "var(--font-display)", color: "var(--text)" }}
-          >
-            Real products.
-            <br />
-            <span style={{ color: "var(--accent)" }}>Real engineering.</span>
-          </motion.h2>
         </div>
 
-        {/* PROJECTS LIST */}
-        <div style={{ borderTop: "1px solid var(--border)" }}>
+        <div className="mt-12 grid gap-4 lg:grid-cols-2">
           {projects.map((project, index) => {
             const isOpen = expanded === project.id
+            const visibleHighlights = isOpen ? project.highlights : project.highlights.slice(0, 3)
 
             return (
-              <motion.div
+              <motion.article
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                style={{ borderBottom: "1px solid var(--border)" }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.06, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                className="project-card surface-panel relative p-6 md:p-7"
               >
-
-                {/* ROW — clickable header */}
-                <div
-                  data-hover
-                  className="group grid lg:grid-cols-12 gap-6 py-10 px-4 -mx-4 cursor-pointer transition-all duration-500 rounded-xl"
-                  style={{ background: isOpen ? "var(--surface)" : "transparent" }}
-                  onMouseEnter={e => {
-                    if (!isOpen) e.currentTarget.style.background = "var(--surface)"
-                  }}
-                  onMouseLeave={e => {
-                    if (!isOpen) e.currentTarget.style.background = "transparent"
-                  }}
-                  onClick={() => toggle(project.id)}
-                >
-
-                  {/* INDEX + NAME */}
-                  <div className="lg:col-span-5 flex items-start gap-5">
-                    <motion.span
-                      animate={{ opacity: isOpen ? 1 : 0.25 }}
-                      className="text-4xl font-bold leading-none mt-1 flex-shrink-0"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        color: "var(--accent)",
-                      }}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </motion.span>
-
+                <div className="relative">
+                  <div className="mb-8 flex items-start justify-between gap-5">
                     <div>
-                      <h3
-                        className="text-2xl md:text-3xl font-bold mb-1 transition duration-300"
-                        style={{
-                          fontFamily: "var(--font-display)",
-                          color: "var(--text)",
-                        }}
-                      >
-                        {project.name}
-                      </h3>
-                      <p
-                        className="text-xs uppercase tracking-widest"
-                        style={{ color: "var(--muted)" }}
-                      >
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
                         {project.type}
                       </p>
+                      <h3 className="mt-3 text-3xl md:text-4xl">{project.name}</h3>
+                      {project.subtitle && (
+                        <p className="mt-2 text-sm text-[var(--muted)]">{project.subtitle}</p>
+                      )}
                     </div>
+                    <span className="section-number">{String(index + 1).padStart(2, "0")}</span>
                   </div>
 
-                  {/* DESCRIPTION — visible on desktop, hidden when expanded */}
-                  <div className="lg:col-span-5 flex items-center">
-                    <p
-                      className="text-sm leading-relaxed line-clamp-2"
-                      style={{ color: "var(--muted)" }}
-                    >
-                      {project.description}
-                    </p>
-                  </div>
-
-                  {/* STATUS + CHEVRON */}
-                  <div className="lg:col-span-2 flex items-center justify-between lg:justify-end gap-4">
-                    <span
-                      className="text-xs uppercase tracking-widest px-3 py-1 rounded-full"
-                      style={{
-                        color: "var(--accent)",
-                        border: "1px solid var(--accent)",
-                        opacity: 0.85,
-                      }}
-                    >
+                  <div className="mb-6 flex flex-wrap gap-2">
+                    <span className="chip border-[var(--accent)] text-[var(--accent)]">
                       {project.status}
                     </span>
-
-                    <motion.div
-                      animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <ChevronDown
-                        size={18}
-                        strokeWidth={1.5}
-                        style={{ color: "var(--muted)" }}
-                      />
-                    </motion.div>
+                    <span className="chip">{project.year}</span>
+                    <span className="chip">{project.role}</span>
                   </div>
 
-                </div>
+                  <p className="text-base leading-7 text-[var(--muted)]">{project.description}</p>
 
-                {/* EXPANDED PANEL */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="panel"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      style={{ overflow: "hidden" }}
-                    >
-                      <div
-                        className="grid lg:grid-cols-12 gap-8 pb-10 px-4"
+                  <div className="mt-8">
+                    <div className="mb-4 flex items-center gap-2">
+                      <CheckCircle2 size={16} strokeWidth={1.8} className="text-[var(--accent)]" />
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+                        What I handled
+                      </p>
+                    </div>
+
+                    <ul className="space-y-3">
+                      <AnimatePresence initial={false}>
+                        {visibleHighlights.map((item) => (
+                          <motion.li
+                            key={item}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            className="flex gap-3 text-sm leading-6 text-[var(--muted-strong)]"
+                          >
+                            <ArrowRight
+                              size={15}
+                              strokeWidth={1.8}
+                              className="mt-1 flex-none text-[var(--accent)]"
+                            />
+                            <span>{item}</span>
+                          </motion.li>
+                        ))}
+                      </AnimatePresence>
+                    </ul>
+
+                    {project.highlights.length > 3 && (
+                      <button
+                        type="button"
+                        onClick={() => toggleProject(project.id)}
+                        className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[var(--accent)]"
+                        aria-expanded={isOpen}
                       >
+                        {isOpen ? "Show less" : "Show more"}
+                        <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
+                          <ChevronDown size={16} strokeWidth={2} />
+                        </motion.span>
+                      </button>
+                    )}
+                  </div>
 
-                        {/* HIGHLIGHTS */}
-                        <div className="lg:col-span-6 lg:col-start-2">
-                          <div className="flex items-center gap-2 mb-4">
-                            <CheckCircle2
-                              size={13}
-                              strokeWidth={1.5}
-                              style={{ color: "var(--accent)" }}
-                            />
-                            <p
-                              className="text-xs uppercase tracking-widest"
-                              style={{ color: "var(--muted)" }}
-                            >
-                              Highlights
-                            </p>
-                          </div>
-
-                          <div className="grid sm:grid-cols-2 gap-2">
-                            {project.highlights.map((item, i) => (
-                              <motion.div
-                                key={item}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.05 }}
-                                className="flex items-start gap-2"
-                              >
-                                <span
-                                  className="mt-1 flex-shrink-0"
-                                  style={{ color: "var(--accent)" }}
-                                >
-                                  →
-                                </span>
-                                <p
-                                  className="text-sm leading-relaxed"
-                                  style={{ color: "var(--muted)" }}
-                                >
-                                  {item}
-                                </p>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* STACK */}
-                        <div className="lg:col-span-4">
-                          <div className="flex items-center gap-2 mb-4">
-                            <Layers
-                              size={13}
-                              strokeWidth={1.5}
-                              style={{ color: "var(--accent)" }}
-                            />
-                            <p
-                              className="text-xs uppercase tracking-widest"
-                              style={{ color: "var(--muted)" }}
-                            >
-                              Tech Stack
-                            </p>
-                          </div>
-
-                          <div className="flex flex-wrap gap-2">
-                            {project.stack.map((tech, i) => (
-                              <motion.span
-                                key={tech}
-                                initial={{ opacity: 0, scale: 0.85 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.06 }}
-                                className="text-xs px-3 py-1.5 rounded-full"
-                                style={{
-                                  border: "1px solid var(--border)",
-                                  color: "var(--muted)",
-                                  background: "var(--bg)",
-                                }}
-                              >
-                                {tech}
-                              </motion.span>
-                            ))}
-                          </div>
-                        </div>
-
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-              </motion.div>
+                  <div className="mt-8 border-t border-[var(--border-soft)] pt-5">
+                    <div className="mb-4 flex items-center gap-2">
+                      <Layers3 size={16} strokeWidth={1.8} className="text-[var(--accent)]" />
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
+                        Stack
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((tech) => (
+                        <span key={tech} className="chip">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
             )
           })}
         </div>
-
       </div>
     </section>
   )
