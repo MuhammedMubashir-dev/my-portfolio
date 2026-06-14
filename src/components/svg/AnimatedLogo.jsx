@@ -13,6 +13,7 @@ export default function AnimatedLogo({ className = "" }) {
     >
       <rect width="64" height="64" rx="14" fill="#1B1C16" stroke="rgba(246, 242, 232, 0.1)" />
       <motion.path
+        className="svg-logo-mark"
         d="M16 44V20H23.1L32 32.6L40.9 20H48V44H41.2V30.4L34.1 40.1H29.9L22.8 30.4V44H16Z"
         fill="none"
         stroke="#F6F2E8"
@@ -23,6 +24,7 @@ export default function AnimatedLogo({ className = "" }) {
         transition={{ duration: 2.4, ease: [0.16, 1, 0.3, 1] }}
       />
       <motion.circle
+        className="svg-logo-accent"
         cx="49"
         cy="47"
         r="4"

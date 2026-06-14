@@ -140,24 +140,27 @@ def build():
     subtitle = doc.add_paragraph()
     subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
     subtitle.paragraph_format.space_after = Pt(4)
-    sub = subtitle.add_run("Product-Focused Developer | React, Next.js, Flutter, REST APIs")
+    sub = subtitle.add_run(
+        "Product Engineer | React • Next.js • Flutter • API Integrations"
+    )
     set_run(sub, size=9.5, bold=True, color=MUTED)
-
     contact = doc.add_paragraph()
     contact.alignment = WD_ALIGN_PARAGRAPH.CENTER
     contact.paragraph_format.space_after = Pt(8)
     set_run(contact.add_run("Kerala, India | "), size=9.2, color=MUTED)
-    add_hyperlink(contact, "muhammedmubashirwork@gmail.com", "mailto:muhammedmubashirwork@gmail.com")
+    add_hyperlink(contact, "muhammedmubashir720@gmail.com", "mailto:muhammedmubashir720@gmail.com")
     set_run(contact.add_run(" | +91 8089433955 | "), size=9.2, color=MUTED)
     add_hyperlink(contact, "github.com/MuhammedMubashir-dev", "https://github.com/MuhammedMubashir-dev")
+    set_run(contact.add_run(" | "), size=9.2, color=MUTED)
+    add_hyperlink(contact, "linkedin.com/in/muhammed-mubashir-dev", "https://linkedin.com/in/muhammed-mubashir-dev")
 
     add_section_heading(doc, "Summary")
     add_body_paragraph(
         doc,
-        "Product-focused developer building production web and mobile applications across React, "
-        "Next.js, Flutter, and REST APIs. Comfortable working close to real product needs: UI "
-        "states, API integrations, search and filtering, checkout flows, mobile workflows, and "
-        "production bug fixes.",
+        "Product Engineer with hands-on experience building and maintaining production web and mobile "
+        "applications using React, Next.js, Flutter, and REST APIs. Experienced in feature development, "
+        "API integrations, multi-tenant commerce platforms, localization, theme systems, and resolving "
+        "real-world production issues across customer-facing products.",
     )
 
     add_section_heading(doc, "Experience")
@@ -174,23 +177,23 @@ def build():
     projects = [
         (
             "FUNZCART",
-            "Commerce Platform",
-            "Worked on dynamic property filters, theme layouts, product reviews, review image uploads, category filtering, and search workflow improvements.",
+            "Multi-Tenant Commerce Platform",
+            "Designed category-driven dynamic property filter architecture, implemented multi-select filtering workflows, built customer review editing functionality with image uploads, enhanced search and product discovery with Algolia integration, developed reusable components across themes, and collaborated with backend teams on API contracts.",
         ),
         (
             "Ganvin",
-            "Mobile Application",
-            "Built infinite scroll pagination, integrated Google Maps navigation, fixed API filter issues, and improved pickup and delivery workflows.",
+            "Logistics & Delivery Application",
+            "Implemented Google Maps navigation integration, developed user location management workflows, built infinite scroll pagination for operational screens, integrated and validated delivery-related APIs, resolved timezone-related backend inconsistencies, and improved pickup and delivery user experiences.",
         ),
         (
             "Juice World",
-            "E-Commerce Platform",
-            "Built responsive storefront UI, product filtering, image optimization, ISR rendering, and user experience improvements.",
+            "Production Storefront Platform",
+            "Integrated banner, products, services, testimonials, and CMS APIs, implemented Incremental Static Regeneration (ISR), added multilingual support with Arabic localization and RTL layout, configured SEO metadata and sitemap generation, built dynamic product listing and detail experiences, and optimized image rendering and application performance.",
         ),
         (
-            "Luzine Bakes",
-            "Production E-Commerce Platform",
-            "Developed authentication, OTP verification, ERP API integrations, cart and checkout flows, Razorpay and Cash on Delivery payments, customer profiles, order management, search, filters, and WhatsApp order notification workflow.",
+            "CloudPOSWeb",
+            "Enterprise Commerce Platform",
+            "Implemented tenant onboarding workflows and KV-based tenant switching mechanisms, integrated Razorpay payment gateway, enhanced authentication and customer profile experiences, improved checkout and order placement workflows, implemented multilingual storefront experiences with translation support, built and maintained multiple themes (Aurora, Nova, Toy, Silk, Ornament), and implemented ERP-driven product experiences.",
         ),
     ]
     for name, kind, detail in projects:
@@ -201,9 +204,13 @@ def build():
     skills = [
         ("Frontend", "React.js, Next.js, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS"),
         ("Mobile", "Flutter, Dart"),
-        ("Backend & APIs", "Node.js, REST APIs, API Integration, Authentication, Pagination"),
-        ("Product Engineering", "Bug fixing, code refactoring, responsive UI, theme architecture, dynamic filters, performance optimization"),
-        ("Tools", "Git, GitHub, Postman, VS Code, MySQL, Algolia, SEO, ISR, image optimization"),
+        ("API Integration", "REST APIs, API Integration, Authentication, Pagination, Postman, API Debugging, Bearer Token Authentication"),
+        ("Commerce Platforms", "Product Search, Dynamic Filters, Shopping Cart, Checkout Flows, Order Management, Customer Profiles, Review Systems"),
+        ("Payments & Integrations", "Razorpay, ERP Integration, Google Maps, WhatsApp Notifications, Algolia Search"),
+        ("Multi-Tenant & Themes", "Theme Architecture, Tenant Onboarding, KV-Based Tenant Switching, Aurora Theme, Nova Theme, Toy Theme, Silk Theme, Ornament Theme"),
+        ("Localization & SEO", "Internationalization (i18n), RTL Support, SEO Metadata, Sitemap Generation, ISR, Image Optimization"),
+        ("Product Engineering", "Bug Fixing, Code Refactoring, Production Debugging, Responsive UI, Performance Optimization, Feature Development, Cross-Team Collaboration"),
+        ("Tools", "Git, GitHub, VS Code, Postman"),
     ]
     for label, value in skills:
         p = doc.add_paragraph()
@@ -216,7 +223,7 @@ def build():
     add_section_heading(doc, "Impact Snapshot")
     add_body_paragraph(
         doc,
-        "4+ production projects | 10+ APIs integrated | 40+ production bugs fixed | 100+ Git commits",
+        "4+ Live Products | 15+ API Integrations | 60+ Production Fixes | 6+ Storefront Themes",
         after=0,
     )
 

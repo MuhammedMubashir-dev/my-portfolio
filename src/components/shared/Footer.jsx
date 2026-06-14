@@ -49,7 +49,7 @@ export default function Footer() {
               rel={href.startsWith("http") ? "noreferrer" : undefined}
               className="group inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[var(--muted)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
-              <AnimatedTechIcon icon={Icon} />
+              <AnimatedTechIcon icon={Icon} size={13} strokeWidth={1.8} />
               {label}
               <ArrowUpRight
                 size={12}

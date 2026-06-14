@@ -1,7 +1,10 @@
 import { motion } from "framer-motion"
 import {
   ArrowRight,
+  CreditCard,
   Database,
+  Globe,
+  Layers,
   Monitor,
   Search,
   Server,
@@ -17,11 +20,13 @@ import { skills } from "../../data/skills"
 const categoryIcons = {
   Frontend: Monitor,
   Mobile: Smartphone,
-  "Backend & APIs": Server,
-  Database,
-  Tools: Wrench,
-  "Product Engineering": Zap,
-  "Search & Performance": Search,
+  "API Integration": Server,
+  "Commerce Platforms": Zap,
+  "Payments & Integrations": CreditCard,
+  "Multi-Tenant & Themes": Layers,
+  "Localization & SEO": Globe,
+  "Product Engineering": Wrench,
+  Tools: Search,
 }
 
 export default function Skills() {
@@ -80,7 +85,7 @@ export default function Skills() {
                 <div className="relative flex h-full flex-col">
                   <div className="mb-8 flex items-start justify-between gap-5">
                     <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)]">
-                      <AnimatedTechIcon icon={Icon} className="text-[var(--accent)]" />
+                      <AnimatedTechIcon icon={Icon} className="text-[var(--accent)]" size={19} strokeWidth={1.8} />
                     </span>
                     <span className="section-number">{String(index + 1).padStart(2, "0")}</span>
                   </div>

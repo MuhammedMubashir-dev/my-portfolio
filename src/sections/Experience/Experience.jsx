@@ -68,7 +68,7 @@ export default function Experience() {
                   } border-[var(--border-soft)] ${index < 2 ? "border-b" : ""}`}
                 >
                   <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)] text-[var(--accent)]">
-                    <AnimatedTechIcon icon={Icon} />
+                    <AnimatedTechIcon icon={Icon} size={18} strokeWidth={1.8} />
                   </span>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">

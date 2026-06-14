@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 
-export default function AnimatedTechIcon({ icon: Icon, className = "" }) {
+export default function AnimatedTechIcon({ icon: Icon, className = "", size = 24, strokeWidth = 2 }) {
   return (
     <motion.div
       className={className}
@@ -8,7 +8,7 @@ export default function AnimatedTechIcon({ icon: Icon, className = "" }) {
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
-      <Icon size={24} strokeWidth={2} />
+      <Icon size={size} strokeWidth={strokeWidth} />
     </motion.div>
   )
 }

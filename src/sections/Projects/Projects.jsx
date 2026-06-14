@@ -12,7 +12,14 @@ const filters = [
 ]
 
 function getProjectCategory(project) {
-  if (project.type.toLowerCase().includes("mobile")) return "mobile"
+  const typeLower = project.type.toLowerCase()
+  const stackLower = project.stack.join(" ").toLowerCase()
+  
+  if (typeLower.includes("mobile") || 
+      stackLower.includes("flutter") || 
+      stackLower.includes("dart")) {
+    return "mobile"
+  }
   return "commerce"
 }
 
