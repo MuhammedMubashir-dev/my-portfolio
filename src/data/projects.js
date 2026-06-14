@@ -5,7 +5,7 @@ export const projects = [
     subtitle: "Built on ENKEPOS Platform",
     type: "Commerce Platform",
     role: "Frontend and product engineering",
-    year: "2025",
+    year: "2026",
     description:
       "A production commerce platform where I worked on dynamic filters, theme architecture, product reviews, search improvements, and reusable admin components.",
     stack: ["React.js", "Next.js", "TypeScript", "REST APIs"],
@@ -24,7 +24,7 @@ export const projects = [
     name: "Ganvin",
     type: "Mobile Application",
     role: "Flutter development and API integration",
-    year: "2025",
+    year: "2026",
     description:
       "A production mobile app where I worked on delivery workflows, API integrations, pagination, maps integration, and backend issue debugging.",
     stack: ["Flutter", "Dart", "REST APIs", "Postman"],
@@ -42,7 +42,7 @@ export const projects = [
     name: "Juice World",
     type: "E-Commerce Platform",
     role: "Storefront UI and performance",
-    year: "2025",
+    year: "2026",
     description:
       "A modern e-commerce frontend focused on responsive UI, product discovery, filtering, and performance optimization.",
     stack: ["React.js", "Next.js", "Tailwind CSS"],
@@ -61,7 +61,7 @@ export const projects = [
     subtitle: "Custom Bakery E-Commerce Solution",
     type: "Production E-Commerce Platform",
     role: "Full shopping flow and ERP integration",
-    year: "2025",
+    year: "2026",
     description:
       "A full-featured bakery e-commerce platform built with Next.js and integrated with an ERP system for product management, customer accounts, order processing, OTP authentication, delivery workflows, and multiple payment methods.",
     stack: ["Next.js", "React.js", "Tailwind CSS", "REST APIs", "ERP Integration", "Razorpay"],
