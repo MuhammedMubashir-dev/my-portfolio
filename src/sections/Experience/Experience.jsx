@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { BriefcaseBusiness, CalendarDays, Code2, GitBranch, Wrench } from "lucide-react"
+import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import SectionKicker from "../../components/svg/SectionKicker"
 
 const responsibilities = [
@@ -67,7 +68,7 @@ export default function Experience() {
                   } border-[var(--border-soft)] ${index < 2 ? "border-b" : ""}`}
                 >
                   <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)] text-[var(--accent)]">
-                    <Icon size={18} strokeWidth={1.8} />
+                    <AnimatedTechIcon icon={Icon} />
                   </span>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">

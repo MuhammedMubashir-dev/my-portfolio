@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUp } from "lucide-react"
 import { useEffect, useState } from "react"
+import AnimatedArrowUp from "../svg/AnimatedArrowUp"
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false)
@@ -25,7 +25,7 @@ export default function BackToTop() {
           aria-label="Back to top"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <ArrowUp size={18} strokeWidth={2} />
+          <AnimatedArrowUp />
         </motion.button>
       )}
     </AnimatePresence>

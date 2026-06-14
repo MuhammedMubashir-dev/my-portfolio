@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, ChevronDown, Layers3 } from "lucide-react"
 import { useMemo, useState } from "react"
+import AnimatedArrow from "../../components/svg/AnimatedArrow"
 import SectionKicker from "../../components/svg/SectionKicker"
 import { projects } from "../../data/projects"
 
@@ -152,11 +153,7 @@ export default function Projects() {
                             exit={{ opacity: 0, y: -8 }}
                             className="flex gap-3 text-sm leading-6 text-[var(--muted-strong)]"
                           >
-                            <ArrowRight
-                              size={15}
-                              strokeWidth={1.8}
-                              className="mt-1 flex-none text-[var(--accent)]"
-                            />
+                            <AnimatedArrow className="mt-1 flex-none text-[var(--accent)]" />
                             <span>{item}</span>
                           </motion.li>
                         ))}

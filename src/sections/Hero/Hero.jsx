@@ -9,6 +9,8 @@ import {
   Sparkles,
 } from "lucide-react"
 import { useEffect, useState } from "react"
+import AnimatedArrow from "../../components/svg/AnimatedArrow"
+import AnimatedSparkle from "../../components/svg/AnimatedSparkle"
 import HeroAmbient from "../../components/svg/HeroAmbient"
 
 const roles = [
@@ -92,11 +94,7 @@ export default function Hero() {
             </h1>
 
             <div className="mt-7 flex h-8 items-center gap-3 overflow-hidden">
-              <Sparkles
-                size={16}
-                strokeWidth={1.8}
-                className="text-[var(--accent)]"
-              />
+              <AnimatedSparkle className="text-[var(--accent)]" />
 
               <AnimatePresence mode="wait">
                 <motion.p
@@ -128,7 +126,7 @@ export default function Hero() {
                 className="button-primary"
               >
                 View projects
-                <ArrowRight size={18} strokeWidth={2} />
+                <AnimatedArrow />
               </a>
 
               <a

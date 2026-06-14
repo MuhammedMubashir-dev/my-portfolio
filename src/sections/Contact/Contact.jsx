@@ -1,5 +1,7 @@
 import { motion } from "framer-motion"
 import { ArrowRight, ArrowUpRight, Download, Github, Mail, MessageCircle, Send } from "lucide-react"
+import AnimatedArrow from "../../components/svg/AnimatedArrow"
+import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import ContactNetwork from "../../components/svg/ContactNetwork"
 import SectionKicker from "../../components/svg/SectionKicker"
 
@@ -55,11 +57,7 @@ export default function Contact() {
               <div className="mt-9 space-y-4">
                 {fitItems.map((item) => (
                   <div key={item} className="flex min-w-0 gap-3 text-[var(--muted-strong)]">
-                    <ArrowRight
-                      size={17}
-                      strokeWidth={1.8}
-                      className="mt-1 flex-none text-[var(--accent)]"
-                    />
+                    <AnimatedArrow className="mt-1 flex-none text-[var(--accent)]" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -115,7 +113,7 @@ export default function Contact() {
                     >
                       <div className="flex min-w-0 items-center gap-4">
                         <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)] text-[var(--accent)] transition-colors group-hover:border-[var(--accent)]">
-                          <Icon size={18} strokeWidth={1.8} />
+                          <AnimatedTechIcon icon={Icon} />
                         </span>
                         <span className="min-w-0">
                           <span className="block text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">

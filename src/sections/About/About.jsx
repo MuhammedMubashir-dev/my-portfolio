@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { BriefcaseBusiness, CheckCircle2, Code2, Rocket } from "lucide-react"
+import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import SectionKicker from "../../components/svg/SectionKicker"
 
 const strengths = [
@@ -80,7 +81,7 @@ export default function About() {
                   transition={{ delay: 0.18 + index * 0.06 }}
                   className="surface-panel p-5"
                 >
-                  <Icon size={19} strokeWidth={1.8} className="text-[var(--accent)]" />
+                  <AnimatedTechIcon icon={Icon} className="text-[var(--accent)]" />
                   <h3 className="mt-5 text-xl">{title}</h3>
                   <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{description}</p>
                 </motion.article>

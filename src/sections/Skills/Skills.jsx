@@ -9,6 +9,8 @@ import {
   Wrench,
   Zap,
 } from "lucide-react"
+import AnimatedArrow from "../../components/svg/AnimatedArrow"
+import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import SectionKicker from "../../components/svg/SectionKicker"
 import { skills } from "../../data/skills"
 
@@ -78,7 +80,7 @@ export default function Skills() {
                 <div className="relative flex h-full flex-col">
                   <div className="mb-8 flex items-start justify-between gap-5">
                     <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)]">
-                      <Icon size={19} strokeWidth={1.8} className="text-[var(--accent)]" />
+                      <AnimatedTechIcon icon={Icon} className="text-[var(--accent)]" />
                     </span>
                     <span className="section-number">{String(index + 1).padStart(2, "0")}</span>
                   </div>
@@ -114,7 +116,7 @@ export default function Skills() {
             </div>
             <div className="relative mt-8 inline-flex items-center gap-2 text-sm font-bold text-[var(--accent)]">
               Start a project
-              <ArrowRight size={17} strokeWidth={2} />
+              <AnimatedArrow />
             </div>
           </motion.a>
         </div>

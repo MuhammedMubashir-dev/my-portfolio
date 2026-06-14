@@ -22,4 +22,4 @@ https://muhammed-mubashir-portfolio.netlify.app/
 - Project case-study cards
 - Skills and production impact sections
 - Accessible navigation and contact links
-- SEO-friendly document metadata
+
