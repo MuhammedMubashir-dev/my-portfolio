@@ -1,12 +1,13 @@
-import { motion } from "framer-motion"
-import { BriefcaseBusiness, CheckCircle2, Code2, Rocket } from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
+import { BriefcaseBusiness, CheckCircle2, Code2, Rocket, TerminalSquare } from "lucide-react"
+import { useState } from "react"
 import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import SectionKicker from "../../components/svg/SectionKicker"
 
 const strengths = [
   {
     title: "Feature ownership",
-    description: "I can take a product requirement through UI, API states, edge cases, and release.",
+    description: "I take requirements from UI through API states, edge cases, and production release.",
     icon: Rocket,
   },
   {
@@ -28,7 +29,27 @@ const experienceRows = [
   "Mobile delivery, maps, pagination, and API issue debugging",
 ]
 
+const jsonProfile = `{
+  "status": 200,
+  "endpoint": "/api/v1/engineer/mubashir",
+  "data": {
+    "name": "Muhammed Mubashir",
+    "role": "Product Engineer",
+    "location": "Kerala, India",
+    "company": "ENKE Consulting Services",
+    "focus": [
+      "React.js & Next.js interfaces",
+      "Flutter mobile applications",
+      "REST API integration",
+      "E-commerce workflows"
+    ],
+    "philosophy": "Build practical, shipped software that solves real business rules."
+  }
+}`
+
 export default function About() {
+  const [viewMode, setViewMode] = useState("ui") // 'ui' or 'json'
+
   return (
     <section id="about" className="section-shell">
       <div className="section-container">
@@ -48,7 +69,7 @@ export default function About() {
               transition={{ delay: 0.08 }}
               className="section-title"
             >
-              Product-minded developer for practical, shipped software.
+              Product-minded developer for practical software.
             </motion.h2>
           </div>
 
@@ -59,16 +80,87 @@ export default function About() {
             transition={{ delay: 0.14 }}
             className="lg:col-span-7"
           >
-            <div className="space-y-6 text-lg leading-8 text-[var(--muted)] md:text-xl">
-              <p>
-                I am Muhammed Mubashir, a Kerala-based developer currently building real-world
-                applications at ENKE Consulting Services.
-              </p>
-              <p>
-                My work sits close to the product: React and Next.js interfaces, Flutter screens,
-                REST API integrations, search and filtering systems, checkout flows, payment states,
-                and the production bugs that appear when real users meet real business rules.
-              </p>
+            {/* Toggle Switch */}
+            <div className="mb-8 flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface)] p-1 w-max">
+              <button
+                type="button"
+                onClick={() => setViewMode("ui")}
+                className={`relative rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                  viewMode === "ui" ? "text-[var(--bg)]" : "text-[var(--muted)] hover:text-[var(--text)]"
+                }`}
+              >
+                {viewMode === "ui" && (
+                  <motion.span
+                    layoutId="about-toggle"
+                    className="absolute inset-0 rounded-full bg-[var(--accent)]"
+                    style={{ zIndex: -1 }}
+                  />
+                )}
+                UI View
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode("json")}
+                className={`relative flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                  viewMode === "json" ? "text-[var(--bg)]" : "text-[var(--muted)] hover:text-[var(--text)]"
+                }`}
+              >
+                {viewMode === "json" && (
+                  <motion.span
+                    layoutId="about-toggle"
+                    className="absolute inset-0 rounded-full bg-[var(--accent)]"
+                    style={{ zIndex: -1 }}
+                  />
+                )}
+                <TerminalSquare size={14} />
+                API View
+              </button>
+            </div>
+
+            <div className="relative min-h-[220px]">
+              <AnimatePresence mode="wait">
+                {viewMode === "ui" ? (
+                  <motion.div
+                    key="ui-view"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-6 text-lg leading-8 text-[var(--muted)] md:text-xl"
+                  >
+                    <p>
+                      I am Muhammed Mubashir, a Kerala-based Product Engineer currently shipping real-world applications at ENKE Consulting Services.
+                    </p>
+                    <p>
+                      I don't just write code; I own the product experience. From architecting scalable React and Flutter interfaces to bridging complex REST APIs and optimizing checkout flows, I focus on delivering software that drives real business value.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="json-view"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden rounded-lg border border-[var(--border-soft)] bg-[#0a0a0a] p-5 shadow-2xl"
+                  >
+                    <pre className="text-sm leading-relaxed md:text-base overflow-x-auto">
+                      <code className="text-[#e5c07b]">
+                        {jsonProfile.split("\n").map((line, i) => {
+                          // Simple mock syntax highlighting
+                          let coloredLine = line
+                          coloredLine = coloredLine.replace(/"(.*?)":/g, '<span class="text-[#e06c75]">"$1"</span>:')
+                          coloredLine = coloredLine.replace(/: "(.*?)"/g, ': <span class="text-[#98c379]">"$1"</span>')
+                          coloredLine = coloredLine.replace(/: ([0-9]+)/g, ': <span class="text-[#d19a66]">$1</span>')
+                          return (
+                            <span key={i} className="block" dangerouslySetInnerHTML={{ __html: coloredLine }} />
+                          )
+                        })}
+                      </code>
+                    </pre>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             <div className="mt-10 grid gap-3 md:grid-cols-3">
@@ -115,7 +207,7 @@ export default function About() {
                   <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-[var(--muted-strong)]">{item}</p>
+                  <p className="text-[var(--text)] font-medium">{item}</p>
                 </div>
               ))}
             </div>

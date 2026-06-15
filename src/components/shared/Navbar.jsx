@@ -38,8 +38,22 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`site-nav ${scrolled ? "is-scrolled" : ""}`}>
-        <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-5 md:px-8">
+      <header className="fixed top-0 left-0 z-50 flex w-full justify-center pointer-events-none px-4 pt-4 transition-all duration-300">
+        <motion.div
+          layout
+          initial={false}
+          animate={{
+            width: scrolled ? "min(100%, 860px)" : "100%",
+            borderRadius: scrolled ? "999px" : "0px",
+            backgroundColor: scrolled ? "rgba(27, 28, 22, 0.85)" : "rgba(15, 16, 13, 0)",
+            backdropFilter: scrolled ? "blur(16px)" : "blur(0px)",
+            border: scrolled ? "1px solid rgba(246, 242, 232, 0.1)" : "1px solid transparent",
+            y: scrolled ? 8 : 0,
+            padding: scrolled ? "0 24px" : "0 32px",
+          }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="pointer-events-auto flex h-16 w-full items-center justify-between max-w-7xl"
+        >
           <a
             href="#hero"
             className="flex items-center gap-3 font-bold"
@@ -61,7 +75,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}
-                  className={`group relative text-xs font-bold uppercase tracking-[0.18em] transition-colors ${
+                  className={`group relative text-[0.7rem] font-bold uppercase tracking-[0.18em] transition-colors ${
                     isActive ? "text-[var(--text)]" : "text-[var(--muted)] hover:text-[var(--text)]"
                   }`}
                 >
@@ -77,25 +91,34 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <span className="chip border-[var(--border-soft)]">
-              <span className="h-2 w-2 rounded-full bg-[var(--success)]" />
-              Available
-            </span>
-            <a href="#contact" className="button-primary min-h-10 px-5 text-sm">
+            <AnimatePresence>
+              {!scrolled && (
+                <motion.span
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "auto" }}
+                  exit={{ opacity: 0, width: 0, overflow: "hidden" }}
+                  className="chip border-[var(--border-soft)] whitespace-nowrap"
+                >
+                  <span className="h-2 w-2 rounded-full bg-[var(--success)]" />
+                  Available
+                </motion.span>
+              )}
+            </AnimatePresence>
+            <a href="#contact" className="button-primary min-h-[38px] px-5 text-xs">
               Hire me
             </a>
           </div>
 
           <button
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-soft)] bg-[var(--surface)] lg:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((value) => !value)}
           >
-            {menuOpen ? <X size={19} /> : <Menu size={19} />}
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
-        </div>
+        </motion.div>
       </header>
 
       <AnimatePresence>
@@ -159,7 +182,7 @@ export default function Navbar() {
                 }}
                 href="#contact"
                 onClick={closeMenu}
-                className="button-primary mt-8 w-full"
+                className="button-primary mt-8 w-full min-h-[48px]"
               >
                 Start a conversation
               </motion.a>
