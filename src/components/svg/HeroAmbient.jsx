@@ -1,6 +1,8 @@
-export default function HeroAmbient() {
+import { motion } from "framer-motion"
+
+export default function HeroAmbient({ style }) {
   return (
-    <div className="hero-ambient" aria-hidden="true">
+    <motion.div style={style} className="hero-ambient" aria-hidden="true">
       <svg viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle
           cx="320"
@@ -72,6 +74,6 @@ export default function HeroAmbient() {
           transform="rotate(-18 478 478)"
         />
       </svg>
-    </div>
+    </motion.div>
   )
 }

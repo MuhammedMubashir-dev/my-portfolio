@@ -13,12 +13,14 @@ import Projects from "./sections/Projects/Projects"
 import Skills from "./sections/Skills/Skills"
 import { BugProvider } from "./context/BugContext"
 import BugCelebration from "./components/shared/BugCelebration"
+import SmoothScroll from "./components/shared/SmoothScroll"
 
 export default function App() {
   return (
-    <BugProvider>
-      <div className="page-shell">
-        <a className="skip-link" href="#main">
+    <SmoothScroll>
+      <BugProvider>
+        <div className="page-shell">
+          <a className="skip-link" href="#main">
           Skip to content
         </a>
         <ScrollProgress />
@@ -35,7 +37,8 @@ export default function App() {
         <Footer />
         <BackToTop />
         <BugCelebration />
-      </div>
-    </BugProvider>
+        </div>
+      </BugProvider>
+    </SmoothScroll>
   )
 }

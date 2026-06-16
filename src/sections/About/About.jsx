@@ -78,7 +78,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: 0.14 }}
-            className="lg:col-span-7"
+            className="lg:col-span-7 min-w-0"
           >
             {/* Toggle Switch */}
             <div className="mb-8 flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface)] p-1 w-max">
@@ -117,7 +117,7 @@ export default function About() {
               </button>
             </div>
 
-            <div className="relative min-h-[220px]">
+            <div className="relative min-h-[220px] w-full max-w-full">
               <AnimatePresence mode="wait">
                 {viewMode === "ui" ? (
                   <motion.div

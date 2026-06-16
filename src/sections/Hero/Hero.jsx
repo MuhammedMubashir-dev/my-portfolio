@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { Download, Github, Linkedin, Mail } from "lucide-react"
 import { useEffect, useState } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
@@ -22,7 +22,7 @@ const techStack = [
   "Tailwind",
 ]
 
-function TerminalEffect() {
+function TerminalEffect({ style }) {
   const [step, setStep] = useState(0)
   const [text, setText] = useState("")
   const command = `npx init-engineer --name="Mubashir"`
@@ -49,6 +49,7 @@ function TerminalEffect() {
 
   return (
     <motion.aside
+      style={style}
       initial={{ opacity: 0, y: 28 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
@@ -125,6 +126,12 @@ function TerminalEffect() {
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0)
 
+  // Parallax physics
+  const { scrollY } = useScroll()
+  const yBg = useTransform(scrollY, [0, 1000], [0, 400]) // Background moves slower down
+  const yText = useTransform(scrollY, [0, 1000], [0, 150]) // Text moves slightly slower down
+  const yTerminal = useTransform(scrollY, [0, 1000], [0, -200]) // Terminal moves up faster
+
   useEffect(() => {
     const interval = window.setInterval(() => {
       setCurrentRole((previous) => (previous + 1) % roles.length)
@@ -138,11 +145,12 @@ export default function Hero() {
       id="hero"
       className="section-shell relative flex min-h-screen items-center overflow-hidden pt-32 md:pt-36"
     >
-      <HeroAmbient />
+      <HeroAmbient style={{ y: yBg }} />
 
       <div className="section-container relative z-[1] w-full">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end xl:gap-16">
           <motion.div
+            style={{ y: yText }}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -240,7 +248,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <TerminalEffect />
+          <TerminalEffect style={{ y: yTerminal }} />
         </div>
 
         <Bug id="hero-bug" className="top-24 right-4 md:right-10 opacity-30 hover:opacity-100" />
