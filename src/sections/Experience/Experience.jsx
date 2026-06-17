@@ -159,7 +159,7 @@ export default function Experience() {
                       whileInView={{ opacity: 1, x: 0, y: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                      className="surface-panel p-6"
+                      className="surface-panel p-5 md:p-6"
                     >
                       {/* Mobile Header (Hidden on Desktop) */}
                       <div className="md:hidden mb-4">

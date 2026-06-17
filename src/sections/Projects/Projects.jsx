@@ -9,7 +9,6 @@ import Bug from "../../components/shared/Bug"
 const filters = [
   { id: "all", label: "All Projects" },
   { id: "commerce", label: "E-Commerce" },
-  { id: "logistics", label: "Logistics" },
   { id: "nextjs", label: "Next.js" },
   { id: "flutter", label: "Flutter" },
 ]
@@ -20,7 +19,6 @@ function getProjectCategories(project) {
   const categories = ["all"]
 
   if (typeLower.includes("commerce") || typeLower.includes("storefront")) categories.push("commerce")
-  if (typeLower.includes("logistic") || typeLower.includes("delivery")) categories.push("logistics")
   if (stackLower.includes("next.js") || stackLower.includes("nextjs")) categories.push("nextjs")
   if (stackLower.includes("flutter") || stackLower.includes("dart")) categories.push("flutter")
 
@@ -84,11 +82,11 @@ export default function Projects() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="mt-10 flex flex-wrap items-center gap-3 p-2 rounded-xl border border-[var(--border-soft)] bg-[rgba(27,28,22,0.5)] w-fit"
+            className="mt-8 md:mt-10 flex items-center gap-2 md:gap-3 p-2 rounded-xl border border-[var(--border-soft)] bg-[rgba(27,28,22,0.5)] w-full max-w-full overflow-x-auto hide-scrollbar md:w-fit md:overflow-visible"
             role="tablist"
             aria-label="Filter projects"
           >
-            <div className="pl-2 pr-1 text-[var(--muted)]">
+            <div className="pl-2 pr-1 text-[var(--muted)] flex-none">
               <Filter size={16} />
             </div>
             {filters.map((filter) => {
@@ -102,7 +100,7 @@ export default function Projects() {
                   aria-selected={isActive}
                   onClick={() => handleFilterChange(filter.id)}
                   style={{ WebkitTapHighlightColor: "transparent" }}
-                  className={`relative px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors rounded-lg ${
+                  className={`relative flex-none px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors rounded-lg ${
                     isActive ? "text-[var(--bg)]" : "text-[var(--muted)] hover:text-[var(--text)]"
                   }`}
                 >

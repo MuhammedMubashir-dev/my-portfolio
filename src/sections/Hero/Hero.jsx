@@ -155,12 +155,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="section-shell relative flex min-h-screen items-center overflow-hidden pt-32 md:pt-36"
+      className="section-shell relative flex min-h-screen items-center overflow-hidden pt-24 md:pt-36"
     >
       <HeroAmbient style={{ y: yBg }} />
 
       <div className="section-container relative z-[1] w-full">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-end xl:gap-16">
+        <div className="grid gap-10 md:gap-12 lg:grid-cols-12 lg:items-end xl:gap-16">
           <motion.div
             style={{ y: yText }}
             initial={{ opacity: 0, y: 24 }}
@@ -236,27 +236,26 @@ export default function Hero() {
                 Resume
               </a>
 
-              <a
-                href="https://github.com/MuhammedMubashir-dev"
-                target="_blank"
-                rel="noreferrer"
-                className="button-secondary"
-                aria-label="Open GitHub profile"
-              >
-                <Github size={18} strokeWidth={2} />
-                GitHub
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/muhammed-mubashir-k/"
-                target="_blank"
-                rel="noreferrer"
-                className="button-secondary"
-                aria-label="Open LinkedIn profile"
-              >
-                <Linkedin size={18} strokeWidth={2} />
-                LinkedIn
-              </a>
+              <div className="flex gap-3">
+                <a
+                  href="https://github.com/MuhammedMubashir-dev"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button-secondary"
+                  aria-label="GitHub Profile"
+                >
+                  <Github size={18} strokeWidth={2} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/muhammed-mubashir-k/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button-secondary"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin size={18} strokeWidth={2} />
+                </a>
+              </div>
             </div>
           </motion.div>
 
