@@ -125,12 +125,24 @@ function TerminalEffect({ style }) {
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   // Parallax physics
   const { scrollY } = useScroll()
-  const yBg = useTransform(scrollY, [0, 1000], [0, 400]) // Background moves slower down
-  const yText = useTransform(scrollY, [0, 1000], [0, 150]) // Text moves slightly slower down
-  const yTerminal = useTransform(scrollY, [0, 1000], [0, -200]) // Terminal moves up faster
+  const yBgDesktop = useTransform(scrollY, [0, 1000], [0, 400]) // Background moves slower down
+  const yTextDesktop = useTransform(scrollY, [0, 1000], [0, 150]) // Text moves slightly slower down
+  const yTerminalDesktop = useTransform(scrollY, [0, 1000], [0, -200]) // Terminal moves up faster
+
+  useEffect(() => {
+    const checkMobile = () => setIsDesktop(window.innerWidth >= 1024)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const yBg = isDesktop ? yBgDesktop : 0
+  const yText = isDesktop ? yTextDesktop : 0
+  const yTerminal = isDesktop ? yTerminalDesktop : 0
 
   useEffect(() => {
     const interval = window.setInterval(() => {
