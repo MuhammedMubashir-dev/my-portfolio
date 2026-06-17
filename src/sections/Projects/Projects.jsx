@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, LayoutGroup } from "framer-motion"
 import { ArrowRight, CheckCircle2, ChevronDown, Layers3, Filter } from "lucide-react"
 import { useMemo, useState } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
@@ -79,44 +79,47 @@ export default function Projects() {
           </motion.p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          className="mt-10 flex flex-wrap items-center gap-3 p-2 rounded-xl border border-[var(--border-soft)] bg-[rgba(27,28,22,0.5)] w-fit"
-          role="tablist"
-          aria-label="Filter projects"
-        >
-          <div className="pl-2 pr-1 text-[var(--muted)]">
-            <Filter size={16} />
-          </div>
-          {filters.map((filter) => {
-            const isActive = activeFilter === filter.id
+        <LayoutGroup id="project-filters">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="mt-10 flex flex-wrap items-center gap-3 p-2 rounded-xl border border-[var(--border-soft)] bg-[rgba(27,28,22,0.5)] w-fit"
+            role="tablist"
+            aria-label="Filter projects"
+          >
+            <div className="pl-2 pr-1 text-[var(--muted)]">
+              <Filter size={16} />
+            </div>
+            {filters.map((filter) => {
+              const isActive = activeFilter === filter.id
 
-            return (
-              <button
-                key={filter.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => handleFilterChange(filter.id)}
-                className={`relative px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors rounded-lg ${
-                  isActive ? "text-[var(--bg)]" : "text-[var(--muted)] hover:text-[var(--text)]"
-                }`}
-              >
-                {isActive && (
-                  <motion.span
-                    layoutId="active-filter"
-                    className="absolute inset-0 rounded-lg bg-[var(--accent)]"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    style={{ zIndex: -1 }}
-                  />
-                )}
-                <span className="relative z-10">{filter.label}</span>
-              </button>
-            )
-          })}
-        </motion.div>
+              return (
+                <button
+                  key={filter.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => handleFilterChange(filter.id)}
+                  style={{ WebkitTapHighlightColor: "transparent" }}
+                  className={`relative px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors rounded-lg ${
+                    isActive ? "text-[var(--bg)]" : "text-[var(--muted)] hover:text-[var(--text)]"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-filter"
+                      className="absolute inset-0 rounded-lg bg-[var(--accent)]"
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      style={{ zIndex: 0 }}
+                    />
+                  )}
+                  <span className="relative z-10">{filter.label}</span>
+                </button>
+              )
+            })}
+          </motion.div>
+        </LayoutGroup>
 
         <motion.div layout className="mt-12 grid gap-6 lg:grid-cols-2">
           <AnimatePresence mode="popLayout">
