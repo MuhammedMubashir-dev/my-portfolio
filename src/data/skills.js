@@ -17,10 +17,12 @@ export const skills = [
   {
     category: "Mobile",
     summary:
-      "Developing cross-platform applications with focus on logistics workflows, navigation, and operational efficiency.",
+      "Developing cross-platform applications with focus on logistics, POS, business networking, and operational efficiency.",
     items: [
       "Flutter",
       "Dart",
+      "React Native",
+      "Deep Linking",
     ],
   },
 
@@ -52,6 +54,7 @@ export const skills = [
       "Customer Profiles",
       "Review Systems",
       "Review Image Uploads",
+      "Subscription Management",
     ],
   },
 
@@ -61,10 +64,10 @@ export const skills = [
       "Implementing customer-facing integrations that support complete purchasing experiences.",
     items: [
       "Razorpay",
-      "ERP Integration",
       "Google Maps",
       "WhatsApp Notifications",
       "Algolia Search",
+      "Barcode Generation",
     ],
   },
 
@@ -81,6 +84,7 @@ export const skills = [
       "Toy Theme",
       "Silk Theme",
       "Ornament Theme",
+      "Harvest Theme",
       "Theme Localization",
     ],
   },
@@ -94,8 +98,25 @@ export const skills = [
       "RTL Support",
       "SEO Metadata",
       "Sitemap Generation",
+      "SSR",
       "ISR",
+      "Dynamic Routing",
       "Image Optimization",
+    ],
+  },
+
+  {
+    category: "POS & Business Operations",
+    summary:
+      "Building point-of-sale workflows, inventory management, and business operations tooling for retail and commerce.",
+    items: [
+      "Day Close Workflows",
+      "Receipt Printing",
+      "Stock Management",
+      "Purchase Orders",
+      "Billing Workflows",
+      "Supplier Management",
+      "Barcode Scanning",
     ],
   },
 
@@ -124,6 +145,7 @@ export const skills = [
       "GitHub",
       "VS Code",
       "Postman",
+      "Figma",
     ],
   },
 ]

@@ -34,16 +34,16 @@ const jsonProfile = `{
   "endpoint": "/api/v1/engineer/mubashir",
   "data": {
     "name": "Muhammed Mubashir",
-    "role": "Product Engineer",
+    "role": "Jr Application Developer",
     "location": "Kerala, India",
-    "company": "ENKE Consulting Services",
+    "company": "ENKE Consulting Services LLP",
     "focus": [
       "React.js & Next.js interfaces",
-      "Flutter mobile applications",
+      "Flutter & React Native mobile apps",
       "REST API integration",
-      "E-commerce workflows"
+      "E-commerce, POS & business networking"
     ],
-    "philosophy": "Build practical, shipped software that solves real business rules."
+    "philosophy": "Build practical, shipped software that solves real business problems."
   }
 }`
 
@@ -129,10 +129,10 @@ export default function About() {
                     className="space-y-6 text-lg leading-8 text-[var(--muted)] md:text-xl"
                   >
                     <p>
-                      I am Muhammed Mubashir, a Kerala-based Product Engineer currently shipping real-world applications at ENKE Consulting Services.
+                      I am Muhammed Mubashir, a Kerala-based Jr Application Developer currently shipping production applications at ENKE Consulting Services LLP.
                     </p>
                     <p>
-                      I don't just write code; I own the product experience. From architecting scalable React and Flutter interfaces to bridging complex REST APIs and optimizing checkout flows, I focus on delivering software that drives real business value.
+                      I build across the full stack — React, Next.js, Flutter, and React Native — delivering 7+ production applications across e-commerce, POS, logistics, and business networking. From multi-tenant platforms to mobile point-of-sale systems, I focus on shipping software that drives real business value.
                     </p>
                   </motion.div>
                 ) : (

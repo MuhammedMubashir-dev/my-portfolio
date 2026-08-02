@@ -89,7 +89,7 @@ export default function Contact() {
                   Message on WhatsApp
                 </a>
                 <a
-                  href="/muhammed-mubashir-resume.docx"
+                  href="/muhammed-mubashir-k-resume-react.docx"
                   download="Muhammed-Mubashir-Resume.docx"
                   className="button-secondary"
                 >

@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
-import { BriefcaseBusiness, Code2, GitBranch, Wrench, CalendarDays } from "lucide-react"
+import { BriefcaseBusiness, Code2, GitBranch, Wrench, TrendingUp, Rocket } from "lucide-react"
 import { useRef } from "react"
 import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import SectionKicker from "../../components/svg/SectionKicker"
@@ -8,36 +8,36 @@ import Bug from "../../components/shared/Bug"
 const timelineNodes = [
   {
     id: 1,
-    title: "Product Engineer",
-    subtitle: "ENKE Consulting Services",
-    date: "Present",
-    description: "Working on real client-facing products, focusing on production product engineering rather than just building isolated components.",
-    icon: BriefcaseBusiness,
+    title: "Full Stack Developer Trainee",
+    subtitle: "ENKE Consulting Services LLP",
+    date: "Apr 2026",
+    description: "Joined ENKE and ramped up on production codebases across Next.js, Flutter, and REST APIs. Built delivery management screens, API integrations, and contributed to the multi-tenant commerce platform from day one.",
+    icon: Rocket,
   },
   {
     id: 2,
-    title: "The Stack",
-    subtitle: "Cross-platform reality",
-    date: "Daily tools",
-    description: "Building user interfaces and workflows using React, Next.js, and Flutter, deeply integrated with REST APIs.",
+    title: "Multi-Project Delivery",
+    subtitle: "5 concurrent client projects",
+    date: "Apr – Jul 2026",
+    description: "Shipped features across FUNZCART, Ganvin, Juice World, and Luzine Bakes — building theme packs, checkout flows, bilingual storefronts, and logistics workflows in parallel.",
     icon: Code2,
   },
   {
     id: 3,
-    title: "Feature Ownership",
-    subtitle: "What I build",
-    date: "Ongoing",
-    description: "Developing commerce storefronts, mobile delivery systems, search and filtering logic, and robust checkout modules.",
-    icon: Wrench,
+    title: "Promoted to Jr Application Developer",
+    subtitle: "ENKE Consulting Services LLP",
+    date: "Jul 2026",
+    description: "Promoted after 3 months based on consistent delivery across multiple production applications. Took on EPOSMOB (POS mobile app), Connect App (React Native), and expanded responsibilities across the full product stack.",
+    icon: TrendingUp,
   },
   {
     id: 4,
-    title: "Production Debugging",
-    subtitle: "What I fix",
-    date: "Daily",
-    description: "Tracing complex bugs through frontend states, API responses, and data flow to keep live products running smoothly.",
-    icon: GitBranch,
-  }
+    title: "Full Stack Ownership",
+    subtitle: "7+ production applications",
+    date: "Present",
+    description: "Owning features end-to-end across web and mobile — multi-tenant e-commerce, POS operations, business networking, and logistics. Building with React.js, Next.js, Flutter, and React Native.",
+    icon: BriefcaseBusiness,
+  },
 ]
 
 export default function Experience() {
@@ -69,7 +69,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
             >
-              <SectionKicker>Experience Journey</SectionKicker>
+              <SectionKicker>Experience</SectionKicker>
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
@@ -78,7 +78,7 @@ export default function Experience() {
               transition={{ delay: 0.08 }}
               className="section-title"
             >
-              Currently building production software at ENKE.
+              From trainee to Jr Application Developer in 3 months.
             </motion.h2>
           </div>
 
@@ -89,7 +89,7 @@ export default function Experience() {
             transition={{ delay: 0.14 }}
             className="lg:col-span-4 text-base leading-7 text-[var(--muted)]"
           >
-            A look at my current role, the stack I use daily, and the real-world engineering challenges I handle from feature inception to production debugging.
+            Joined ENKE Consulting as a trainee, delivered across 7+ production applications, and earned a promotion — all within my first few months.
           </motion.p>
         </div>
 

@@ -7,10 +7,10 @@ import HeroAmbient from "../../components/svg/HeroAmbient"
 import Bug from "../../components/shared/Bug"
 
 const roles = [
-  "Product Engineer",
+  "Jr Application Developer",
   "Frontend Specialist",
   "Cross-Platform Developer",
-  "Commerce & Logistics UI",
+  "React Native & Flutter",
 ]
 
 const techStack = [
@@ -18,6 +18,7 @@ const techStack = [
   "Next.js",
   "TypeScript",
   "Flutter",
+  "React Native",
   "REST APIs",
   "Tailwind",
 ]
@@ -88,7 +89,7 @@ function TerminalEffect({ style }) {
             className="mt-2 flex flex-col gap-2"
           >
             <div className="text-[var(--success)] mb-2 flex items-center gap-2">
-              <span>✔</span> Successfully initialized Product Engineer
+              <span>✔</span> Successfully initialized Jr Application Developer
             </div>
             
             <div className="grid grid-cols-[80px_1fr] gap-y-2 gap-x-4">
@@ -108,6 +109,7 @@ function TerminalEffect({ style }) {
               <span className="flex flex-col gap-1">
                 <span className="text-[#61dafb] font-semibold">React & Next.js</span>
                 <span className="text-[#54c5f8] font-semibold">Flutter</span>
+                <span className="text-[#61dafb] font-semibold">React Native</span>
                 <span className="text-[#98c379] font-semibold">REST APIs</span>
               </span>
             </div>
@@ -175,7 +177,7 @@ export default function Hero() {
               <span className="h-2 w-2 flex-none rounded-full bg-[var(--success)]" />
 
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
-                Product Engineer • Open to exciting opportunities
+                Jr Application Developer • Open to exciting opportunities
               </p>
             </div>
 
@@ -207,7 +209,7 @@ export default function Hero() {
             </div>
 
             <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)] md:text-xl">
-              Specializing in cross-platform development with React and Flutter. I focus on the critical intersection of clean UI and complex data, building robust e-commerce and logistics systems that scale.
+              Specializing in cross-platform development with React, Flutter, and React Native. I build production applications across e-commerce, POS, logistics, and business networking — shipping 7+ live products and counting.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -228,7 +230,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="/muhammed-mubashir-resume.docx"
+                href="/muhammed-mubashir-k-resume-react.docx"
                 download="Muhammed-Mubashir-Resume.docx"
                 className="button-secondary"
               >

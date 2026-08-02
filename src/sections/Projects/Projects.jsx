@@ -11,6 +11,7 @@ const filters = [
   { id: "commerce", label: "E-Commerce" },
   { id: "nextjs", label: "Next.js" },
   { id: "flutter", label: "Flutter" },
+  { id: "reactnative", label: "React Native" },
 ]
 
 function getProjectCategories(project) {
@@ -21,6 +22,7 @@ function getProjectCategories(project) {
   if (typeLower.includes("commerce") || typeLower.includes("storefront")) categories.push("commerce")
   if (stackLower.includes("next.js") || stackLower.includes("nextjs")) categories.push("nextjs")
   if (stackLower.includes("flutter") || stackLower.includes("dart")) categories.push("flutter")
+  if (stackLower.includes("react native")) categories.push("reactnative")
 
   return categories
 }
