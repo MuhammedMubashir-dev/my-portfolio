@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
-import { BriefcaseBusiness, Code2, GitBranch, Wrench, TrendingUp, Rocket } from "lucide-react"
+import { BriefcaseBusiness, Code2, TrendingUp, Rocket } from "lucide-react"
 import { useRef } from "react"
 import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import SectionKicker from "../../components/svg/SectionKicker"
@@ -111,17 +111,29 @@ export default function Experience() {
           <div className="relative z-10 flex flex-col gap-16 md:gap-24">
             {timelineNodes.map((node, index) => {
               const isEven = index % 2 === 0
+              const cardInitialX = isEven ? 34 : -34
+              const labelInitialX = isEven ? -28 : 28
 
               return (
-                <div key={node.id} className="relative flex items-start md:justify-between w-full">
+                <motion.div
+                  key={node.id}
+                  className="timeline-node relative flex items-start md:justify-between w-full"
+                  initial="locked"
+                  whileInView="unlocked"
+                  viewport={{ once: true, margin: "-80px" }}
+                >
                   
                   {/* Left Side (Desktop) / Hidden (Mobile) */}
                   <div className={`hidden md:block w-[45%] text-right ${!isEven ? "md:order-1" : "md:order-3"}`}>
                     <motion.div
-                      initial={{ opacity: 0, x: isEven ? -20 : 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
+                      variants={{
+                        locked: { opacity: 0, x: labelInitialX },
+                        unlocked: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.48, delay: 0.08, ease: [0.16, 1, 0.3, 1] },
+                        },
+                      }}
                       className="h-full flex flex-col justify-center"
                     >
                       <span className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
@@ -135,17 +147,36 @@ export default function Experience() {
                   {/* Center Node Icon */}
                   <div className="absolute left-0 md:left-1/2 md:order-2 flex items-center justify-center w-12 h-12 md:-translate-x-1/2 rounded-full border-2 border-[var(--border-soft)] bg-[var(--surface)] z-20 transition-colors duration-300">
                     <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      variants={{
+                        locked: { scale: 0 },
+                        unlocked: {
+                          scale: 1,
+                          transition: { type: "spring", stiffness: 320, damping: 18 },
+                        },
+                      }}
                       className="absolute inset-0 rounded-full bg-[var(--bg)]"
                     />
                     <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ delay: 0.2 }}
+                      variants={{
+                        locked: { scale: 0.2, opacity: 0 },
+                        unlocked: {
+                          scale: [0.2, 1.55, 1],
+                          opacity: [0, 0.45, 0],
+                          transition: { duration: 0.72, delay: 0.12, ease: "easeOut" },
+                        },
+                      }}
+                      className="absolute inset-[-8px] rounded-full border border-[var(--accent)]"
+                    />
+                    <motion.div
+                      variants={{
+                        locked: { opacity: 0, scale: 0.5, rotate: -18 },
+                        unlocked: {
+                          opacity: 1,
+                          scale: 1,
+                          rotate: 0,
+                          transition: { duration: 0.34, delay: 0.16, ease: [0.16, 1, 0.3, 1] },
+                        },
+                      }}
                       className="relative z-10"
                     >
                       <AnimatedTechIcon icon={node.icon} size={18} strokeWidth={1.8} className="text-[var(--accent)]" />
@@ -155,11 +186,20 @@ export default function Experience() {
                   {/* Right Side (Desktop) / Main Content (Mobile) */}
                   <div className={`w-full pl-20 md:pl-0 md:w-[45%] ${!isEven ? "md:order-3 text-left" : "md:order-1 md:text-right"}`}>
                     <motion.div
-                      initial={{ opacity: 0, x: isEven ? 20 : -20, y: 10 }}
-                      whileInView={{ opacity: 1, x: 0, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                      className="surface-panel p-5 md:p-6"
+                      variants={{
+                        locked: {
+                          opacity: 0,
+                          x: cardInitialX,
+                          clipPath: "inset(0 18% 0 18% round 8px)",
+                        },
+                        unlocked: {
+                          opacity: 1,
+                          x: 0,
+                          clipPath: "inset(0 0 0 0 round 8px)",
+                          transition: { duration: 0.62, delay: 0.18, ease: [0.16, 1, 0.3, 1] },
+                        },
+                      }}
+                      className="timeline-card surface-panel p-5 md:p-6"
                     >
                       {/* Mobile Header (Hidden on Desktop) */}
                       <div className="md:hidden mb-4">
@@ -176,7 +216,7 @@ export default function Experience() {
                     </motion.div>
                   </div>
 
-                </div>
+                </motion.div>
               )
             })}
           </div>

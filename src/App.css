@@ -77,6 +77,34 @@
   opacity: 1;
 }
 
+.timeline-node {
+  perspective: 1000px;
+}
+
+.timeline-card {
+  position: relative;
+  overflow: hidden;
+  transform-origin: center left;
+}
+
+.timeline-card::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0;
+  background: linear-gradient(90deg, rgba(255, 122, 47, 0.12), transparent 38%);
+  transition: opacity 260ms var(--ease-out);
+}
+
+.timeline-node:hover .timeline-card::after {
+  opacity: 1;
+}
+
+.skill-card {
+  transform-style: preserve-3d;
+}
+
 .section-number {
   color: rgba(246, 242, 232, 0.2);
   font-family: var(--font-display);

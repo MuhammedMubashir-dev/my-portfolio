@@ -41,6 +41,27 @@ const getBentoClasses = (category) => {
   }
 }
 
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.07,
+      delayChildren: 0.05,
+    },
+  },
+}
+
+const getSkillInitial = (index) => {
+  const directions = [
+    { x: -28, y: 0 },
+    { x: 0, y: 28 },
+    { x: 28, y: 0 },
+    { x: 0, y: -18 },
+  ]
+
+  return directions[index % directions.length]
+}
+
 export default function Skills() {
   return (
     <section id="skills" className="section-shell">
@@ -76,21 +97,39 @@ export default function Skills() {
           </motion.p>
         </div>
 
-        <div className="mt-12 grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 grid-flow-dense">
+        <motion.div
+          className="mt-12 grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 grid-flow-dense"
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.18 }}
+        >
           {skills.map((group, index) => {
             const Icon = categoryIcons[group.category] ?? Wrench
             const bentoClasses = getBentoClasses(group.category)
+            const initialOffset = getSkillInitial(index)
 
             return (
               <motion.article
                 key={group.category}
-                initial={{ opacity: 0, scale: 0.96, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.22 }}
-                transition={{
-                  delay: index * 0.05,
-                  duration: 0.52,
-                  ease: [0.16, 1, 0.3, 1],
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    scale: 0.94,
+                    rotateX: 8,
+                    ...initialOffset,
+                  },
+                  visible: {
+                    opacity: 1,
+                    scale: 1,
+                    rotateX: 0,
+                    x: 0,
+                    y: 0,
+                    transition: {
+                      duration: 0.62,
+                      ease: [0.16, 1, 0.3, 1],
+                    },
+                  },
                 }}
                 className={`skill-card surface-panel relative flex flex-col p-6 lg:p-8 overflow-hidden ${bentoClasses}`}
               >
@@ -99,9 +138,19 @@ export default function Skills() {
 
                 <div className="relative flex h-full flex-col z-10">
                   <div className="mb-6 flex items-start justify-between gap-5">
-                    <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)]">
+                    <motion.span
+                      className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)]"
+                      variants={{
+                        hidden: { scale: 0.7, rotate: -8 },
+                        visible: {
+                          scale: 1,
+                          rotate: 0,
+                          transition: { type: "spring", stiffness: 380, damping: 22 },
+                        },
+                      }}
+                    >
                       <AnimatedTechIcon icon={Icon} className="text-[var(--accent)]" size={19} strokeWidth={1.8} />
-                    </span>
+                    </motion.span>
                     <span className="section-number text-xs tracking-[0.2em]">{String(index + 1).padStart(2, "0")}</span>
                   </div>
 
@@ -109,10 +158,21 @@ export default function Skills() {
                   <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{group.summary}</p>
 
                   <div className="mt-auto pt-8 flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span key={item} className="chip bg-[rgba(246,242,232,0.02)] border-[var(--border-soft)]">
+                    {group.items.map((item, itemIndex) => (
+                      <motion.span
+                        key={item}
+                        className="chip bg-[rgba(246,242,232,0.02)] border-[var(--border-soft)]"
+                        variants={{
+                          hidden: { opacity: 0, y: 8 },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: { delay: itemIndex * 0.025, duration: 0.28 },
+                          },
+                        }}
+                      >
                         {item}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>
@@ -121,10 +181,15 @@ export default function Skills() {
           })}
 
           <motion.a
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.22 }}
-            transition={{ delay: skills.length * 0.05, duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
+            variants={{
+              hidden: { opacity: 0, y: 26, scale: 0.96 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: { duration: 0.58, ease: [0.16, 1, 0.3, 1] },
+              },
+            }}
             href="#contact"
             className="skill-card surface-panel relative flex flex-col justify-center items-center text-center p-8 md:col-span-2 xl:col-span-4 border-[var(--accent)] bg-[rgba(255,122,47,0.02)] group overflow-hidden min-h-[200px]"
           >
@@ -140,7 +205,7 @@ export default function Skills() {
               <AnimatedArrow />
             </div>
           </motion.a>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

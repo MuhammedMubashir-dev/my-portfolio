@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5173
+    }
+  ]
+}
+scm-history-item:c%3A%5CUsers%5CMubashir%5Cmy-portfolio?%7B%22repositoryId%22%3A%22scm0%22%2C%22historyItemId%22%3A%22fb1cf1b5bccea9dc13e2dc8d788dd95ac7d20aae%22%2C%22historyItemParentId%22%3A%22f747724fe7dc26b63b15d0f51cb942c55db8ec7f%22%2C%22historyItemDisplayId%22%3A%22fb1cf1b%22%7D

@@ -3,6 +3,12 @@ import { useEffect, useRef } from "react"
 import SectionKicker from "../../components/svg/SectionKicker"
 import { achievements } from "../../data/achievements"
 
+const getMeterWidth = (value) => {
+  const numeric = Number.parseInt(value, 10)
+  if (Number.isNaN(numeric)) return "62%"
+  return `${Math.min(100, Math.max(42, numeric * 7))}%`
+}
+
 function CountUp({ value }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
@@ -65,10 +71,10 @@ export default function Achievements() {
           {achievements.map((item, index) => (
             <motion.article
               key={item.id}
-              initial={{ opacity: 0, y: 26 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 34, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ delay: index * 0.06, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="stat-card surface-panel relative p-6"
             >
               <div className="relative">
@@ -78,9 +84,18 @@ export default function Achievements() {
                   </span>
                   <span className="section-number">{String(index + 1).padStart(2, "0")}</span>
                 </div>
-                <h3 className="text-6xl text-[var(--accent)] md:text-7xl">
+                <h3 className="stat-value text-6xl text-[var(--accent)] md:text-7xl">
                   <CountUp value={item.value} />
                 </h3>
+                <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-[rgba(246,242,232,0.08)]">
+                  <motion.div
+                    className="h-full rounded-full bg-[var(--accent)] shadow-[0_0_18px_rgba(255,122,47,0.4)]"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: getMeterWidth(item.value) }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ delay: 0.18 + index * 0.08, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </div>
                 <p className="mt-5 text-sm leading-6 text-[var(--muted)]">{item.detail}</p>
               </div>
             </motion.article>
