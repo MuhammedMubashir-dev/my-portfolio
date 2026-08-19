@@ -1,8 +1,32 @@
 .hero-name {
   max-width: 100%;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
   font-size: 2.85rem;
   line-height: 0.98;
+}
+
+.hero-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  background: rgba(246, 242, 232, 0.025);
+  padding: 14px;
+}
+
+.hero-stat-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 122, 47, 0.28);
+  border-radius: 8px;
+  background: var(--accent-dim);
+  color: var(--accent);
 }
 
 .project-card {
@@ -13,6 +37,19 @@
     transform 220ms var(--ease-out),
     border-color 220ms var(--ease-out),
     background 220ms var(--ease-out);
+}
+
+.project-expand {
+  border-radius: 999px;
+  padding: 8px 0;
+  transition:
+    color 220ms var(--ease-out),
+    gap 220ms var(--ease-out);
+}
+
+.project-expand:hover {
+  gap: 12px;
+  color: var(--accent-strong);
 }
 
 .project-card::before,

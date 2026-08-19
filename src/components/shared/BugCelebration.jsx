@@ -1,59 +1,59 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle2, X } from "lucide-react"
-import { useEffect, useState } from "react"
-import { useBugContext } from "../../context/BugContext"
+import { useState } from "react"
+import useBugContext from "../../context/useBugContext"
 
-// A simple confetti particle generator using Framer Motion
+const colors = ["#FF7A2F", "#10B981", "#61dafb", "#E5E7EB"]
+
+const particles = Array.from({ length: 50 }, (_, index) => {
+  const seed = index + 1
+
+  return {
+    id: index,
+    x: (seed * 37) % 100,
+    y: (seed * 53) % 100,
+    scale: 0.5 + ((seed * 17) % 50) / 100,
+    color: colors[seed % colors.length],
+    delay: ((seed * 7) % 50) / 100,
+    duration: 2 + ((seed * 11) % 20) / 10,
+  }
+})
+
 function Confetti() {
-  const particles = Array.from({ length: 50 })
-  
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((_, i) => {
-        const randomX = Math.random() * 100
-        const randomY = Math.random() * 100
-        const randomScale = Math.random() * 0.5 + 0.5
-        const randomColor = ["#FF7A2F", "#10B981", "#61dafb", "#E5E7EB"][Math.floor(Math.random() * 4)]
-        const randomDelay = Math.random() * 0.5
-
-        return (
-          <motion.div
-            key={i}
-            initial={{ 
-              x: "50vw", 
-              y: "100vh", 
-              scale: 0,
-              opacity: 1
-            }}
-            animate={{ 
-              x: `${randomX}vw`, 
-              y: `${randomY}vh`, 
-              scale: randomScale,
-              opacity: [1, 1, 0]
-            }}
-            transition={{ 
-              duration: 2 + Math.random() * 2, 
-              delay: randomDelay,
-              ease: "easeOut"
-            }}
-            className="absolute w-3 h-3 rounded-sm"
-            style={{ backgroundColor: randomColor }}
-          />
-        )
-      })}
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          initial={{
+            x: "50vw",
+            y: "100vh",
+            scale: 0,
+            opacity: 1,
+          }}
+          animate={{
+            x: `${particle.x}vw`,
+            y: `${particle.y}vh`,
+            scale: particle.scale,
+            opacity: [1, 1, 0],
+          }}
+          transition={{
+            duration: particle.duration,
+            delay: particle.delay,
+            ease: "easeOut",
+          }}
+          className="absolute w-3 h-3 rounded-sm"
+          style={{ backgroundColor: particle.color }}
+        />
+      ))}
     </div>
   )
 }
 
 export default function BugCelebration() {
   const { squashedBugs, totalBugs } = useBugContext()
-  const [show, setShow] = useState(false)
-
-  useEffect(() => {
-    if (squashedBugs.length === totalBugs) {
-      setShow(true)
-    }
-  }, [squashedBugs.length, totalBugs])
+  const [dismissed, setDismissed] = useState(false)
+  const show = squashedBugs.length === totalBugs && !dismissed
 
   return (
     <AnimatePresence>
@@ -112,7 +112,7 @@ export default function BugCelebration() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2 }}
-              onClick={() => setShow(false)}
+              onClick={() => setDismissed(true)}
               className="mt-12 inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface)] px-6 py-3 text-sm font-bold uppercase tracking-wider text-[var(--muted)] hover:text-white transition-colors"
             >
               <X size={16} />

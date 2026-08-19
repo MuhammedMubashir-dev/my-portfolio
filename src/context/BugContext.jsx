@@ -1,6 +1,5 @@
-import { createContext, useContext, useState, useCallback } from "react"
-
-const BugContext = createContext()
+import { useCallback, useState } from "react"
+import { BugContext } from "./BugContextValue"
 
 export function BugProvider({ children }) {
   const [squashedBugs, setSquashedBugs] = useState([])
@@ -19,12 +18,4 @@ export function BugProvider({ children }) {
       {children}
     </BugContext.Provider>
   )
-}
-
-export function useBugContext() {
-  const context = useContext(BugContext)
-  if (!context) {
-    throw new Error("useBugContext must be used within a BugProvider")
-  }
-  return context
 }

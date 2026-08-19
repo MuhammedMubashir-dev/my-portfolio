@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
-import { Download, Github, Linkedin, Mail } from "lucide-react"
+import { BriefcaseBusiness, Download, Github, Languages, Linkedin, Mail, PackageCheck } from "lucide-react"
 import { useEffect, useState } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
 import AnimatedSparkle from "../../components/svg/AnimatedSparkle"
@@ -21,6 +21,24 @@ const techStack = [
   "React Native",
   "REST APIs",
   "Tailwind",
+]
+
+const heroStats = [
+  {
+    value: "7+",
+    label: "Live products",
+    icon: PackageCheck,
+  },
+  {
+    value: "8+",
+    label: "Production themes",
+    icon: BriefcaseBusiness,
+  },
+  {
+    value: "3+",
+    label: "Bilingual apps",
+    icon: Languages,
+  },
 ]
 
 function TerminalEffect({ style }) {
@@ -58,7 +76,7 @@ function TerminalEffect({ style }) {
         duration: 0.7,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="surface-panel min-w-0 lg:col-span-5 xl:ml-4 overflow-hidden flex flex-col font-mono text-sm shadow-2xl rounded-xl"
+      className="surface-panel min-w-0 lg:col-span-5 xl:ml-4 overflow-hidden flex flex-col font-mono text-sm shadow-2xl rounded-lg"
     >
       {/* Mac Header */}
       <div className="flex items-center gap-2 px-4 py-3 bg-[rgba(246,242,232,0.03)] border-b border-[var(--border-soft)]">
@@ -212,6 +230,22 @@ export default function Hero() {
               Specializing in cross-platform development with React, Flutter, and React Native. I build production applications across e-commerce, POS, logistics, and business networking — shipping 7+ live products and counting.
             </p>
 
+            <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
+              {heroStats.map(({ value, label, icon: Icon }) => (
+                <div key={label} className="hero-stat">
+                  <span className="hero-stat-icon">
+                    <Icon size={16} strokeWidth={1.9} />
+                  </span>
+                  <span>
+                    <span className="block text-2xl font-bold leading-none text-[var(--text)]">{value}</span>
+                    <span className="mt-1 block text-xs font-bold uppercase tracking-[0.16em] text-[var(--muted)]">
+                      {label}
+                    </span>
+                  </span>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a
                 href="#projects"
@@ -243,7 +277,7 @@ export default function Hero() {
                   href="https://github.com/MuhammedMubashir-dev"
                   target="_blank"
                   rel="noreferrer"
-                  className="button-secondary"
+                  className="button-secondary button-icon"
                   aria-label="GitHub Profile"
                 >
                   <Github size={18} strokeWidth={2} />
@@ -252,7 +286,7 @@ export default function Hero() {
                   href="https://www.linkedin.com/in/muhammed-mubashir-k/"
                   target="_blank"
                   rel="noreferrer"
-                  className="button-secondary"
+                  className="button-secondary button-icon"
                   aria-label="LinkedIn Profile"
                 >
                   <Linkedin size={18} strokeWidth={2} />

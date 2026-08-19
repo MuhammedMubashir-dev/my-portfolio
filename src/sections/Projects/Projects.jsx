@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion"
-import { ArrowRight, CheckCircle2, ChevronDown, Layers3, Filter } from "lucide-react"
+import { CheckCircle2, ChevronDown, Layers3, Filter } from "lucide-react"
 import { useMemo, useState } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
 import SectionKicker from "../../components/svg/SectionKicker"
@@ -84,7 +84,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="mt-8 md:mt-10 flex items-center gap-2 md:gap-3 p-2 rounded-xl border border-[var(--border-soft)] bg-[rgba(27,28,22,0.5)] w-full max-w-full overflow-x-auto hide-scrollbar md:w-fit md:overflow-visible"
+            className="mt-8 md:mt-10 flex items-center gap-2 md:gap-3 p-2 rounded-lg border border-[var(--border-soft)] bg-[rgba(27,28,22,0.5)] w-full max-w-full overflow-x-auto hide-scrollbar md:w-fit md:overflow-visible"
             role="tablist"
             aria-label="Filter projects"
           >
@@ -120,6 +120,17 @@ export default function Projects() {
             })}
           </motion.div>
         </LayoutGroup>
+
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm text-[var(--muted)]">
+          <p>
+            Showing <span className="font-bold text-[var(--text)]">{filteredProjects.length}</span> of{" "}
+            <span className="font-bold text-[var(--text)]">{projects.length}</span> production projects
+          </p>
+          <a href="#contact" className="inline-flex items-center gap-2 font-bold text-[var(--accent)]">
+            Discuss a build
+            <AnimatedArrow />
+          </a>
+        </div>
 
         <motion.div layout className="mt-12 grid gap-6 lg:grid-cols-2">
           <AnimatePresence mode="popLayout">
@@ -192,7 +203,7 @@ export default function Projects() {
                         <button
                           type="button"
                           onClick={() => toggleProject(project.id)}
-                          className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[var(--accent)]"
+                          className="project-expand mt-5 inline-flex items-center gap-2 text-sm font-bold text-[var(--accent)]"
                           aria-expanded={isOpen}
                         >
                           {isOpen ? "Show less" : "Read full implementation"}

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { Bug as BugIcon } from "lucide-react"
-import { useBugContext } from "../../context/BugContext"
+import useBugContext from "../../context/useBugContext"
 
 export default function Bug({ id, className = "" }) {
   const { squashedBugs, squashBug } = useBugContext()

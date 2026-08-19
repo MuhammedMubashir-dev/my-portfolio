@@ -39,9 +39,9 @@ const fitItems = [
 export default function Contact() {
   const [copied, setCopied] = useState(false)
 
-  const handleCopyEmail = (e) => {
+  const handleCopyEmail = async (e) => {
     e.preventDefault()
-    navigator.clipboard.writeText("muhammedmubashirwork@gmail.com")
+    await navigator.clipboard?.writeText("muhammedmubashirwork@gmail.com")
     setCopied(true)
     setTimeout(() => setCopied(false), 2500)
   }
@@ -119,9 +119,11 @@ export default function Contact() {
                     if (id === "email") {
                       return (
                         <button
+                          type="button"
                           key={label}
                           onClick={handleCopyEmail}
                           className="group relative flex w-full items-center justify-between gap-4 border-b border-[var(--border-soft)] py-5 text-left overflow-hidden"
+                          aria-live="polite"
                         >
                           <div className="flex min-w-0 items-center gap-4 relative z-10 bg-[var(--surface)]">
                             <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)] text-[var(--accent)] transition-colors group-hover:border-[var(--accent)]">
