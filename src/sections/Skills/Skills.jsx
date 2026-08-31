@@ -98,7 +98,7 @@ export default function Skills() {
         </div>
 
         <motion.div
-          className="mt-12 grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 grid-flow-dense"
+          className="mt-8 grid gap-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 grid-flow-dense"
           variants={gridVariants}
           initial="hidden"
           whileInView="visible"
@@ -131,13 +131,13 @@ export default function Skills() {
                     },
                   },
                 }}
-                className={`skill-card surface-panel relative flex flex-col p-6 lg:p-8 overflow-hidden ${bentoClasses}`}
+                className={`skill-card surface-panel relative flex flex-col p-5 lg:p-6 overflow-hidden ${bentoClasses}`}
               >
                 {/* Subtle spotlight glow for Bento boxes */}
                 <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-[var(--accent)] opacity-5 blur-[80px] pointer-events-none" />
 
                 <div className="relative flex h-full flex-col z-10">
-                  <div className="mb-6 flex items-start justify-between gap-5">
+                  <div className="mb-4 flex items-start justify-between gap-5">
                     <motion.span
                       className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)]"
                       variants={{
@@ -157,7 +157,7 @@ export default function Skills() {
                   <h3 className="text-xl md:text-2xl font-bold text-white">{group.category}</h3>
                   <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{group.summary}</p>
 
-                  <div className="mt-auto pt-8 flex flex-wrap gap-2">
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
                     {group.items.map((item, itemIndex) => (
                       <motion.span
                         key={item}
@@ -191,7 +191,7 @@ export default function Skills() {
               },
             }}
             href="#contact"
-            className="skill-card surface-panel relative flex flex-col justify-center items-center text-center p-8 md:col-span-2 xl:col-span-4 border-[var(--accent)] bg-[rgba(255,122,47,0.02)] group overflow-hidden min-h-[200px]"
+            className="skill-card surface-panel relative flex flex-col justify-center items-center text-center p-6 md:col-span-2 xl:col-span-4 border-[var(--accent)] bg-[rgba(255,122,47,0.02)] group overflow-hidden min-h-[120px]"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[rgba(255,122,47,0.1)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             <div className="relative z-10">

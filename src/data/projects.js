@@ -31,6 +31,14 @@ export const projects = [
       "Resolved production issues involving checkout, authentication, and UI consistency",
       "Collaborated with backend teams on API contracts and payload structures",
     ],
+    images: [
+      "/images/projects/cloudpos/luzine-bakes.png",
+      "/images/projects/cloudpos/giftat.png",
+      "/images/projects/cloudpos/giftat-products.png",
+      "/images/projects/cloudpos/giftat-checkout.png",
+      "/images/projects/cloudpos/sa-flowers.png",
+      "/images/projects/cloudpos/sa-flowers-cart.png",
+    ],
     status: "Production",
   },
 
@@ -60,6 +68,12 @@ export const projects = [
       "Prepared production builds and managed release validation",
       "Collaborated with backend teams to identify production issues",
     ],
+    images: [
+      "/images/projects/ganvin/bag-screen.jpg",
+      "/images/projects/ganvin/order-history.jpg",
+      "/images/projects/ganvin/update.jpg",
+    ],
+    screenshotType: "mobile",
     status: "Production",
   },
 
@@ -92,6 +106,11 @@ export const projects = [
       "Enhanced responsive behavior across devices",
       "Improved storefront user experience and discoverability",
     ],
+    images: [
+      "/images/projects/juiceworld/home.png",
+      "/images/projects/juiceworld/home-arabic.png",
+      "/images/projects/juiceworld/menu.png",
+    ],
     status: "Production",
   },
 
@@ -113,6 +132,11 @@ export const projects = [
       "Added group navigation and profile discovery features",
       "Implemented username auto-sync across profile updates",
     ],
+    images: [
+      "/images/projects/connect/company-profile.jpg",
+      "/images/projects/connect/login.jpg",
+    ],
+    screenshotType: "mobile",
     status: "Production",
   },
 
@@ -139,6 +163,11 @@ export const projects = [
       "Implemented USB receipt printing with formatting fixes",
       "Added sellable and purchasable toggle functionality for categories",
       "Enhanced Day Close PDF export with cash summary printing",
+    ],
+    images: [
+      "/images/projects/epos/billing.png",
+      "/images/projects/epos/dayclose.png",
+      "/images/projects/epos/stock.png",
     ],
     status: "Production",
   },

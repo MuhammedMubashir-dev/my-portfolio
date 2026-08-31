@@ -1,10 +1,102 @@
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion"
-import { CheckCircle2, ChevronDown, Layers3, Filter } from "lucide-react"
-import { useMemo, useState } from "react"
+import { CheckCircle2, ChevronDown, Layers3, Filter, ChevronLeft, ChevronRight } from "lucide-react"
+import { useMemo, useState, useEffect, useCallback } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
 import SectionKicker from "../../components/svg/SectionKicker"
 import { projects } from "../../data/projects"
 import Bug from "../../components/shared/Bug"
+
+function ImageCarousel({ images, projectName, screenshotType }) {
+  const [current, setCurrent] = useState(0)
+  const isMobile = screenshotType === "mobile"
+
+  const next = useCallback(() => setCurrent((i) => (i + 1) % images.length), [images.length])
+  const prev = useCallback(() => setCurrent((i) => (i - 1 + images.length) % images.length), [images.length])
+
+  useEffect(() => {
+    if (images.length <= 1) return
+    const timer = setInterval(next, 3500)
+    return () => clearInterval(timer)
+  }, [next, images.length])
+
+  if (isMobile) {
+    return (
+      <div className="relative w-full mb-6 rounded-xl overflow-hidden bg-[rgba(0,0,0,0.3)] border border-[var(--border-soft)] p-4">
+        <div className="flex gap-3 justify-center items-end">
+          {images.map((src, i) => (
+            <motion.div
+              key={src}
+              onClick={() => setCurrent(i)}
+              animate={{ scale: i === current ? 1 : 0.88, opacity: i === current ? 1 : 0.5 }}
+              transition={{ duration: 0.3 }}
+              className="relative flex-none cursor-pointer"
+              style={{ width: images.length === 2 ? "45%" : "30%" }}
+            >
+              <div className="rounded-2xl overflow-hidden border-2 border-[rgba(255,255,255,0.1)] shadow-xl" style={{ aspectRatio: "9/19" }}>
+                <img
+                  src={src}
+                  alt={`${projectName} screen ${i + 1}`}
+                  className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="relative w-full overflow-hidden rounded-xl mb-6 bg-[var(--bg-soft)] border border-[var(--border-soft)]" style={{ aspectRatio: "16/9" }}>
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={current}
+          src={images[current]}
+          alt={`${projectName} screenshot ${current + 1}`}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          loading="lazy"
+        />
+      </AnimatePresence>
+
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); prev() }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(0,0,0,0.5)] text-white backdrop-blur-sm hover:bg-[rgba(0,0,0,0.75)] transition-colors"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); next() }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(0,0,0,0.5)] text-white backdrop-blur-sm hover:bg-[rgba(0,0,0,0.75)] transition-colors"
+            aria-label="Next image"
+          >
+            <ChevronRight size={16} />
+          </button>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-4 bg-white" : "w-1.5 bg-white/50"}`}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
 
 const filters = [
   { id: "all", label: "All Projects" },
@@ -151,6 +243,10 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[rgba(255,122,47,0.03)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   
                   <div className="relative z-10">
+                    {project.images?.length > 0 && (
+                      <ImageCarousel images={project.images} projectName={project.name} screenshotType={project.screenshotType} />
+                    )}
+
                     <div className="mb-8 flex items-start justify-between gap-5">
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)]">

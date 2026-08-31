@@ -161,7 +161,7 @@ button {
 
 .section-shell {
   position: relative;
-  padding: 96px 24px;
+  padding: 64px 24px;
 }
 
 .section-container {
@@ -392,7 +392,7 @@ button {
 
 @media (min-width: 768px) {
   .section-shell {
-    padding-block: 128px;
+    padding-block: 88px;
   }
 
   .section-title {
@@ -412,7 +412,7 @@ button {
 
 @media (max-width: 640px) {
   .section-shell {
-    padding: 76px 20px;
+    padding: 52px 20px;
   }
 
   .section-title {
