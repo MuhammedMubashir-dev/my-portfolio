@@ -111,7 +111,6 @@ export default function Experience() {
           <div className="relative z-10 flex flex-col gap-16 md:gap-24">
             {timelineNodes.map((node, index) => {
               const isEven = index % 2 === 0
-              const cardInitialX = isEven ? 34 : -34
               const labelInitialX = isEven ? -28 : 28
 
               return (
@@ -184,12 +183,11 @@ export default function Experience() {
                   </div>
 
                   {/* Right Side (Desktop) / Main Content (Mobile) */}
-                  <div className={`w-full pl-20 md:pl-0 md:w-[45%] ${!isEven ? "md:order-3 text-left" : "md:order-1 md:text-right"}`}>
+                  <div className={`w-full min-w-0 pl-16 md:pl-0 md:w-[45%] ${!isEven ? "md:order-3 text-left" : "md:order-1 md:text-right"}`}>
                     <motion.div
                       variants={{
                         locked: {
                           opacity: 0,
-                          x: cardInitialX,
                           clipPath: "inset(0 18% 0 18% round 8px)",
                         },
                         unlocked: {

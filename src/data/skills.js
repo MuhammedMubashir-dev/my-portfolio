@@ -137,15 +137,20 @@ export const skills = [
   },
 
   {
-    category: "Tools",
+    category: "IDE & Tools",
     summary:
-      "Daily development tools used for collaboration, testing, debugging, and delivery.",
+      "Daily workspace tools used for coding, collaboration, API testing, debugging, and delivery.",
     items: [
+      "VS Code",
       "Git",
       "GitHub",
-      "VS Code",
       "Postman",
       "Figma",
+      "Chrome DevTools",
+      "Claude",
+      "Codex",
+      "Vite",
+      "ESLint",
     ],
   },
 ]

@@ -1,7 +1,20 @@
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion"
-import { CheckCircle2, ChevronDown, Layers3, Filter, ChevronLeft, ChevronRight } from "lucide-react"
+import {
+  CheckCircle2,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+  Layers3,
+  Network,
+  ReceiptText,
+  ShoppingBag,
+  Store,
+  Truck,
+} from "lucide-react"
 import { useMemo, useState, useEffect, useCallback } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
+import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import SectionKicker from "../../components/svg/SectionKicker"
 import { projects } from "../../data/projects"
 import Bug from "../../components/shared/Bug"
@@ -21,7 +34,7 @@ function ImageCarousel({ images, projectName, screenshotType }) {
 
   if (isMobile) {
     return (
-      <div className="relative w-full mb-6 rounded-xl overflow-hidden bg-[rgba(0,0,0,0.3)] border border-[var(--border-soft)] p-4">
+      <div className="relative w-full mb-6 overflow-hidden rounded-lg bg-[rgba(0,0,0,0.3)] border border-[var(--border-soft)] p-4">
         <div className="flex gap-3 justify-center items-end">
           {images.map((src, i) => (
             <motion.div
@@ -32,7 +45,7 @@ function ImageCarousel({ images, projectName, screenshotType }) {
               className="relative flex-none cursor-pointer"
               style={{ width: images.length === 2 ? "45%" : "30%" }}
             >
-              <div className="rounded-2xl overflow-hidden border-2 border-[rgba(255,255,255,0.1)] shadow-xl" style={{ aspectRatio: "9/19" }}>
+              <div className="overflow-hidden rounded-lg border-2 border-[rgba(255,255,255,0.1)] shadow-xl" style={{ aspectRatio: "9/19" }}>
                 <img
                   src={src}
                   alt={`${projectName} screen ${i + 1}`}
@@ -48,7 +61,7 @@ function ImageCarousel({ images, projectName, screenshotType }) {
   }
 
   return (
-    <div className="relative w-full overflow-hidden rounded-xl mb-6 bg-[var(--bg-soft)] border border-[var(--border-soft)]" style={{ aspectRatio: "16/9" }}>
+    <div className="relative w-full overflow-hidden rounded-lg mb-6 bg-[var(--bg-soft)] border border-[var(--border-soft)]" style={{ aspectRatio: "16/9" }}>
       <AnimatePresence mode="wait">
         <motion.img
           key={current}
@@ -119,6 +132,14 @@ function getProjectCategories(project) {
   return categories
 }
 
+const projectIcons = {
+  1: ShoppingBag,
+  2: Truck,
+  3: Store,
+  4: Network,
+  5: ReceiptText,
+}
+
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("all")
   const [expanded, setExpanded] = useState(projects[0]?.id ?? null)
@@ -156,7 +177,7 @@ export default function Projects() {
               transition={{ delay: 0.08 }}
               className="section-title"
             >
-              Production platforms built with real constraints.
+              Product work with constraints, releases, and users.
             </motion.h2>
           </div>
 
@@ -167,7 +188,7 @@ export default function Projects() {
             transition={{ delay: 0.14 }}
             className="lg:col-span-4 text-base leading-7 text-[var(--muted)]"
           >
-            I focus on core product engineering: building clean interfaces, integrating heavily with APIs, handling complex data filtering, and shipping practical fixes.
+            A selection of the web and mobile systems I helped build, from tenant storefronts and checkout flows to POS operations and delivery apps.
           </motion.p>
         </div>
 
@@ -229,6 +250,7 @@ export default function Projects() {
             {filteredProjects.map((project) => {
               const isOpen = expanded === project.id
               const visibleHighlights = isOpen ? project.highlights : project.highlights.slice(0, 3)
+              const ProjectIcon = projectIcons[project.id] ?? Layers3
 
               return (
                 <motion.article
@@ -248,7 +270,16 @@ export default function Projects() {
                     )}
 
                     <div className="mb-8 flex items-start justify-between gap-5">
-                      <div>
+                      <div className="flex min-w-0 items-start gap-4">
+                        <motion.span
+                          whileHover={{ rotate: -6, scale: 1.05 }}
+                          transition={{ type: "spring", stiffness: 360, damping: 18 }}
+                          className="mt-1 flex h-12 w-12 flex-none items-center justify-center rounded-lg border border-[rgba(255,122,47,0.32)] bg-[var(--accent-dim)] text-[var(--accent)]"
+                          aria-hidden="true"
+                        >
+                          <AnimatedTechIcon icon={ProjectIcon} size={21} strokeWidth={1.8} />
+                        </motion.span>
+                        <div className="min-w-0">
                         <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)]">
                           {project.type}
                         </p>
@@ -256,6 +287,7 @@ export default function Projects() {
                         {project.subtitle && (
                           <p className="mt-2 text-sm text-[var(--muted)]">{project.subtitle}</p>
                         )}
+                        </div>
                       </div>
                       <span className="section-number text-xs tracking-[0.2em] opacity-40">{String(project.id).padStart(2, "0")}</span>
                     </div>
@@ -269,6 +301,19 @@ export default function Projects() {
                     </div>
 
                     <p className="text-base leading-7 text-[var(--text)]">{project.description}</p>
+
+                    {project.outcomes?.length > 0 && (
+                      <div className="mt-7 grid gap-2 sm:grid-cols-3">
+                        {project.outcomes.map((outcome) => (
+                          <div
+                            key={outcome}
+                            className="rounded-lg border border-[var(--border-soft)] bg-[rgba(246,242,232,0.025)] px-3 py-3 text-sm font-semibold leading-5 text-[var(--muted-strong)]"
+                          >
+                            {outcome}
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     <div className="mt-8">
                       <div className="mb-4 flex items-center gap-2">

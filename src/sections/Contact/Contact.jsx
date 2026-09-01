@@ -11,7 +11,7 @@ const contacts = [
     id: "email",
     label: "Email",
     value: "muhammedmubashirwork@gmail.com",
-    href: "#",
+    href: "mailto:muhammedmubashirwork@gmail.com",
     icon: Mail,
   },
   {
@@ -41,9 +41,15 @@ export default function Contact() {
 
   const handleCopyEmail = async (e) => {
     e.preventDefault()
-    await navigator.clipboard?.writeText("muhammedmubashirwork@gmail.com")
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2500)
+    const email = "muhammedmubashirwork@gmail.com"
+
+    try {
+      await navigator.clipboard?.writeText(email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2500)
+    } catch {
+      window.location.href = `mailto:${email}`
+    }
   }
 
   return (
@@ -60,10 +66,10 @@ export default function Contact() {
             >
               <SectionKicker>Contact</SectionKicker>
               <h2 className="mt-4 max-w-full text-4xl md:text-6xl">
-                Ready to build robust product features?
+                Need product features built with care?
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-                I am open to freelance work and full-time opportunities. If you need a developer who understands both frontend craft and backend realities, let's talk.
+                I am open to freelance work and full-time opportunities. If you need someone who can build the interface, integrate the API, and stay calm through release details, let's talk.
               </p>
 
               <div className="mt-9 space-y-4">

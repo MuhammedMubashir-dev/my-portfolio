@@ -7,7 +7,12 @@ export const projects = [
     role: "Frontend and Product Engineering",
     year: "2026",
     description:
-      "A production multi-tenant commerce platform serving multiple client storefronts through a shared Next.js codebase. Built theme packs and tenant-specific experiences (including Aurora, Nova, Toy, Silk, Ornament, Harvest, and the Luzine Bakes storefront), covering dynamic filtering, search, checkout, payments, and localization.",
+      "A multi-tenant commerce platform serving multiple client storefronts through a shared Next.js codebase. Built theme packs and tenant-specific experiences including Aurora, Nova, Toy, Silk, Ornament, Harvest, and Luzine Bakes, covering dynamic filtering, search, checkout, payments, and localization.",
+    outcomes: [
+      "Shared tenant architecture",
+      "Payment-ready checkout flows",
+      "Localized storefront themes",
+    ],
     stack: [
       "React.js",
       "Next.js",
@@ -50,7 +55,12 @@ export const projects = [
     role: "Flutter Development and API Integration",
     year: "2026",
     description:
-      "A production logistics ecosystem comprising the Executive app for pickup/delivery operations and the Customer app for ordering and payments. Covers navigation, location management, pagination, payment integration, and real-world issue resolution across both applications.",
+      "A logistics ecosystem comprising the Executive app for pickup/delivery operations and the Customer app for ordering and payments. Covers navigation, location management, pagination, payment integration, and real-world issue resolution across both applications.",
+    outcomes: [
+      "Maps and delivery workflows",
+      "Razorpay customer payments",
+      "Release validation support",
+    ],
     stack: ["Flutter", "Dart", "REST APIs", "Postman", "Google Maps", "Razorpay"],
     highlights: [
       "Implemented Google Maps navigation integration",
@@ -85,7 +95,12 @@ export const projects = [
     role: "Frontend Development and Performance Optimization",
     year: "2026",
     description:
-      "A production storefront experience focused on multilingual support, SEO, performance optimization, API-driven content management, and scalable Next.js architecture.",
+      "A storefront experience focused on multilingual support, SEO, performance optimization, API-driven content management, and scalable Next.js architecture.",
+    outcomes: [
+      "Arabic RTL experience",
+      "SEO and sitemap setup",
+      "ISR-backed content delivery",
+    ],
     stack: [
       "Next.js",
       "React.js",
@@ -123,6 +138,11 @@ export const projects = [
     year: "2026",
     description:
       "A React Native business networking application that lets companies create and share professional profiles, manage connection requests, and handle subscriptions. Built with deep linking, profile sharing via shortened URLs, and group-based navigation.",
+    outcomes: [
+      "Shareable company profiles",
+      "Connection request flows",
+      "Deep link handling",
+    ],
     stack: ["React Native", "REST APIs", "Deep Linking"],
     highlights: [
       "Built company/business profile management with auto-refresh and profile sharing via shortened links",
@@ -148,7 +168,12 @@ export const projects = [
     role: "Flutter Development and Business Operations",
     year: "2026",
     description:
-      "A production Flutter-based mobile POS application covering billing, inventory, stock management, purchase orders, supplier/customer management, and day close operations for retail businesses.",
+      "A Flutter-based mobile POS application covering billing, inventory, stock management, purchase orders, supplier/customer management, and day close operations for retail businesses.",
+    outcomes: [
+      "Billing and receipt flows",
+      "Inventory operations",
+      "Day close reporting",
+    ],
     stack: ["Flutter", "Dart", "REST APIs", "Google Maps", "PDF Generation"],
     highlights: [
       "Built multi-step Add Product workflow with category, pricing, stock, and barcode generation",

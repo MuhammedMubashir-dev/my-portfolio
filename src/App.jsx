@@ -28,10 +28,10 @@ export default function App() {
         <main id="main">
           <Hero />
           <About />
+          <Projects />
           <Experience />
           <Achievements />
           <Skills />
-          <Projects />
           <Contact />
         </main>
         <Footer />

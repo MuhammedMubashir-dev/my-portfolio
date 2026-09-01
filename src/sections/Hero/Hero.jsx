@@ -7,10 +7,10 @@ import HeroAmbient from "../../components/svg/HeroAmbient"
 import Bug from "../../components/shared/Bug"
 
 const roles = [
-  "Jr Application Developer",
-  "Frontend Specialist",
-  "Cross-Platform Developer",
-  "React Native & Flutter",
+  "React & Next.js Developer",
+  "Flutter & React Native Builder",
+  "Commerce Platform Engineer",
+  "API Integration Specialist",
 ]
 
 const techStack = [
@@ -26,19 +26,25 @@ const techStack = [
 const heroStats = [
   {
     value: "7+",
-    label: "Live products",
+    label: "Products shipped",
     icon: PackageCheck,
   },
   {
     value: "8+",
-    label: "Production themes",
+    label: "Storefront themes",
     icon: BriefcaseBusiness,
   },
   {
     value: "3+",
-    label: "Bilingual apps",
+    label: "Arabic-ready apps",
     icon: Languages,
   },
+]
+
+const proofPoints = [
+  "Promoted from trainee in 3 months",
+  "Checkout, payments, search, maps, and POS workflows",
+  "Frontend ownership across web and mobile releases",
 ]
 
 function TerminalEffect({ style }) {
@@ -195,7 +201,7 @@ export default function Hero() {
               <span className="h-2 w-2 flex-none rounded-full bg-[var(--success)]" />
 
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
-                Jr Application Developer • Open to exciting opportunities
+                Jr Application Developer at ENKE • Open to new opportunities
               </p>
             </div>
 
@@ -227,8 +233,17 @@ export default function Hero() {
             </div>
 
             <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)] md:text-xl">
-              Specializing in cross-platform development with React, Flutter, and React Native. I build production applications across e-commerce, POS, logistics, and business networking — shipping 7+ live products and counting.
+              I build polished web and mobile product features with React, Next.js, Flutter, and React Native. My work spans commerce, POS, logistics, and business networking, with real releases behind the screenshots.
             </p>
+
+            <div className="mt-6 grid max-w-2xl gap-2">
+              {proofPoints.map((point) => (
+                <div key={point} className="flex items-start gap-3 text-sm font-medium leading-6 text-[var(--muted-strong)]">
+                  <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[var(--accent)]" />
+                  <span>{point}</span>
+                </div>
+              ))}
+            </div>
 
             <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
               {heroStats.map(({ value, label, icon: Icon }) => (

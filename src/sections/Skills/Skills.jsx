@@ -1,12 +1,22 @@
 import { motion } from "framer-motion"
 import {
   ArrowRight,
+  BadgeCheck,
+  Bot,
+  Braces,
+  Bug,
+  Code2,
   CreditCard,
   Database,
+  Figma,
+  GitBranch,
+  Github,
   Globe,
   Layers,
   Monitor,
   Search,
+  Send,
+  Sparkles,
   Server,
   Smartphone,
   Wrench,
@@ -26,7 +36,20 @@ const categoryIcons = {
   "Multi-Tenant & Themes": Layers,
   "Localization & SEO": Globe,
   "Product Engineering": Wrench,
-  Tools: Search,
+  "IDE & Tools": Code2,
+}
+
+const toolIcons = {
+  "VS Code": Code2,
+  Git: GitBranch,
+  GitHub: Github,
+  Postman: Send,
+  Figma,
+  "Chrome DevTools": Bug,
+  Claude: Sparkles,
+  Codex: Bot,
+  Vite: Zap,
+  ESLint: BadgeCheck,
 }
 
 const getBentoClasses = (category) => {
@@ -35,6 +58,8 @@ const getBentoClasses = (category) => {
       return "md:col-span-2 xl:col-span-2 bg-[rgba(255,122,47,0.03)]"
     case "Commerce Platforms":
     case "Multi-Tenant & Themes":
+      return "md:col-span-2 xl:col-span-2"
+    case "IDE & Tools":
       return "md:col-span-2 xl:col-span-2"
     default:
       return "md:col-span-1 xl:col-span-1"
@@ -157,24 +182,65 @@ export default function Skills() {
                   <h3 className="text-xl md:text-2xl font-bold text-white">{group.category}</h3>
                   <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{group.summary}</p>
 
-                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    {group.items.map((item, itemIndex) => (
-                      <motion.span
-                        key={item}
-                        className="chip bg-[rgba(246,242,232,0.02)] border-[var(--border-soft)]"
-                        variants={{
-                          hidden: { opacity: 0, y: 8 },
-                          visible: {
-                            opacity: 1,
-                            y: 0,
-                            transition: { delay: itemIndex * 0.025, duration: 0.28 },
-                          },
-                        }}
-                      >
-                        {item}
-                      </motion.span>
-                    ))}
-                  </div>
+                  {group.category === "IDE & Tools" ? (
+                    <div className="mt-auto grid grid-cols-2 gap-2 pt-5 sm:grid-cols-4">
+                      {group.items.map((item, itemIndex) => {
+                        const ToolIcon = toolIcons[item] ?? Braces
+
+                        return (
+                          <motion.div
+                            key={item}
+                            className="group/tool flex min-h-[86px] flex-col items-center justify-center gap-2 rounded-lg border border-[var(--border-soft)] bg-[rgba(246,242,232,0.025)] p-3 text-center"
+                            variants={{
+                              hidden: { opacity: 0, y: 12, rotate: -2 },
+                              visible: {
+                                opacity: 1,
+                                y: 0,
+                                rotate: 0,
+                                transition: { delay: itemIndex * 0.035, duration: 0.32 },
+                              },
+                            }}
+                            whileHover={{ y: -4, borderColor: "rgba(255, 122, 47, 0.48)" }}
+                          >
+                            <motion.span
+                              className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgba(255,122,47,0.28)] bg-[var(--accent-dim)] text-[var(--accent)]"
+                              animate={{ y: [0, -3, 0] }}
+                              transition={{
+                                duration: 2.6,
+                                delay: itemIndex * 0.12,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                              }}
+                            >
+                              <AnimatedTechIcon icon={ToolIcon} size={18} strokeWidth={1.85} />
+                            </motion.span>
+                            <span className="text-xs font-bold uppercase leading-4 tracking-[0.12em] text-[var(--muted-strong)]">
+                              {item}
+                            </span>
+                          </motion.div>
+                        )
+                      })}
+                    </div>
+                  ) : (
+                    <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                      {group.items.map((item, itemIndex) => (
+                        <motion.span
+                          key={item}
+                          className="chip bg-[rgba(246,242,232,0.02)] border-[var(--border-soft)]"
+                          variants={{
+                            hidden: { opacity: 0, y: 8 },
+                            visible: {
+                              opacity: 1,
+                              y: 0,
+                              transition: { delay: itemIndex * 0.025, duration: 0.28 },
+                            },
+                          }}
+                        >
+                          {item}
+                        </motion.span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </motion.article>
             )

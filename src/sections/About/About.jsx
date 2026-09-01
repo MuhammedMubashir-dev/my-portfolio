@@ -6,18 +6,18 @@ import SectionKicker from "../../components/svg/SectionKicker"
 
 const strengths = [
   {
-    title: "Feature ownership",
-    description: "I take requirements from UI through API states, edge cases, and production release.",
+    title: "Release ownership",
+    description: "I carry features from UI build to API states, validation, edge cases, and release checks.",
     icon: Rocket,
   },
   {
-    title: "Production debugging",
-    description: "I trace problems through frontend behavior, API responses, filters, and data shape.",
+    title: "Debugging discipline",
+    description: "I trace issues through frontend behavior, API responses, filters, auth state, and payload shape.",
     icon: Code2,
   },
   {
-    title: "Web and mobile range",
-    description: "I work across React, Next.js, and Flutter without losing sight of the user flow.",
+    title: "Cross-platform range",
+    description: "I work across React, Next.js, Flutter, and React Native while keeping the user flow coherent.",
     icon: CheckCircle2,
   },
 ]
@@ -69,7 +69,7 @@ export default function About() {
               transition={{ delay: 0.08 }}
               className="section-title"
             >
-              Product-minded developer for practical software.
+              Product-minded developer for shipped software.
             </motion.h2>
           </div>
 
@@ -129,10 +129,10 @@ export default function About() {
                     className="space-y-6 text-lg leading-8 text-[var(--muted)] md:text-xl"
                   >
                     <p>
-                      I am Muhammed Mubashir, a Kerala-based Jr Application Developer currently shipping production applications at ENKE Consulting Services LLP.
+                      I am Muhammed Mubashir, a Kerala-based Jr Application Developer shipping web and mobile applications at ENKE Consulting Services LLP.
                     </p>
                     <p>
-                      I build across the full stack — React, Next.js, Flutter, and React Native — delivering 7+ production applications across e-commerce, POS, logistics, and business networking. From multi-tenant platforms to mobile point-of-sale systems, I focus on shipping software that drives real business value.
+                      I build with React, Next.js, Flutter, and React Native across e-commerce, POS, logistics, and business networking. From multi-tenant storefronts to mobile point-of-sale workflows, I focus on practical software that survives real business use.
                     </p>
                   </motion.div>
                 ) : (

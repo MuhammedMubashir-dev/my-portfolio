@@ -6,10 +6,10 @@ import useActiveSection from "../../hooks/useActiveSection"
 
 const navLinks = [
   { label: "About", href: "#about", sectionId: "about" },
+  { label: "Projects", href: "#projects", sectionId: "projects" },
   { label: "Experience", href: "#experience", sectionId: "experience" },
   { label: "Impact", href: "#achievements", sectionId: "achievements" },
   { label: "Skills", href: "#skills", sectionId: "skills" },
-  { label: "Projects", href: "#projects", sectionId: "projects" },
   { label: "Contact", href: "#contact", sectionId: "contact" },
 ]
 
