@@ -9,7 +9,7 @@ export const projects = [
     description:
       "A multi-tenant commerce platform serving multiple client storefronts through a shared Next.js codebase. Built theme packs and tenant-specific experiences including Aurora, Nova, Toy, Silk, Ornament, Harvest, and Luzine Bakes, covering dynamic filtering, search, checkout, payments, and localization.",
     outcomes: [
-      "Shared tenant architecture",
+      "6 named theme packs maintained",
       "Payment-ready checkout flows",
       "Localized storefront themes",
     ],
@@ -37,12 +37,12 @@ export const projects = [
       "Collaborated with backend teams on API contracts and payload structures",
     ],
     images: [
-      "/images/projects/cloudpos/luzine-bakes.png",
-      "/images/projects/cloudpos/giftat.png",
-      "/images/projects/cloudpos/giftat-products.png",
-      "/images/projects/cloudpos/giftat-checkout.png",
-      "/images/projects/cloudpos/sa-flowers.png",
-      "/images/projects/cloudpos/sa-flowers-cart.png",
+      "/images/projects/cloudpos/luzine-bakes.webp",
+      "/images/projects/cloudpos/giftat.webp",
+      "/images/projects/cloudpos/giftat-products.webp",
+      "/images/projects/cloudpos/giftat-checkout.webp",
+      "/images/projects/cloudpos/sa-flowers.webp",
+      "/images/projects/cloudpos/sa-flowers-cart.webp",
     ],
     status: "Production",
   },
@@ -57,7 +57,7 @@ export const projects = [
     description:
       "A logistics ecosystem comprising the Executive app for pickup/delivery operations and the Customer app for ordering and payments. Covers navigation, location management, pagination, payment integration, and real-world issue resolution across both applications.",
     outcomes: [
-      "Maps and delivery workflows",
+      "2 companion mobile apps",
       "Razorpay customer payments",
       "Release validation support",
     ],
@@ -79,9 +79,9 @@ export const projects = [
       "Collaborated with backend teams to identify production issues",
     ],
     images: [
-      "/images/projects/ganvin/bag-screen.jpg",
-      "/images/projects/ganvin/order-history.jpg",
-      "/images/projects/ganvin/update.jpg",
+      "/images/projects/ganvin/bag-screen.webp",
+      "/images/projects/ganvin/order-history.webp",
+      "/images/projects/ganvin/update.webp",
     ],
     screenshotType: "mobile",
     status: "Production",
@@ -97,7 +97,7 @@ export const projects = [
     description:
       "A storefront experience focused on multilingual support, SEO, performance optimization, API-driven content management, and scalable Next.js architecture.",
     outcomes: [
-      "Arabic RTL experience",
+      "English and Arabic storefronts",
       "SEO and sitemap setup",
       "ISR-backed content delivery",
     ],
@@ -122,9 +122,9 @@ export const projects = [
       "Improved storefront user experience and discoverability",
     ],
     images: [
-      "/images/projects/juiceworld/home.png",
-      "/images/projects/juiceworld/home-arabic.png",
-      "/images/projects/juiceworld/menu.png",
+      "/images/projects/juiceworld/home.webp",
+      "/images/projects/juiceworld/home-arabic.webp",
+      "/images/projects/juiceworld/menu.webp",
     ],
     status: "Production",
   },
@@ -141,7 +141,7 @@ export const projects = [
     outcomes: [
       "Shareable company profiles",
       "Connection request flows",
-      "Deep link handling",
+      "Deep link handling and subscriptions",
     ],
     stack: ["React Native", "REST APIs", "Deep Linking"],
     highlights: [
@@ -153,8 +153,8 @@ export const projects = [
       "Implemented username auto-sync across profile updates",
     ],
     images: [
-      "/images/projects/connect/company-profile.jpg",
-      "/images/projects/connect/login.jpg",
+      "/images/projects/connect/company-profile.webp",
+      "/images/projects/connect/login.webp",
     ],
     screenshotType: "mobile",
     status: "Production",
@@ -172,7 +172,7 @@ export const projects = [
     outcomes: [
       "Billing and receipt flows",
       "Inventory operations",
-      "Day close reporting",
+      "Bilingual receipts and day close",
     ],
     stack: ["Flutter", "Dart", "REST APIs", "Google Maps", "PDF Generation"],
     highlights: [
@@ -190,9 +190,9 @@ export const projects = [
       "Enhanced Day Close PDF export with cash summary printing",
     ],
     images: [
-      "/images/projects/epos/billing.png",
-      "/images/projects/epos/dayclose.png",
-      "/images/projects/epos/stock.png",
+      "/images/projects/epos/billing.webp",
+      "/images/projects/epos/dayclose.webp",
+      "/images/projects/epos/stock.webp",
     ],
     status: "Production",
   },

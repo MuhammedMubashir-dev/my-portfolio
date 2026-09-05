@@ -236,8 +236,9 @@ export default function Projects() {
 
         <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm text-[var(--muted)]">
           <p>
-            Showing <span className="font-bold text-[var(--text)]">{filteredProjects.length}</span> of{" "}
-            <span className="font-bold text-[var(--text)]">{projects.length}</span> production projects
+            Showing <span className="font-bold text-[var(--text)]">{filteredProjects.length}</span> featured projects
+            <span className="mx-2 text-[var(--border)]">•</span>
+            2 additional client projects are private
           </p>
           <a href="#contact" className="inline-flex items-center gap-2 font-bold text-[var(--accent)]">
             Discuss a build

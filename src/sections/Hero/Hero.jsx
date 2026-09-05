@@ -279,12 +279,12 @@ export default function Hero() {
               </a>
 
               <a
-                href="/muhammed-mubashir-k-resume-react.docx"
-                download="Muhammed-Mubashir-Resume.docx"
+                href="/muhammed-mubashir-k-resume-react.pdf"
+                download="Muhammed-Mubashir-Resume.pdf"
                 className="button-secondary"
               >
                 <Download size={18} strokeWidth={2} />
-                Resume
+                Resume PDF
               </a>
 
               <div className="flex gap-3">

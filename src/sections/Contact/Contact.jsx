@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUpRight, Download, Github, Mail, MessageCircle, Send, Truck, Check } from "lucide-react"
+import { ArrowUpRight, Download, FileText, Github, Mail, MessageCircle, Send, Truck, Check } from "lucide-react"
 import { useState } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
 import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
@@ -95,12 +95,20 @@ export default function Contact() {
                   Message on WhatsApp
                 </a>
                 <a
+                  href="/muhammed-mubashir-k-resume-react.pdf"
+                  download="Muhammed-Mubashir-Resume.pdf"
+                  className="button-secondary"
+                >
+                  <Download size={17} strokeWidth={2} />
+                  Download PDF resume
+                </a>
+                <a
                   href="/muhammed-mubashir-k-resume-react.docx"
                   download="Muhammed-Mubashir-Resume.docx"
                   className="button-secondary"
                 >
-                  <Download size={17} strokeWidth={2} />
-                  Download resume
+                  <FileText size={17} strokeWidth={2} />
+                  Word version
                 </a>
               </div>
             </motion.div>

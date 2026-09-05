@@ -7,9 +7,9 @@ export const achievements = [
   },
   {
     id: 2,
-    value: "13",
+    value: "1",
     label: "Shared Platform",
-    detail: "Tenant-ready Next.js commerce architecture supporting multiple storefront experiences.",
+    detail: "One tenant-ready Next.js commerce platform supporting multiple storefront experiences.",
   },
   {
     id: 3,

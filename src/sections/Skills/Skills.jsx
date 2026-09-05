@@ -1,22 +1,10 @@
 import { motion } from "framer-motion"
 import {
-  ArrowRight,
-  BadgeCheck,
-  Bot,
-  Braces,
-  Bug,
   Code2,
   CreditCard,
-  Database,
-  Figma,
-  GitBranch,
-  Github,
   Globe,
   Layers,
   Monitor,
-  Search,
-  Send,
-  Sparkles,
   Server,
   Smartphone,
   Wrench,
@@ -24,6 +12,7 @@ import {
 } from "lucide-react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
 import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
+import BrandIcon from "../../components/shared/BrandIcon"
 import SectionKicker from "../../components/svg/SectionKicker"
 import { skills } from "../../data/skills"
 
@@ -37,19 +26,6 @@ const categoryIcons = {
   "Localization & SEO": Globe,
   "Product Engineering": Wrench,
   "IDE & Tools": Code2,
-}
-
-const toolIcons = {
-  "VS Code": Code2,
-  Git: GitBranch,
-  GitHub: Github,
-  Postman: Send,
-  Figma,
-  "Chrome DevTools": Bug,
-  Claude: Sparkles,
-  Codex: Bot,
-  Vite: Zap,
-  ESLint: BadgeCheck,
 }
 
 const getBentoClasses = (category) => {
@@ -185,8 +161,6 @@ export default function Skills() {
                   {group.category === "IDE & Tools" ? (
                     <div className="mt-auto grid grid-cols-2 gap-2 pt-5 sm:grid-cols-4">
                       {group.items.map((item, itemIndex) => {
-                        const ToolIcon = toolIcons[item] ?? Braces
-
                         return (
                           <motion.div
                             key={item}
@@ -212,7 +186,7 @@ export default function Skills() {
                                 ease: "easeInOut",
                               }}
                             >
-                              <AnimatedTechIcon icon={ToolIcon} size={18} strokeWidth={1.85} />
+                              <BrandIcon name={item} size={19} />
                             </motion.span>
                             <span className="text-xs font-bold uppercase leading-4 tracking-[0.12em] text-[var(--muted-strong)]">
                               {item}

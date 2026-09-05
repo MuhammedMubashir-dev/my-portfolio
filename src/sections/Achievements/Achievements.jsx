@@ -14,12 +14,13 @@ function CountUp({ value }) {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const numeric = Number.parseInt(value, 10)
   const suffix = value.replace(/[0-9]/g, "")
-  const count = useMotionValue(0)
+  const count = useMotionValue(numeric)
   const rounded = useTransform(count, (latest) => Math.round(latest))
 
   useEffect(() => {
     if (!isInView || Number.isNaN(numeric)) return undefined
 
+    count.set(0)
     const controls = animate(count, numeric, {
       duration: 1.8,
       ease: [0.16, 1, 0.3, 1],
@@ -29,8 +30,8 @@ function CountUp({ value }) {
   }, [count, isInView, numeric])
 
   return (
-    <span ref={ref}>
-      <motion.span>{rounded}</motion.span>
+    <span ref={ref} aria-label={value}>
+      <motion.span aria-hidden="true">{rounded}</motion.span>
       {suffix}
     </span>
   )
