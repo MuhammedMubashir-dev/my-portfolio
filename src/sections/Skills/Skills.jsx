@@ -103,7 +103,7 @@ export default function Skills() {
           variants={gridVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
+          viewport={{ once: true, amount: "some" }}
         >
           {skills.map((group, index) => {
             const Icon = categoryIcons[group.category] ?? Wrench
