@@ -5,8 +5,8 @@ import AnimatedLogo from "../svg/AnimatedLogo"
 import useActiveSection from "../../hooks/useActiveSection"
 
 const navLinks = [
-  { label: "About", href: "#about", sectionId: "about" },
   { label: "Projects", href: "#projects", sectionId: "projects" },
+  { label: "About", href: "#about", sectionId: "about" },
   { label: "Experience", href: "#experience", sectionId: "experience" },
   { label: "Impact", href: "#achievements", sectionId: "achievements" },
   { label: "Skills", href: "#skills", sectionId: "skills" },
@@ -56,6 +56,7 @@ export default function Navbar() {
         >
           <a
             href="#hero"
+            aria-label="Mubashir home"
             className="flex items-center gap-3 font-bold"
             style={{ fontFamily: "var(--font-display)" }}
             onClick={closeMenu}

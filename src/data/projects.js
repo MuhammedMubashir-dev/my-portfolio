@@ -76,6 +76,7 @@ export const projects = [
       "Added WhatsApp support and working hours to Contact Us page",
       "Fixed authentication navigation flow and package visibility logic",
       "Prepared production builds and managed release validation",
+      "Built in-app update and maintenance-mode flows, pincode autofill, and release-compliance fixes for Android and iOS",
       "Collaborated with backend teams to identify production issues",
     ],
     images: [
@@ -149,6 +150,8 @@ export const projects = [
       "Implemented connection request workflows between business profiles",
       "Integrated subscription cancellation and reactivation flow",
       "Implemented deep link handling and exit confirmation flow",
+      "Hardened Branch NativeLink and deferred deep-link behavior across Android and iOS release flows",
+      "Integrated reCAPTCHA Enterprise, API-driven social platforms, and robust profile-image handling",
       "Added group navigation and profile discovery features",
       "Implemented username auto-sync across profile updates",
     ],
@@ -188,6 +191,8 @@ export const projects = [
       "Implemented USB receipt printing with formatting fixes",
       "Added sellable and purchasable toggle functionality for categories",
       "Enhanced Day Close PDF export with cash summary printing",
+      "Completed broad Arabic localization and RTL support across billing, sales, reports, settings, and account workflows",
+      "Built Purchase Return, shipping, and packing workflows; added ZATCA failure alerts and bilingual PDF invoice rendering",
     ],
     images: [
       "/images/projects/epos/billing.webp",

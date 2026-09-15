@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 export default function useActiveSection(sectionIds, offset = 120) {
-  const [activeSection, setActiveSection] = useState(sectionIds[0] ?? "")
+  const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
     const sections = sectionIds
@@ -12,7 +12,7 @@ export default function useActiveSection(sectionIds, offset = 120) {
 
     const updateActiveSection = () => {
       const scrollPosition = window.scrollY + offset
-      let current = sections[0]?.id ?? ""
+      let current = ""
 
       for (const section of sections) {
         if (scrollPosition >= section.offsetTop) {

@@ -12,158 +12,160 @@ from docx.shared import Inches, Pt, RGBColor
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
 
-INK = RGBColor(33, 33, 33)
-MUTED = RGBColor(100, 100, 100)
-HEADING = RGBColor(26, 58, 95)
-LINK = RGBColor(26, 58, 95)
-BORDER = "B0B0B0"
+INK = RGBColor(0, 0, 0)
+MUTED = RGBColor(45, 45, 45)
+HEADING = RGBColor(0, 0, 0)
+LINK = RGBColor(0, 0, 0)
 
 ROLE_START = date(2026, 4, 1)
 PROMOTION_DATE = date(2026, 7, 1)
 
 VARIANTS = {
-    "react": {
-        "file": "muhammed-mubashir-k-resume-react.docx",
-        "subtitle": "React Developer  |  React.js · Next.js · React Native · TypeScript",
+    "flutter": {
+        "file": "muhammed-mubashir-k-resume-flutter.docx",
+        "subtitle": "Flutter Developer | Dart | Android | iOS | REST APIs",
         "summary": (
-            "React Developer with production experience shipping web and mobile applications using "
-            "React.js, Next.js, and React Native. Built a multi-tenant Next.js e-commerce platform with "
-            "8+ theme packs, delivered bilingual (English/Arabic) storefronts with RTL support, and "
-            "developed a React Native business networking app. Skilled in REST API integration, SSR/ISR "
-            "performance optimization, payment gateway integration, and responsive UI development. "
-            "Also experienced in Flutter for cross-platform mobile development."
+            "Flutter Developer with production experience building cross-platform Android and iOS "
+            "applications for mobile POS, inventory management, logistics, and e-commerce products. "
+            "Delivered billing, purchase return, packing, shipping, reporting, bilingual printing, "
+            "Arabic and RTL localization, Google Maps, Razorpay payments, push notifications, in-app "
+            "updates, and production release fixes. Experienced with REST APIs, responsive UI development, "
+            "state management, Git, and collaboration with backend teams."
         ),
         "current_bullets": [
-            "Engineered a multi-tenant Next.js e-commerce platform with 8+ production theme packs, tenant onboarding, and KV-based tenant switching serving live client storefronts.",
-            "Built live search autocomplete with debounced requests and request cancellation, integrated across multiple theme navigation bars with Algolia-powered product discovery.",
-            "Developed a React Native business networking app with company profile management, connection request workflows, subscription handling, and deep link integration.",
-            "Delivered bilingual (English/Arabic) storefronts with full RTL layout support, i18n translation systems, ISR caching, and dynamic SEO metadata with sitemap generation.",
-            "Integrated Razorpay payment gateway across tenant checkouts and mobile apps; built OTP authentication, guest checkout, and COD flows with WhatsApp order notifications.",
-            "Also built Flutter mobile applications for POS operations and logistics, covering billing, inventory management, and delivery workflows.",
+            "Developed Flutter POS workflows for billing, inventory, purchase returns, purchase orders, packing, shipping, Day Close, and stock reporting.",
+            "Implemented Arabic localization and RTL layouts across billing, sales, reports, settings, account, supplier, and customer workflows.",
+            "Built bilingual receipt and invoice printing, fractional quantity handling, SKU search, and ZATCA-related order failure alerts.",
+            "Delivered Flutter logistics features including Google Maps navigation, Razorpay payments, push notifications, pagination, maintenance handling, and in-app updates.",
+            "Diagnosed Android and iOS release issues, API edge cases, authentication failures, date handling, and production UI defects.",
         ],
         "trainee_bullets": [
-            "Integrated REST APIs for authentication, product catalogs, orders, and checkout across Next.js storefronts and Flutter mobile applications.",
-            "Built dynamic category-driven property filter architecture with multi-select filtering and a review system supporting multi-image uploads.",
-            "Implemented Google Maps navigation, infinite-scroll pagination, and date-based filtering for logistics delivery management screens.",
+            "Integrated REST APIs for authentication, profiles, product catalogs, orders, checkout, payments, and delivery workflows in Flutter applications.",
+            "Built reusable responsive interfaces with pagination, location management, date filters, image handling, and backend-driven data.",
+        ],
+        "projects": [
+            (
+                "EPOSMOB",
+                "Mobile POS and Inventory Management (Flutter)",
+                "Developed billing, inventory, purchase return, packing, shipping, reporting, bilingual "
+                "printing, and ZATCA-supporting workflows with broad Arabic localization and RTL support.",
+            ),
+            (
+                "Ganvin",
+                "Logistics and Delivery Applications (Flutter)",
+                "Built customer and delivery applications with Google Maps navigation, location management, "
+                "Razorpay payments, notifications, pagination, in-app updates, and production issue fixes.",
+            ),
+            (
+                "FUNZCART and Luzine Bakes",
+                "Mobile Commerce Features (Flutter and APIs)",
+                "Integrated authentication, profiles, product catalogs, carts, checkout, payments, order "
+                "workflows, and responsive customer-facing interfaces.",
+            ),
+        ],
+        "skills": [
+            ("Flutter Development", "Flutter, Dart, Reusable Widgets, Responsive UI, State Management"),
+            ("Mobile Platforms", "Android, iOS, Release Builds, Deep Linking, Push Notifications, In-App Updates"),
+            ("Architecture and APIs", "REST APIs, Authentication, JSON, Pagination, Error Handling, Backend Integration"),
+            ("Integrations", "Razorpay, Google Maps, Barcode Generation, Bilingual Printing, Arabic Localization, RTL"),
+            ("Tools and Databases", "Git, GitHub, Postman, VS Code, Figma, MySQL, SQLite"),
+        ],
+    },
+    "react": {
+        "file": "muhammed-mubashir-k-resume-cross-platform.docx",
+        "subtitle": "Cross-Platform Mobile and Frontend Developer | Flutter | React Native | React | TypeScript",
+        "summary": (
+            "Cross-platform mobile and frontend developer with production experience using Flutter, "
+            "React Native, React.js, Next.js, TypeScript, JavaScript, and Dart. Delivered Android, iOS, "
+            "and web features for POS, logistics, business networking, and e-commerce products. Hands-on "
+            "experience includes REST API integration, payments, deep linking, Arabic and RTL localization, "
+            "push notifications, maps, invoice printing, responsive interfaces, and production releases."
+        ),
+        "current_bullets": [
+            "Developed Flutter POS workflows for billing, inventory, purchase returns, packing, shipping, Day Close, and bilingual receipt and invoice printing.",
+            "Implemented Arabic localization and RTL layouts across core POS, reporting, settings, and account workflows.",
+            "Built Flutter logistics features including Google Maps navigation, Razorpay payments, push notifications, pagination, maintenance handling, in-app updates, and release validation.",
+            "Developed React Native company profiles, connection and subscription workflows, reCAPTCHA Enterprise, profile sharing, and Branch deferred deep linking across Android and iOS.",
+            "Built Next.js e-commerce experiences with multi-tenant theming, Algolia search, dynamic filters, checkout, SSR and ISR caching, SEO metadata, and responsive layouts.",
+        ],
+        "trainee_bullets": [
+            "Integrated REST APIs for authentication, product catalogs, orders, checkout, payments, and user profile workflows across web and mobile applications.",
+            "Built reusable responsive components, dynamic product filters, review image uploads, pagination, and API-driven storefront content.",
         ],
         "projects": [
             (
                 "FUNZCART / CloudPOS Web",
                 "Multi-Tenant E-Commerce Platform (Next.js)",
-                "Built and maintained a multi-tenant Next.js platform with 8+ production theme packs "
-                "(Aurora, Nova, Toy, Silk, Ornament, Harvest) and tenant storefronts including Luzine "
-                "Bakes. Designed dynamic property filter architecture, live search autocomplete, and a "
-                "review system with multi-image uploads. Delivered Luzine Bakes with guest checkout, "
-                "inline OTP verification, and a COD flow with WhatsApp order notifications.",
-            ),
-            (
-                "Juice World",
-                "Production Storefront (Next.js · i18n · ISR)",
-                "Developed a production storefront with API-driven banners, products, services, and "
-                "testimonials. Implemented English/Arabic i18n with full RTL support, ISR caching, "
-                "dynamic SEO metadata, and sitemap generation. Refactored to server component "
-                "architecture for production readiness.",
+                "Built a multi-tenant Next.js platform with 8+ production theme packs. Implemented "
+                "Algolia search, category-driven filters, reviews with image uploads, responsive checkout, "
+                "OTP verification, Razorpay payments, and WhatsApp order notifications.",
             ),
             (
                 "Connect App",
                 "Business Networking Application (React Native)",
-                "Built a business networking app enabling companies to create and share professional "
-                "profiles, manage connection requests, and handle subscriptions. Implemented deep "
-                "linking, profile sharing via shortened URLs, group navigation, and username auto-sync.",
-            ),
-            (
-                "Ganvin",
-                "Logistics & Delivery Ecosystem (Flutter)",
-                "Built Executive and Customer apps for the Ganvin logistics ecosystem. Implemented "
-                "Google Maps navigation, infinite-scroll pagination, Razorpay payments, and resolved "
-                "timezone/API issues with the backend team.",
+                "Built company profiles, connection requests, subscriptions, shareable URLs, reCAPTCHA "
+                "Enterprise, and reliable Branch deferred deep links for Android and iOS.",
             ),
             (
                 "EPOSMOB",
                 "Mobile POS & Inventory Management (Flutter)",
-                "Developed a mobile POS application covering billing, Day Close workflows, bilingual "
-                "receipt printing, stock reports, purchase orders, and supplier/customer management.",
+                "Developed billing, inventory, purchase return, packing, shipping, reporting, and bilingual "
+                "printing features. Added Arabic localization and RTL support across core workflows.",
             ),
         ],
         "skills": [
-            ("React Ecosystem", "React.js, Next.js, React Native, TypeScript, JavaScript"),
-            ("Web Architecture", "SSR, ISR, Dynamic Routing, SEO, Sitemap Generation, i18n, RTL Support, Responsive Design"),
-            ("Frontend", "HTML5, CSS3, Tailwind CSS, State Management"),
-            ("Integrations", "Razorpay, Algolia Search, Google Maps, WhatsApp Notifications, Barcode Generation, Deep Linking"),
-            ("Commerce & Multi-Tenant", "Multi-Tenant Architecture (8+ themes), Tenant Onboarding, Product Search, Checkout Flows, Order Management"),
-            ("Also experienced in", "Flutter, Dart, Python, Django, MySQL, SQLite"),
-            ("Tools", "Git, GitHub, VS Code, Postman, Figma"),
+            ("Mobile Development", "Flutter, Dart, React Native, TypeScript, Android, iOS, Deep Linking, Push Notifications"),
+            ("Frontend Development", "React.js, Next.js, JavaScript, HTML5, CSS3, Tailwind CSS, Responsive Design"),
+            ("Architecture and APIs", "REST APIs, SSR, ISR, Dynamic Routing, Multi-Tenant Architecture, State Management, i18n, RTL"),
+            ("Integrations", "Razorpay, Algolia Search, Google Maps, reCAPTCHA Enterprise, WhatsApp Notifications, Barcode Generation"),
+            ("Tools and Databases", "Git, GitHub, Postman, Figma, MySQL, SQLite, Python, Django"),
         ],
     },
     "react-native": {
         "file": "muhammed-mubashir-k-resume-react-native.docx",
-        "subtitle": "React Native Developer  |  React Native · React.js · Next.js · TypeScript",
+        "subtitle": "React Native Developer | TypeScript | JavaScript | Android | iOS",
         "summary": (
-            "React Native Developer with production experience building cross-platform mobile "
-            "applications. Shipped a business networking app with deep linking, profile sharing, "
-            "subscription management, and group navigation. Also built production web applications "
-            "using React.js and Next.js, including a multi-tenant e-commerce platform with 8+ theme "
-            "packs and bilingual (English/Arabic) storefronts with RTL support. "
-            "Additionally experienced in Flutter for mobile development."
+            "React Native Developer with production experience building Android and iOS features using "
+            "TypeScript and JavaScript. Delivered company profiles, connection and subscription workflows, "
+            "reCAPTCHA Enterprise, image handling, shareable URLs, and Branch deferred deep linking. Skilled "
+            "in REST APIs, responsive UI, release troubleshooting, React.js, Next.js, and Flutter."
         ),
         "current_bullets": [
-            "Developed a React Native business networking app with company profile management, connection request workflows, subscription cancellation/reactivation, and deep link integration.",
-            "Implemented profile sharing via shortened URLs, group navigation, username auto-sync, and exit confirmation flows in the React Native application.",
-            "Engineered a multi-tenant Next.js e-commerce platform with 8+ production theme packs, tenant onboarding, and KV-based tenant switching serving live client storefronts.",
-            "Built live search autocomplete with debounced requests and request cancellation, integrated across multiple theme navigation bars with Algolia-powered product discovery.",
-            "Delivered bilingual (English/Arabic) storefronts with full RTL layout support, i18n translation systems, ISR caching, and dynamic SEO metadata.",
-            "Also built Flutter mobile applications for POS operations and logistics, covering billing, inventory management, and delivery workflows.",
+            "Developed a React Native business networking application with company profiles, connections, subscriptions, navigation, authentication, and REST APIs.",
+            "Implemented Branch NativeLink, deferred deep linking, shareable profile URLs, and reliable link handling across Android and iOS release flows.",
+            "Integrated reCAPTCHA Enterprise, API-driven social platforms, image handling, and username synchronization; resolved mobile build and release issues.",
+            "Built React.js and Next.js commerce features including multi-tenant themes, search, filters, checkout, payments, SSR, ISR, and responsive UI.",
         ],
         "trainee_bullets": [
-            "Integrated REST APIs for authentication, product catalogs, orders, and checkout across Next.js storefronts and Flutter mobile applications.",
-            "Built dynamic category-driven property filter architecture with multi-select filtering and a review system supporting multi-image uploads.",
-            "Implemented Google Maps navigation, infinite-scroll pagination, and date-based filtering for logistics delivery management screens.",
+            "Integrated APIs and built reusable responsive components for authentication, profiles, products, orders, checkout, payments, image uploads, and pagination.",
         ],
         "projects": [
             (
                 "Connect App",
                 "Business Networking Application (React Native)",
-                "Built a business networking app enabling companies to create and share professional "
-                "profiles, manage connection requests, and handle subscriptions. Implemented deep "
-                "linking, profile sharing via shortened URLs, group navigation, and username auto-sync.",
+                "Built profiles, connections, subscriptions, reCAPTCHA Enterprise, image handling, shareable "
+                "URLs, and Branch deferred deep links for Android and iOS.",
             ),
             (
                 "FUNZCART / CloudPOS Web",
                 "Multi-Tenant E-Commerce Platform (Next.js)",
-                "Built and maintained a multi-tenant Next.js platform with 8+ production theme packs "
-                "and tenant storefronts. Designed dynamic property filter architecture, live search "
-                "autocomplete, and a review system with multi-image uploads. Integrated Razorpay "
-                "payments and WhatsApp order notifications.",
-            ),
-            (
-                "Juice World",
-                "Production Storefront (Next.js · i18n · ISR)",
-                "Developed a production storefront with API-driven content. Implemented English/Arabic "
-                "i18n with full RTL support, ISR caching, dynamic SEO metadata, and sitemap generation.",
-            ),
-            (
-                "Ganvin",
-                "Logistics & Delivery Ecosystem (Flutter)",
-                "Built Executive and Customer apps for the Ganvin logistics ecosystem. Implemented "
-                "Google Maps navigation, infinite-scroll pagination, Razorpay payments, and resolved "
-                "timezone/API issues with the backend team.",
+                "Built 8+ Next.js theme packs with Algolia search, dynamic filters, responsive checkout, "
+                "Razorpay payments, and API-driven content.",
             ),
             (
                 "EPOSMOB",
                 "Mobile POS & Inventory Management (Flutter)",
-                "Developed a mobile POS application covering billing, Day Close workflows, bilingual "
-                "receipt printing, stock reports, purchase orders, and supplier/customer management.",
+                "Developed Flutter billing, inventory, purchase return, packing, shipping, bilingual printing, "
+                "and Arabic and RTL localization features.",
             ),
         ],
         "skills": [
-            ("Mobile Development", "React Native, Deep Linking, Flutter, Dart"),
-            ("React Ecosystem", "React.js, Next.js, TypeScript, JavaScript"),
-            ("Web Architecture", "SSR, ISR, Dynamic Routing, SEO, i18n, RTL Support, Responsive Design"),
-            ("Frontend", "HTML5, CSS3, Tailwind CSS, State Management"),
-            ("Integrations", "Razorpay, Google Maps, Algolia Search, WhatsApp Notifications, Barcode Generation"),
-            ("Commerce & Multi-Tenant", "Multi-Tenant Architecture (8+ themes), Tenant Onboarding, Product Search, Checkout Flows"),
-            ("Also experienced in", "Python, Django, MySQL, SQLite"),
-            ("Tools", "Git, GitHub, VS Code, Postman, Figma"),
+            ("React Native Development", "React Native, TypeScript, JavaScript, Responsive UI, State Management"),
+            ("Mobile Platforms", "Android, iOS, Branch NativeLink, Deferred Deep Linking, Release Builds"),
+            ("React Ecosystem", "React.js, Next.js, HTML5, CSS3, Tailwind CSS, SSR, ISR"),
+            ("Architecture and APIs", "REST APIs, Authentication, JSON, Pagination, Error Handling, Multi-Tenant Architecture"),
+            ("Integrations and Tools", "reCAPTCHA Enterprise, Razorpay, Algolia, Git, GitHub, Postman, Figma"),
+            ("Additional Experience", "Flutter, Dart, Arabic Localization, RTL, Google Maps, Push Notifications"),
         ],
     },
     "frontend": {
@@ -183,7 +185,7 @@ VARIANTS = {
             "Delivered bilingual (English/Arabic) storefronts with full RTL layout support, i18n translation systems, ISR caching, and dynamic SEO metadata with sitemap generation.",
             "Designed category-driven dynamic property filter architecture with multi-select filtering, responsive UI, and a review system supporting multi-image uploads.",
             "Integrated Razorpay payment gateway across tenant checkouts; built OTP authentication, guest checkout, and COD flows with WhatsApp order notifications.",
-            "Also developed mobile applications using React Native and Flutter for business networking, POS, and logistics domains.",
+            "Also developed React Native and Flutter applications for business networking, POS, and logistics, including deep-link reliability, Arabic/RTL localization, payments, and release validation.",
         ],
         "trainee_bullets": [
             "Integrated REST APIs for authentication, product catalogs, orders, and checkout across Next.js storefronts with responsive, theme-consistent UI.",
@@ -211,19 +213,19 @@ VARIANTS = {
                 "Business Networking Application (React Native)",
                 "Built a business networking app enabling companies to create and share professional "
                 "profiles, manage connection requests, and handle subscriptions. Implemented deep "
-                "linking, profile sharing via shortened URLs, and group navigation.",
+                "linking, profile sharing via shortened URLs, group navigation, reCAPTCHA Enterprise, and Android/iOS deferred-link reliability fixes.",
             ),
             (
                 "Ganvin",
                 "Logistics & Delivery Ecosystem (Flutter)",
                 "Built Executive and Customer apps with Google Maps navigation, infinite-scroll "
-                "pagination, Razorpay payments, and responsive mobile layouts.",
+                "pagination, Razorpay payments, in-app updates, maintenance handling, and responsive mobile layouts.",
             ),
             (
                 "EPOSMOB",
                 "Mobile POS & Inventory Management (Flutter)",
                 "Developed a mobile POS application covering billing, Day Close workflows, bilingual "
-                "receipt printing, stock reports, and supplier/customer management.",
+                "receipt and invoice printing, stock reports, Purchase Return, packing/shipping, and supplier/customer management with broad Arabic/RTL localization.",
             ),
         ],
         "skills": [
@@ -254,18 +256,13 @@ def set_run(run, size=10, bold=False, color=INK):
     run.font.color.rgb = color
 
 
-def paragraph_border_bottom(paragraph, color=BORDER, size="6"):
-    p_pr = paragraph._p.get_or_add_pPr()
-    p_bdr = p_pr.find(qn("w:pBdr"))
-    if p_bdr is None:
-        p_bdr = OxmlElement("w:pBdr")
-        p_pr.append(p_bdr)
-    bottom = OxmlElement("w:bottom")
-    bottom.set(qn("w:val"), "single")
-    bottom.set(qn("w:sz"), size)
-    bottom.set(qn("w:space"), "4")
-    bottom.set(qn("w:color"), color)
-    p_bdr.append(bottom)
+def ats_text(value):
+    return (
+        value.replace("–", "-")
+        .replace("—", "-")
+        .replace("·", "|")
+        .replace("’", "'")
+    )
 
 
 def add_hyperlink(paragraph, text, url, size=9.5, color=LINK):
@@ -291,18 +288,17 @@ def add_hyperlink(paragraph, text, url, size=9.5, color=LINK):
     r_pr.append(font_el)
     new_run.append(r_pr)
     text_el = OxmlElement("w:t")
-    text_el.text = text
+    text_el.text = ats_text(text)
     new_run.append(text_el)
     hyperlink.append(new_run)
     paragraph._p.append(hyperlink)
 
 
 def add_section_heading(doc, title):
-    p = doc.add_paragraph()
-    p.paragraph_format.space_before = Pt(10)
-    p.paragraph_format.space_after = Pt(5)
-    paragraph_border_bottom(p)
-    run = p.add_run(title.upper())
+    p = doc.add_paragraph(style="Heading 1")
+    p.paragraph_format.space_before = Pt(8)
+    p.paragraph_format.space_after = Pt(3)
+    run = p.add_run(ats_text(title))
     set_run(run, size=11, bold=True, color=HEADING)
     return p
 
@@ -311,8 +307,8 @@ def add_body_paragraph(doc, text, after=4):
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(after)
     p.paragraph_format.line_spacing = 1.15
-    run = p.add_run(text)
-    set_run(run, size=10, color=INK)
+    run = p.add_run(ats_text(text))
+    set_run(run, size=10.5, color=INK)
     return p
 
 
@@ -322,8 +318,8 @@ def add_bullet(doc, text):
     p.paragraph_format.first_line_indent = Inches(-0.2)
     p.paragraph_format.space_after = Pt(2)
     p.paragraph_format.line_spacing = 1.12
-    run = p.add_run(text)
-    set_run(run, size=9.5, color=INK)
+    run = p.add_run(ats_text(text))
+    set_run(run, size=10, color=INK)
     return p
 
 
@@ -331,11 +327,11 @@ def add_role_header(doc, title, meta):
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(3)
     p.paragraph_format.space_after = Pt(2)
-    left = p.add_run(title)
+    left = p.add_run(ats_text(title))
     set_run(left, size=10.5, bold=True, color=INK)
     sep = p.add_run("  |  ")
     set_run(sep, size=10, color=MUTED)
-    right = p.add_run(meta)
+    right = p.add_run(ats_text(meta))
     set_run(right, size=9.5, color=MUTED)
     return p
 
@@ -346,10 +342,10 @@ def build(variant_key):
 
     doc = Document()
     section = doc.sections[0]
-    section.top_margin = Inches(0.55)
-    section.bottom_margin = Inches(0.5)
-    section.left_margin = Inches(0.6)
-    section.right_margin = Inches(0.6)
+    section.top_margin = Inches(0.6)
+    section.bottom_margin = Inches(0.6)
+    section.left_margin = Inches(0.7)
+    section.right_margin = Inches(0.7)
 
     styles = doc.styles
     styles["Normal"].font.name = "Calibri"
@@ -357,16 +353,16 @@ def build(variant_key):
     styles["Normal"]._element.rPr.rFonts.set(qn("w:hAnsi"), "Calibri")
     styles["Normal"].font.size = Pt(10)
 
-    title = doc.add_paragraph()
+    title = doc.add_paragraph(style="Title")
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     title.paragraph_format.space_after = Pt(1)
     name = title.add_run("MUHAMMED MUBASHIR K")
-    set_run(name, size=20, bold=True, color=HEADING)
+    set_run(name, size=18, bold=True, color=HEADING)
 
     subtitle = doc.add_paragraph()
     subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
     subtitle.paragraph_format.space_after = Pt(4)
-    sub = subtitle.add_run(v["subtitle"])
+    sub = subtitle.add_run(ats_text(v["subtitle"]))
     set_run(sub, size=10, bold=False, color=MUTED)
 
     contact = doc.add_paragraph()
@@ -374,7 +370,9 @@ def build(variant_key):
     contact.paragraph_format.space_after = Pt(8)
     set_run(contact.add_run("Kerala, India  |  "), size=9.5, color=MUTED)
     add_hyperlink(contact, "muhammedmubashir720@gmail.com", "mailto:muhammedmubashir720@gmail.com")
-    set_run(contact.add_run("  |  +91 8089433955  |  "), size=9.5, color=MUTED)
+    set_run(contact.add_run("  |  "), size=9.5, color=MUTED)
+    add_hyperlink(contact, "+91 8089433955", "tel:+918089433955")
+    set_run(contact.add_run("  |  "), size=9.5, color=MUTED)
     add_hyperlink(contact, "github.com/MuhammedMubashir-dev", "https://github.com/MuhammedMubashir-dev")
     set_run(contact.add_run("  |  "), size=9.5, color=MUTED)
     add_hyperlink(contact, "linkedin.com/in/muhammed-mubashir-k", "https://www.linkedin.com/in/muhammed-mubashir-k")
@@ -384,9 +382,18 @@ def build(variant_key):
     add_section_heading(doc, "Professional Summary")
     add_body_paragraph(doc, v["summary"])
 
-    add_section_heading(doc, "Experience")
+    add_section_heading(doc, "Technical Skills")
+    for label, value in v["skills"]:
+        p = doc.add_paragraph()
+        p.paragraph_format.space_after = Pt(1)
+        label_run = p.add_run(f"{ats_text(label)}: ")
+        set_run(label_run, size=10, bold=True, color=INK)
+        value_run = p.add_run(ats_text(value))
+        set_run(value_run, size=10, color=INK)
+
+    add_section_heading(doc, "Work Experience")
     total_months = months_since(ROLE_START)
-    total_dur = f"Apr 2026 – Present · {total_months} mo{'s' if total_months != 1 else ''}"
+    total_dur = f"Apr 2026 - Present | {total_months} mo{'s' if total_months != 1 else ''}"
 
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(2)
@@ -397,36 +404,26 @@ def build(variant_key):
     set_run(sep, size=9.5, color=MUTED)
 
     curr_months = months_since(PROMOTION_DATE)
-    add_role_header(doc, "Jr Application Developer", f"Jul 2026 – Present · {curr_months} mo{'s' if curr_months != 1 else ''}")
+    add_role_header(doc, "Junior Application Developer", f"Jul 2026 - Present | {curr_months} mo{'s' if curr_months != 1 else ''}")
     for item in v["current_bullets"]:
         add_bullet(doc, item)
 
-    add_role_header(doc, "Full Stack Developer Trainee", "Apr 2026 – Jul 2026 · 3 mos")
+    add_role_header(doc, "Full Stack Developer Trainee", "Apr 2026 - Jul 2026 | 3 mos")
     for item in v["trainee_bullets"]:
         add_bullet(doc, item)
 
-    add_section_heading(doc, "Selected Projects")
+    add_section_heading(doc, "Education")
+    add_role_header(doc, "Bachelor of Computer Applications (BCA)", "2023 - 2026")
+    add_body_paragraph(
+        doc,
+        "Priyadarshini Arts and Science College, Melmuri, Malappuram | University of Calicut",
+        after=2,
+    )
+
+    add_section_heading(doc, "Projects")
     for name, kind, detail in v["projects"]:
         add_role_header(doc, name, kind)
         add_body_paragraph(doc, detail, after=3)
-
-    add_section_heading(doc, "Technical Skills")
-    for label, value in v["skills"]:
-        p = doc.add_paragraph()
-        p.paragraph_format.space_after = Pt(2)
-        label_run = p.add_run(f"{label}: ")
-        set_run(label_run, size=9.5, bold=True, color=INK)
-        value_run = p.add_run(value)
-        set_run(value_run, size=9.5, color=MUTED)
-
-    add_section_heading(doc, "Impact Snapshot")
-    add_body_paragraph(
-        doc,
-        "7+ Production Applications  |  8+ Production Theme Packs  |  "
-        "3+ Bilingual (EN/AR) Storefronts with RTL  |  Multi-Tenant Platform Architecture  |  "
-        "Promoted in 3 Months",
-        after=0,
-    )
 
     out.parent.mkdir(parents=True, exist_ok=True)
     doc.save(out)

@@ -3,6 +3,7 @@ import { BugContext } from "./BugContextValue"
 
 export function BugProvider({ children }) {
   const [squashedBugs, setSquashedBugs] = useState([])
+  const resetBugs = useCallback(() => setSquashedBugs([]), [])
 
   const squashBug = useCallback((id) => {
     setSquashedBugs((prev) => {
@@ -14,7 +15,7 @@ export function BugProvider({ children }) {
   }, [])
 
   return (
-    <BugContext.Provider value={{ squashedBugs, squashBug, totalBugs: 3 }}>
+    <BugContext.Provider value={{ squashedBugs, squashBug, resetBugs, totalBugs: 3 }}>
       {children}
     </BugContext.Provider>
   )

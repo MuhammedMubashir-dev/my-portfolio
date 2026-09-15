@@ -20,7 +20,7 @@ export const achievements = [
   {
     id: 4,
     value: "3+",
-    label: "Arabic-Ready Apps",
-    detail: "English and Arabic interfaces delivered with RTL layout and bilingual receipt support.",
+    label: "Arabic-Ready Products",
+    detail: "English and Arabic interfaces delivered with RTL layouts, bilingual receipts, and invoice rendering.",
   },
 ]

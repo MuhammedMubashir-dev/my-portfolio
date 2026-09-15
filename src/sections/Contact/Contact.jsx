@@ -95,16 +95,16 @@ export default function Contact() {
                   Message on WhatsApp
                 </a>
                 <a
-                  href="/muhammed-mubashir-k-resume-react.pdf"
-                  download="Muhammed-Mubashir-Resume.pdf"
+                  href="/muhammed-mubashir-k-resume-flutter.pdf"
+                  download="Muhammed-Mubashir-Flutter-Resume.pdf"
                   className="button-secondary"
                 >
                   <Download size={17} strokeWidth={2} />
                   Download PDF resume
                 </a>
                 <a
-                  href="/muhammed-mubashir-k-resume-react.docx"
-                  download="Muhammed-Mubashir-Resume.docx"
+                  href="/muhammed-mubashir-k-resume-flutter.docx"
+                  download="Muhammed-Mubashir-Flutter-Resume.docx"
                   className="button-secondary"
                 >
                   <FileText size={17} strokeWidth={2} />
@@ -220,3 +220,4 @@ export default function Contact() {
     </section>
   )
 }
+

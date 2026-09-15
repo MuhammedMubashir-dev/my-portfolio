@@ -1,4 +1,5 @@
 import "./App.css"
+import "./styles/portfolio.css"
 
 import BackToTop from "./components/shared/BackToTop"
 import Footer from "./components/shared/Footer"
@@ -14,9 +15,11 @@ import Skills from "./sections/Skills/Skills"
 import { BugProvider } from "./context/BugContext"
 import BugCelebration from "./components/shared/BugCelebration"
 import SmoothScroll from "./components/shared/SmoothScroll"
+import { MotionConfig } from "framer-motion"
 
 export default function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <SmoothScroll>
       <BugProvider>
         <div className="page-shell">
@@ -27,8 +30,8 @@ export default function App() {
         <Navbar />
         <main id="main">
           <Hero />
-          <About />
           <Projects />
+          <About />
           <Experience />
           <Achievements />
           <Skills />
@@ -40,5 +43,6 @@ export default function App() {
         </div>
       </BugProvider>
     </SmoothScroll>
+    </MotionConfig>
   )
 }

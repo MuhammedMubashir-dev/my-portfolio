@@ -1,8 +1,11 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
+import { useReducedMotion } from 'framer-motion'
 
 export default function SmoothScroll({ children }) {
+  const reducedMotion = useReducedMotion()
   useEffect(() => {
+    if (reducedMotion) return
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
@@ -17,18 +20,20 @@ export default function SmoothScroll({ children }) {
     })
 
     // Animation frame loop for Lenis
+    let frameId
     function raf(time) {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      frameId = requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    frameId = requestAnimationFrame(raf)
 
     // Cleanup on unmount
     return () => {
+      cancelAnimationFrame(frameId)
       lenis.destroy()
     }
-  }, [])
+  }, [reducedMotion])
 
   return <>{children}</>
 }

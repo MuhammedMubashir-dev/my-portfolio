@@ -1,6 +1,7 @@
 import { ArrowUpRight, Github, Mail, MessageCircle } from "lucide-react"
 import AnimatedTechIcon from "../svg/AnimatedTechIcon"
 import AnimatedLogo from "../svg/AnimatedLogo"
+import useBugContext from "../../context/useBugContext"
 
 const links = [
   {
@@ -22,6 +23,7 @@ const links = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const { squashedBugs, totalBugs, resetBugs } = useBugContext()
 
   return (
     <footer className="border-t border-[var(--border-soft)] px-5 py-8 md:px-8 md:py-10">
@@ -38,6 +40,12 @@ export default function Footer() {
           <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
             Copyright {currentYear}. Built with React and Vite.
           </p>
+          <div className="bug-hunt">
+            <span aria-live="polite">A little debugging? {squashedBugs.length}/{totalBugs} bugs found.</span>
+            {squashedBugs.length === totalBugs
+              ? <button type="button" onClick={resetBugs}>Play again</button>
+              : <a href="#hero" title="Look in the hero, projects, and experience sections">Find the hidden bugs ↑</a>}
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">

@@ -26,7 +26,7 @@ const experienceRows = [
   "Commerce storefronts and admin workflows",
   "Search, filtering, cart, checkout, and profile modules",
   "OTP authentication, payment flows, and order notifications",
-  "Mobile delivery, maps, pagination, and API issue debugging",
+  "Arabic/RTL localization, printing, deep linking, and release engineering",
 ]
 
 const jsonProfile = `{
@@ -132,7 +132,7 @@ export default function About() {
                       I am Muhammed Mubashir, a Kerala-based Jr Application Developer shipping web and mobile applications at ENKE Consulting Services LLP.
                     </p>
                     <p>
-                      I build with React, Next.js, Flutter, and React Native across e-commerce, POS, logistics, and business networking. From multi-tenant storefronts to mobile point-of-sale workflows, I focus on practical software that survives real business use.
+                      I build with React, Next.js, Flutter, and React Native across e-commerce, POS, logistics, and business networking. From multi-tenant storefronts to mobile point-of-sale workflows, I focus on practical software that survives real business use: localization, payments, printing, API edge cases, and release readiness.
                     </p>
                   </motion.div>
                 ) : (
