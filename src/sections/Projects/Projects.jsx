@@ -7,13 +7,14 @@ import Bug from "../../components/shared/Bug"
 
 const stories = {
   1: { problem: "Different storefronts. One shared platform.", contribution: "Built reusable theme packs, product discovery, and checkout flows for a multi-tenant commerce platform.", result: "Localized storefronts with integrated payments." },
-  2: { problem: "Keep customers and delivery teams connected.", contribution: "Built Flutter workflows for orders, pickup and delivery, maps, and customer payments.", result: "Two companion apps supported through production releases." },
+  2: { problem: "Help delivery staff manage each pickup and handoff.", contribution: "Built date-filtered bag lists, independent pagination, maps, and OTP verification workflows.", result: "Four delivery stages with fixes for OTP failures and endless loading." },
+  6: { problem: "Make ordering and paying easier for customers.", contribution: "Integrated Razorpay checkout, improved order loading, and added app-update and maintenance flows.", result: "My Orders API calls reduced from six to two by reusing responses." },
   3: { problem: "A storefront for English and Arabic customers.", contribution: "Connected CMS content and commerce APIs, added localization, and improved the Next.js architecture.", result: "Bilingual storefront with SEO, sitemaps, and ISR-backed content." },
   4: { problem: "Make business connections easier to discover.", contribution: "Built company profiles, connection requests, subscriptions, and deep-link journeys in React Native.", result: "Shareable profiles and connected navigation across mobile releases." },
   5: { problem: "Bring everyday retail operations into one app.", contribution: "Built billing, inventory, purchase, and day-close workflows in Flutter.", result: "English and Arabic receipts, reporting, and retail workflows." },
 }
 const filters = ["All work", "Web", "Mobile", "POS"]
-const projectOrder = [5, 2, 1, 3, 4]
+const projectOrder = [5, 6, 2, 1, 3, 4]
 const orderedProjects = [...projects].sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id))
 
 function ProjectGallery({ project, featured }) {
@@ -24,12 +25,12 @@ function ProjectGallery({ project, featured }) {
   if (!images.length) return null
   return (
     <div className={`project-gallery ${mobile ? "project-gallery-mobile" : "project-gallery-web"} ${featured ? "featured-gallery" : ""}`}>
-      <div className="gallery-label"><span>{project.id === 5 ? "POINT OF SALE" : mobile ? "MOBILE APPLICATION" : "WEB EXPERIENCE"}</span><span>{String(projectOrder.indexOf(project.id) + 1).padStart(2, "0")} / 05</span></div>
+      <div className="gallery-label"><span>{project.imageLabels?.[current] ?? (project.id === 5 ? "POINT OF SALE" : mobile ? "MOBILE APPLICATION" : "WEB EXPERIENCE")}</span><span>{String(projectOrder.indexOf(project.id) + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span></div>
       <div className={mobile ? "gallery-phone" : "gallery-browser"}>
         {!mobile && <div className="gallery-chrome" aria-hidden="true"><i /><i /><i /><span>{project.name}</span></div>}
         <div className="gallery-viewport">
           <AnimatePresence initial={false} mode="wait">
-            <motion.img key={images[current]} src={images[current]} alt={`${project.name} — screen ${current + 1} of ${images.length}`} loading="lazy"
+            <motion.img key={images[current]} src={images[current]} alt={`${project.name} — ${project.imageLabels?.[current] ?? `screen ${current + 1} of ${images.length}`}`} loading="lazy"
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reducedMotion ? 0 : 0.18 }} />
           </AnimatePresence>
         </div>
@@ -58,7 +59,7 @@ export default function Projects() {
         </div>
         <div className="work-toolbar">
           <div className="work-filters" role="group" aria-label="Filter projects">
-            {filters.map(item => <button key={item} type="button" aria-pressed={filter === item} onClick={() => { setFilter(item); setExpanded(null) }} className={filter === item ? "is-active" : ""}>{item}{item === "All work" && <span>05</span>}</button>)}
+            {filters.map(item => <button key={item} type="button" aria-pressed={filter === item} onClick={() => { setFilter(item); setExpanded(null) }} className={filter === item ? "is-active" : ""}>{item}{item === "All work" && <span>{String(projects.length).padStart(2, "0")}</span>}</button>)}
           </div>
           <span className="work-count" aria-live="polite">{filtered.length} {filtered.length === 1 ? "project" : "projects"} <span> / 2 more private</span></span>
         </div>

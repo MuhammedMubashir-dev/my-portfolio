@@ -1,11 +1,42 @@
-import { motion, useReducedMotion } from "framer-motion"
+import { motion, useReducedMotion, useSpring, useTransform } from "framer-motion"
 import { ArrowDown, ArrowUpRight, Download, RotateCcw, Smartphone, Globe2 } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Bug from "../../components/shared/Bug"
 
 function ProductStage() {
   const reducedMotion = useReducedMotion()
   const [replay, setReplay] = useState(0)
+  const pointerEnabled = useRef(false)
+  const pointerX = useSpring(0, { stiffness: 140, damping: 24 })
+  const pointerY = useSpring(0, { stiffness: 140, damping: 24 })
+  const desktopRotateX = useTransform(pointerY, [-1, 1], [3, -3])
+  const desktopRotateY = useTransform(pointerX, [-1, 1], [-4, 4])
+  const phoneRotateX = useTransform(pointerY, [-1, 1], [5, -5])
+  const phoneRotateY = useTransform(pointerX, [-1, 1], [-6, 6])
+
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 851px)")
+    const syncPointer = () => {
+      pointerEnabled.current = media.matches && !reducedMotion
+      pointerX.jump(0)
+      pointerY.jump(0)
+    }
+    syncPointer()
+    media.addEventListener("change", syncPointer)
+    window.addEventListener("blur", syncPointer)
+    return () => {
+      media.removeEventListener("change", syncPointer)
+      window.removeEventListener("blur", syncPointer)
+    }
+  }, [reducedMotion, pointerX, pointerY])
+
+  const resetDepth = () => { pointerX.set(0); pointerY.set(0) }
+  const moveDepth = event => {
+    if (!pointerEnabled.current || event.pointerType !== "mouse") return
+    const bounds = event.currentTarget.getBoundingClientRect()
+    pointerX.set(Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width - 0.5) * 2)))
+    pointerY.set(Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height - 0.5) * 2)))
+  }
   const entrance = (delay, x = 0, y = 30) => ({
     initial: reducedMotion ? false : { opacity: 0, x, y, scale: 0.97 },
     animate: { opacity: 1, x: 0, y: 0, scale: 1 },
@@ -20,10 +51,14 @@ function ProductStage() {
           <RotateCcw size={13} /> Replay
         </button>
       </div>
-      <div className="product-stage" key={replay}>
+      <div className="product-stage" key={replay} onPointerMove={moveDepth} onPointerLeave={resetDepth} onPointerCancel={resetDepth}>
         <div className="stage-orbit stage-orbit-one" aria-hidden="true" />
         <div className="stage-orbit stage-orbit-two" aria-hidden="true" />
-        <motion.div className="browser-product" {...entrance(0.15, -24)}>
+        <motion.div className="product-depth" style={{ position: "absolute", inset: 0, transformPerspective: 1200 }}
+          initial={reducedMotion ? false : { rotateX: 7, rotateY: -6 }}
+          animate={{ rotateX: 0, rotateY: 0 }}
+          transition={{ duration: reducedMotion ? 0 : 1.2, delay: reducedMotion ? 0 : 0.15, ease: [0.16, 1, 0.3, 1] }}>
+        <motion.div className="browser-product" style={{ transformPerspective: 1000, rotateX: reducedMotion ? 0 : desktopRotateX, rotateY: reducedMotion ? 0 : desktopRotateY }} {...entrance(0.15, -24)}>
           <div className="browser-chrome" aria-hidden="true">
             <div className="browser-dots"><i /><i /><i /></div>
             <span>eposmob / point of sale</span>
@@ -37,10 +72,11 @@ function ProductStage() {
           </div>
           <div className="product-caption"><span>EPOSMOB</span><span>Flutter · Point of sale</span></div>
         </motion.div>
-        <motion.div className="phone-product" {...entrance(0.85, 35, 65)}>
+        <motion.div className="phone-product" style={{ transformPerspective: 800, rotateX: reducedMotion ? 0 : phoneRotateX, rotateY: reducedMotion ? 0 : phoneRotateY }} {...entrance(0.85, 35, 65)}>
           <div className="phone-speaker" aria-hidden="true" />
           <img src="/images/projects/ganvin/bag-screen.webp" alt="Ganvin mobile app bag management screen" width="360" height="760" />
           <div className="phone-home" aria-hidden="true" />
+        </motion.div>
         </motion.div>
         <motion.div className="stage-note" {...entrance(1.2, -12, 12)}>
           <span className="stage-note-icon"><Smartphone size={17} /></span>

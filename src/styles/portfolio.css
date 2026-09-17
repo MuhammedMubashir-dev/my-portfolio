@@ -120,11 +120,12 @@
 .work-card { border: 1px solid var(--border-soft); background: #161712; border-radius: 12px; overflow: hidden; transition: border-color .25s; min-width: 0; }
 .work-card:hover { border-color: #5e4835; }
 .work-card-featured { display: grid; grid-template-columns: 1.13fr 1fr; grid-column: 1 / -1; align-items: start; }
-.project-gallery { background: #24271e; position: relative; overflow: hidden; padding: 24px 28px 66px; height: 360px; display: flex; align-items: center; justify-content: center; }
+.project-gallery { background: #24271e; position: relative; overflow: clip; padding: 24px 28px 66px; height: 360px; display: flex; align-items: center; justify-content: center; }
 .project-gallery::before { position: absolute; inset: 0; content: ""; background: radial-gradient(ellipse at 30% 30%,#ffffff05,transparent 70%); pointer-events: none; }
 .project-gallery-web { background: #30251e; }
 .featured-gallery { height: 100%; min-height: 510px; border-right: 1px solid var(--border-soft); }
-.gallery-label { position: absolute; top: 20px; left: 24px; right: 24px; display: flex; justify-content: space-between; font: 8px monospace; letter-spacing: .13em; color: #b0a291; }
+.gallery-label { position: absolute; top: 16px; left: 20px; right: 20px; display: flex; align-items: start; justify-content: space-between; gap: 12px; font: 10px/1.5 monospace; letter-spacing: .04em; color: #c7bcad; }
+.gallery-label > span:last-child { flex-shrink: 0; }
 .gallery-browser { width: 100%; margin-top: 30px; border: 1px solid #6f5a45; border-radius: 7px; background: #211f19; overflow: hidden; box-shadow: 0 20px 35px #0004; }
 .gallery-chrome { height: 25px; padding-inline: 10px; }
 .gallery-chrome span { margin-left: auto; color: #bab2a6; font-size: 7px; }
@@ -242,6 +243,8 @@
   .work-grid { grid-template-columns: 1fr; gap: 24px; }
   .work-card-featured { grid-column: auto; }
   .project-gallery { height: 320px; padding-inline: 20px; }
+  .project-gallery-mobile { height: 380px; padding-top: 55px; padding-bottom: 60px; }
+  .project-gallery-mobile .gallery-phone { margin-top: 0; }
   .work-card-copy { padding: 23px; }
   .work-endnote { flex-direction: column; align-items: start; }
 }
