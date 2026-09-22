@@ -61,7 +61,7 @@ heading('Technical Skills')
 for label, value in [
     ('Flutter and Dart', 'Provider, ChangeNotifier, setState, reusable widgets, responsive layouts'),
     ('Integrations', 'REST APIs, JSON, Razorpay, Stripe, Google Maps, push notifications, receipt printing, RTL'),
-    ('Web Development', 'React, Next.js, JavaScript, TypeScript, Tailwind CSS'),
+    ('Additional Technologies', 'React Native, React, Next.js, JavaScript, TypeScript, Tailwind CSS'),
     ('Engineering Tools', 'Git, GitHub, Postman, VS Code, SQLite, SharedPreferences'),
 ]:
     p = doc.add_paragraph()
@@ -72,6 +72,7 @@ heading('Work Experience')
 para('ENKE Consulting Services LLP | Apr 2026 - Present', True)
 para('Junior Application Developer | Jul 2026 - Present', True)
 bullet('Delivered production Flutter features across POS and logistics applications; diagnosed API edge cases, authentication failures, and Android and iOS release issues.')
+bullet('Integrated LinkedIn sign-in in Connect App (React Native, Android), with PKCE, backend API integration, and deep-link callback handling.')
 para('Full Stack Developer Trainee | Apr 2026 - Jul 2026', True)
 bullet('Integrated REST APIs and built reusable Flutter interfaces; contributed React and Next.js commerce features and collaborated with backend developers on API issues.')
 
