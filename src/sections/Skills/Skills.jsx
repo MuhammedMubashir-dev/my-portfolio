@@ -1,30 +1,27 @@
 import { motion, useReducedMotion } from "framer-motion"
-import { Smartphone, Monitor, Plug, Wrench } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
+import BrandIcon from "../../components/shared/BrandIcon"
 import { skills } from "../../data/skills"
-
-const icons = { "Flutter & Dart": Smartphone, "React & Next.js": Monitor, Integrations: Plug, "Engineering Tools": Wrench }
 
 export default function Skills() {
   const reducedMotion = useReducedMotion()
   return (
-    <section id="skills" className="section-shell">
+    <section id="skills" className="section-shell skills-section">
       <div className="section-container">
-        <div className="work-heading">
-          <div><p className="section-kicker">SKILLS</p><h2>Flutter at the core.<br /><span className="accent">Web experience alongside.</span></h2></div>
-          <p>The tools behind my work in mobile, POS, and commerce applications.</p>
-        </div>
+        <motion.div className="work-heading" initial={reducedMotion ? false : { opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }}>
+          <div><p className="section-kicker">TECHNOLOGIES</p><h2>Technical skills</h2></div>
+          <p>Flutter and React Native mobile development, with React/Next.js web experience and product integrations.</p>
+        </motion.div>
         <div className="skills-focused-grid">
-          {skills.map((group, index) => {
-            const Icon = icons[group.category]
-            return (
-              <motion.article key={group.category} className={`focused-skill ${index === 0 ? "focused-skill-primary" : ""}`}
-                initial={reducedMotion ? false : { opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.45 }}>
-                <div className="focused-skill-top"><Icon size={22} aria-hidden="true" /><span>{index === 0 ? "PRIMARY FOCUS" : index === 1 ? "SECONDARY STRENGTH" : "IN PRACTICE"}</span></div>
-                <h3>{group.category}</h3><p>{group.summary}</p>
-                <ul>{group.items.map(item => <li key={item}>{item}</li>)}</ul>
-              </motion.article>
-            )
-          })}
+          {skills.map((group, index) => (
+            <motion.article key={group.category} className={`focused-skill ${index === 0 ? "focused-skill-primary" : ""}`}
+              initial={reducedMotion ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.5, delay: reducedMotion ? 0 : (index % 2) * 0.06 }}>
+              <div className="focused-skill-top"><div className="skill-brand-pair">{group.brands.map(brand => <BrandIcon key={brand} name={brand} size={26} />)}</div><span>{group.label}</span></div>
+              <h3>{group.category}</h3><p>{group.summary}</p>
+              <ul>{group.items.map(item => <li key={item}><BrandIcon name={item} size={14} />{item}</li>)}</ul>
+              <a href={`#project-${group.projectId}`} className="skill-project-link"><span>APPLIED IN</span><strong>{group.appliedIn}</strong><ArrowUpRight size={16} aria-hidden="true" /></a>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

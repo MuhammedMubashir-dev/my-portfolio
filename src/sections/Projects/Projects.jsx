@@ -1,21 +1,27 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { projects } from "../../data/projects"
 import { caseStudies } from "../../data/caseStudies"
 import Bug from "../../components/shared/Bug"
 
 const stories = {
-  1: { problem: "Different storefronts. One shared platform.", contribution: "Built reusable theme packs, product discovery, and checkout flows for a multi-tenant commerce platform.", result: "Localized storefronts with integrated payments." },
+  1: { problem: "Different storefronts. One shared platform.", contribution: "Built reusable themes, product discovery, and tenant-aware Stripe and Razorpay checkout flows.", result: "Localized storefronts with shared commerce components." },
   2: { problem: "Help delivery staff manage each pickup and handoff.", contribution: "Built date-filtered bag lists, independent pagination, maps, and OTP verification workflows.", result: "Four delivery stages with fixes for OTP failures and endless loading." },
-  6: { problem: "Make ordering and paying easier for customers.", contribution: "Integrated Razorpay checkout, improved order loading, and added app-update and maintenance flows.", result: "My Orders API calls reduced from six to two by reusing responses." },
+  6: { problem: "Customer laundry ordering and payment workflows.", contribution: "Integrated Razorpay checkout, improved order-history data handling, and added app-update and maintenance flows.", result: "Checkout, order tracking, and update handling in the customer app." },
   3: { problem: "A storefront for English and Arabic customers.", contribution: "Connected CMS content and commerce APIs, added localization, and improved the Next.js architecture.", result: "Bilingual storefront with SEO, sitemaps, and ISR-backed content." },
-  4: { problem: "Make business connections easier to discover.", contribution: "Built company profiles, connection requests, subscriptions, and deep-link journeys in React Native.", result: "Shareable profiles and connected navigation across mobile releases." },
-  5: { problem: "Bring everyday retail operations into one app.", contribution: "Built billing, inventory, purchase, and day-close workflows in Flutter.", result: "English and Arabic receipts, reporting, and retail workflows." },
+  4: { problem: "Connect people to the right business profile.", contribution: "Built React Native LinkedIn authentication with PKCE, native Android/iOS modules, and deferred deep-link navigation.", result: "Android and iOS sign-in, shareable profiles, and navigation after login." },
+  5: { problem: "Bring everyday retail operations into one app.", contribution: "Built Flutter POS workflows, shared reporting filters, and complete Excel exports with isolated Provider state.", result: "Validated report exports, bilingual printing, and Day Close workflows." },
 }
 const filters = ["All work", "Web", "Mobile", "POS"]
-const projectOrder = [5, 6, 2, 1, 3, 4]
+const projectOrder = [5, 6, 2, 4, 1, 3]
 const orderedProjects = [...projects].sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id))
+
+const linkedProject = hash => {
+  const match = hash.match(/^#project-(\d+)$/)
+  const id = match ? Number(match[1]) : null
+  return projects.some(project => project.id === id) ? id : null
+}
 
 function ProjectGallery({ project, featured }) {
   const [current, setCurrent] = useState(0)
@@ -46,8 +52,32 @@ function ProjectGallery({ project, featured }) {
 
 export default function Projects() {
   const [filter, setFilter] = useState("All work")
-  const [expanded, setExpanded] = useState(null)
+  const [expanded, setExpanded] = useState(() => linkedProject(window.location.hash))
   const reducedMotion = useReducedMotion()
+  useEffect(() => {
+    let frame
+    const revealProject = hash => {
+      const id = linkedProject(hash)
+      if (id === null) return
+      setFilter("All work")
+      setExpanded(id)
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => document.getElementById(`project-${id}`)?.scrollIntoView({ block: "start", behavior: reducedMotion ? "auto" : "smooth" }))
+    }
+    const onHashChange = () => revealProject(window.location.hash)
+    const onProjectLink = event => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+      const link = event.target instanceof Element ? event.target.closest('a[href^="#project-"]') : null
+      if (link) revealProject(link.getAttribute("href"))
+    }
+    window.addEventListener("hashchange", onHashChange)
+    document.addEventListener("click", onProjectLink)
+    return () => {
+      window.removeEventListener("hashchange", onHashChange)
+      document.removeEventListener("click", onProjectLink)
+      cancelAnimationFrame(frame)
+    }
+  }, [reducedMotion])
   const filtered = orderedProjects.filter(project => filter === "All work" || (filter === "POS" ? project.id === 5 : filter === "Mobile" ? project.screenshotType === "mobile" : [1, 3].includes(project.id)))
 
   return (
@@ -61,7 +91,7 @@ export default function Projects() {
           <div className="work-filters" role="group" aria-label="Filter projects">
             {filters.map(item => <button key={item} type="button" aria-pressed={filter === item} onClick={() => { setFilter(item); setExpanded(null) }} className={filter === item ? "is-active" : ""}>{item}{item === "All work" && <span>{String(projects.length).padStart(2, "0")}</span>}</button>)}
           </div>
-          <span className="work-count" aria-live="polite">{filtered.length} {filtered.length === 1 ? "project" : "projects"} <span> / 2 more private</span></span>
+          <span className="work-count" aria-live="polite">{filtered.length} {filtered.length === 1 ? "project" : "projects"}</span>
         </div>
         <div className="work-grid">
           {filtered.map((project, index) => {

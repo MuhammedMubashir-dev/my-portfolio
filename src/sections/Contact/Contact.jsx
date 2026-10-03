@@ -1,38 +1,47 @@
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUpRight, Download, FileText, Github, Mail, MessageCircle, Send, Truck, Check } from "lucide-react"
+import { ArrowUpRight, Download, FileText, Github, Linkedin, Mail, MessageCircle, Send, Truck, Check } from "lucide-react"
 import { useState } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
 import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import ContactNetwork from "../../components/svg/ContactNetwork"
 import SectionKicker from "../../components/svg/SectionKicker"
+import { profile, resumeDownloads } from "../../data/profile"
 
 const contacts = [
   {
     id: "email",
     label: "Email",
-    value: "muhammedmubashirwork@gmail.com",
-    href: "mailto:muhammedmubashirwork@gmail.com",
+    value: profile.email,
+    href: `mailto:${profile.email}`,
     icon: Mail,
   },
   {
     id: "whatsapp",
     label: "WhatsApp",
-    value: "+91 8089433955",
-    href: "https://wa.me/918089433955",
+    value: profile.phone,
+    href: profile.whatsapp,
     icon: MessageCircle,
   },
   {
     id: "github",
     label: "GitHub",
     value: "MuhammedMubashir-dev",
-    href: "https://github.com/MuhammedMubashir-dev",
+    href: profile.github,
     icon: Github,
+  },
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    value: profile.name,
+    href: profile.linkedin,
+    icon: Linkedin,
   },
 ]
 
 const fitItems = [
-  "React or Next.js storefronts & platforms",
-  "Flutter logistics & mobile workflows",
+  "Flutter POS, reporting & delivery applications",
+  "React Native features for Android & iOS",
+  "React & Next.js storefronts and checkout",
   "API integrations, authentication & payment flows",
 ]
 
@@ -41,10 +50,14 @@ export default function Contact() {
 
   const handleCopyEmail = async (e) => {
     e.preventDefault()
-    const email = "muhammedmubashirwork@gmail.com"
+    const email = profile.email
 
     try {
-      await navigator.clipboard?.writeText(email)
+      if (!navigator.clipboard?.writeText) {
+        window.location.href = `mailto:${email}`
+        return
+      }
+      await navigator.clipboard.writeText(email)
       setCopied(true)
       setTimeout(() => setCopied(false), 2500)
     } catch {
@@ -69,7 +82,7 @@ export default function Contact() {
                 Need product features built with care?
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-                I am open to freelance work and full-time opportunities. If you need someone who can build the interface, integrate the API, and stay calm through release details, let's talk.
+                I am open to Flutter and cross-platform mobile roles in Kerala or with remote teams, as well as freelance projects. I bring mobile experience and supporting React/Next.js skills, from API integration to release checks.
               </p>
 
               <div className="mt-9 space-y-4">
@@ -82,34 +95,27 @@ export default function Contact() {
               </div>
 
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <a href="mailto:muhammedmubashirwork@gmail.com" className="button-primary">
+                <a href={`mailto:${profile.email}`} className="button-primary">
                   <Send size={17} strokeWidth={2} />
                   Send email
                 </a>
                 <a
-                  href="https://wa.me/918089433955"
+                  href={profile.whatsapp}
                   target="_blank"
                   rel="noreferrer"
                   className="button-secondary"
                 >
                   Message on WhatsApp
                 </a>
-                <a
-                  href="/muhammed-mubashir-k-resume-flutter.pdf"
-                  download="Muhammed-Mubashir-Flutter-Resume.pdf"
-                  className="button-secondary"
-                >
-                  <Download size={17} strokeWidth={2} />
-                  Download PDF resume
-                </a>
-                <a
-                  href="/muhammed-mubashir-k-resume-flutter.docx"
-                  download="Muhammed-Mubashir-Flutter-Resume.docx"
-                  className="button-secondary"
-                >
-                  <FileText size={17} strokeWidth={2} />
-                  Word version
-                </a>
+              </div>
+              <div className="contact-resumes" aria-label="Résumé downloads">
+                {resumeDownloads.map(resume => <div key={resume.id} className="resume-download-row">
+                  <div><h3>{resume.label} résumé</h3><p>{resume.description}</p></div>
+                  <div className="resume-download-links">
+                    <a href={resume.pdf} download={`${resume.filename}.pdf`}><Download size={16} /> PDF<span className="sr-only"> · {resume.label} résumé</span></a>
+                    <a href={resume.word} download={`${resume.filename}.docx`}><FileText size={16} /> Word<span className="sr-only"> · {resume.label} résumé</span></a>
+                  </div>
+                </div>)}
               </div>
             </motion.div>
 

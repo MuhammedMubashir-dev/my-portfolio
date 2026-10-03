@@ -1,7 +1,7 @@
 // Summaries supported by the ENKE timesheet and project Git history.
 export const caseStudies = {
   6: {
-    title: "Reducing duplicate requests in My Orders",
+    title: "Reducing duplicate requests in order history",
     sections: [
       { heading: "The problem", text: "The Customer app fetched active and past orders repeatedly: the parent screen requested counts, while each list requested the same data separately for its content and count. Across both lists, this produced six API calls." },
       { heading: "My contribution", text: "I refactored the Flutter order-loading flow so each list could use one response for both its displayed orders and its Provider-backed count." },
@@ -10,12 +10,21 @@ export const caseStudies = {
     ],
   },
   5: {
-    title: "Getting bilingual receipts ready for the counter",
+    title: "Exporting complete, filtered POS reports",
     sections: [
-      { heading: "The problem", text: "Retail receipts needed readable English and Arabic output. USB printing issues, unwanted English prefixes, and inconsistent totals and image layouts affected the receipt workflow." },
-      { heading: "My contribution", text: "I worked on the Flutter receipt layouts and printing fixes in EPOSMOB, including the Supermarket 2 bilingual receipt and related reporting output." },
-      { heading: "The solution", text: "I added the bilingual layout, corrected English prefix stripping, reorganized totals into three columns, and fixed single-image rendering and USB receipt printing issues. Later work addressed English/Arabic PDF invoice rendering and RTL shaping." },
-      { heading: "How I verified it", text: "I tested receipt generation and printing after the changes and checked the bilingual formatting and totals layout. I also performed UI and functional checks around the updated receipt workflow." },
+      { heading: "The problem", text: "A report screen displays one page at a time, but its Excel export needs every matching record. Reusing visible listing state during export can change the screen, while duplicate records or inconsistent pagination can produce a misleading file." },
+      { heading: "My contribution", text: "I developed Flutter report and transaction exports that fetch all matching pages using a fixed set of filters. I kept export requests separate from visible Provider state and added guards against stale invoice responses." },
+      { heading: "The solution", text: "The export validates record IDs, pagination metadata, and totals before creating the file, rejecting duplicate or incomplete results. Shared filters and responsive report layouts support mobile and desktop, with English, Arabic, and Malayalam translations." },
+      { heading: "Verification", text: "I added unit and widget regression tests covering incomplete pages, duplicate IDs, changing totals, delayed responses, and filter state." },
+    ],
+  },
+  4: {
+    title: "Keeping sign-in and profile links connected",
+    sections: [
+      { heading: "The problem", text: "LinkedIn login has to return from the browser to the right app session on Android and iOS. A deferred profile link can also arrive during startup, before authentication and navigation are ready." },
+      { heading: "My contribution", text: "I implemented LinkedIn authentication with PKCE, native Kotlin and Swift modules, browser callbacks, and backend API integration in React Native. I also worked on Branch deep-link handling across the app lifecycle." },
+      { heading: "The solution", text: "The authentication flow validates callback state and exchanges the authorization code through the backend. A persistent Branch subscription retains deferred profile navigation through startup and resumes it once the user is authenticated." },
+      { heading: "Verification", text: "I added authentication regression tests for callback handling and PKCE, and updated Android/iOS release configuration." },
     ],
   },
   2: {

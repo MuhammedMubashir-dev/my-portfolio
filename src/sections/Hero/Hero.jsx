@@ -2,6 +2,8 @@ import { motion, useReducedMotion, useSpring, useTransform } from "framer-motion
 import { ArrowDown, ArrowUpRight, Download, RotateCcw, Smartphone, Globe2 } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import Bug from "../../components/shared/Bug"
+import { profile, resumeDownloads } from "../../data/profile"
+import { projects } from "../../data/projects"
 
 function ProductStage() {
   const reducedMotion = useReducedMotion()
@@ -97,18 +99,20 @@ export default function Hero() {
           <motion.div className="hero-copy" initial={reducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
             <p className="hero-eyebrow"><span className="status-dot" /> AVAILABLE FOR NEW OPPORTUNITIES</p>
             <p className="hero-introduction">Hey, I’m Muhammed Mubashir.</p>
-            <p className="hero-specialization">Flutter Developer · Mobile &amp; POS Applications</p><h1 className="hero-headline">Made for people.<br /><span>Built to work.</span></h1>
+            <p className="hero-specialization">Flutter Developer · React Native Experience</p><h1 className="hero-headline">Made for people.<br /><span>Built to work.</span></h1>
             <p className="hero-description">I build Flutter applications for everyday business—from the first sale to the last delivery.</p>
-            <p className="hero-secondary">Also building for the web with React &amp; Next.js.</p><div className="hero-actions">
+            <p className="hero-secondary">React Native for Android and iOS. React &amp; Next.js for the web.</p><div className="hero-actions">
               <a href="#projects" className="button-primary">Explore my work <ArrowUpRight size={18} /></a>
-              <a href="/muhammed-mubashir-k-resume-flutter.pdf" download="Muhammed-Mubashir-Flutter-Resume.pdf" className="hero-resume"><Download size={16} /> Download résumé</a>
+              <div className="hero-resumes" aria-label="Download a résumé">
+                {resumeDownloads.map(resume => <a key={resume.id} href={resume.pdf} download={`${resume.filename}.pdf`} className="hero-resume"><Download size={16} /> {resume.label} résumé</a>)}
+              </div>
             </div>
-            <p className="hero-location">Application Developer at ENKE <span> / </span> Kerala, India</p>
+            <p className="hero-location">{profile.role} at ENKE <span> / </span> Kerala, India</p>
           </motion.div>
           <ProductStage />
         </div>
         <div className="hero-bottom">
-          <div className="hero-proof"><strong>7+</strong><span>products shipped</span><i /><strong>Flutter & Dart</strong><span>Mobile · POS · React & Next.js</span></div>
+          <div className="hero-proof"><strong>{projects.length}</strong><span>featured company projects</span><i /><strong>Flutter &amp; React Native</strong><span>Mobile · POS · Supporting web experience</span></div>
           <a href="#projects" className="scroll-cue">SELECTED WORK <ArrowDown size={15} /></a>
         </div>
       </div>

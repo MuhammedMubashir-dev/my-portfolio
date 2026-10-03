@@ -1,23 +1,29 @@
-import { ArrowUpRight, Github, Mail, MessageCircle } from "lucide-react"
+import { ArrowUpRight, Github, Linkedin, Mail, MessageCircle } from "lucide-react"
 import AnimatedTechIcon from "../svg/AnimatedTechIcon"
 import AnimatedLogo from "../svg/AnimatedLogo"
 import useBugContext from "../../context/useBugContext"
+import { profile } from "../../data/profile"
 
 const links = [
   {
     label: "Email",
     icon: Mail,
-    href: "mailto:muhammedmubashirwork@gmail.com",
+    href: `mailto:${profile.email}`,
   },
   {
     label: "WhatsApp",
     icon: MessageCircle,
-    href: "https://wa.me/918089433955",
+    href: profile.whatsapp,
   },
   {
     label: "GitHub",
     icon: Github,
-    href: "https://github.com/MuhammedMubashir-dev",
+    href: profile.github,
+  },
+  {
+    label: "LinkedIn",
+    icon: Linkedin,
+    href: profile.linkedin,
   },
 ]
 

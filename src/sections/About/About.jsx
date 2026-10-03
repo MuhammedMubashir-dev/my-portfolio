@@ -1,218 +1,57 @@
-import { AnimatePresence, motion } from "framer-motion"
-import { BriefcaseBusiness, CheckCircle2, Code2, Rocket, TerminalSquare } from "lucide-react"
-import { useState } from "react"
-import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
-import SectionKicker from "../../components/svg/SectionKicker"
+import { motion, useReducedMotion } from "framer-motion"
+import { ArrowUpRight, CheckCheck, Code2, MapPin, SearchCheck } from "lucide-react"
+import BrandIcon from "../../components/shared/BrandIcon"
+import { profile } from "../../data/profile"
 
+const capabilities = [
+  { brand: "Flutter", title: "Flutter development", text: "POS, retail reporting, laundry ordering, and staff delivery applications." },
+  { brand: "React Native", title: "React Native development", text: "Android/iOS authentication, native modules, and deep-link navigation." },
+  { brand: "Next.js", title: "React and Next.js development", text: "Commerce storefronts, reusable themes, localized interfaces, and checkout." },
+]
 const strengths = [
-  {
-    title: "Release ownership",
-    description: "I carry features from UI build to API states, validation, edge cases, and release checks.",
-    icon: Rocket,
-  },
-  {
-    title: "Debugging discipline",
-    description: "I trace issues through frontend behavior, API responses, filters, auth state, and payload shape.",
-    icon: Code2,
-  },
-  {
-    title: "Cross-platform range",
-    description: "I work across React, Next.js, Flutter, and React Native while keeping the user flow coherent.",
-    icon: CheckCircle2,
-  },
+  { icon: Code2, title: "Feature development", text: "Responsive interfaces, API integration, application state, and error handling." },
+  { icon: SearchCheck, title: "Debugging and integration", text: "Investigating requests, payloads, filtering, authentication, and lifecycle issues." },
+  { icon: CheckCheck, title: "Testing and release support", text: "Regression tests, layout verification, and Android/iOS release configuration." },
 ]
-
-const experienceRows = [
-  "Commerce storefronts and admin workflows",
-  "Search, filtering, cart, checkout, and profile modules",
-  "OTP authentication, payment flows, and order notifications",
-  "Arabic/RTL localization, printing, deep linking, and release engineering",
-]
-
-const jsonProfile = `{
-  "status": 200,
-  "endpoint": "/api/v1/engineer/mubashir",
-  "data": {
-    "name": "Muhammed Mubashir",
-    "role": "Jr Application Developer",
-    "location": "Kerala, India",
-    "company": "ENKE Consulting Services LLP",
-    "focus": [
-      "React.js & Next.js interfaces",
-      "Flutter & React Native mobile apps",
-      "REST API integration",
-      "E-commerce, POS & business networking"
-    ],
-    "philosophy": "Build practical, shipped software that solves real business problems."
-  }
-}`
 
 export default function About() {
-  const [viewMode, setViewMode] = useState("ui") // 'ui' or 'json'
-
+  const reducedMotion = useReducedMotion()
+  const reveal = (delay = 0) => ({
+    initial: reducedMotion ? false : { opacity: 0, y: 12 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.12 },
+    transition: { duration: 0.4, delay: reducedMotion ? 0 : delay },
+  })
   return (
-    <section id="about" className="section-shell">
+    <section id="about" className="section-shell about-section">
       <div className="section-container">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-            >
-              <SectionKicker>About</SectionKicker>
-            </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ delay: 0.08 }}
-              className="section-title"
-            >
-              Product-minded developer for shipped software.
-            </motion.h2>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: 0.14 }}
-            className="lg:col-span-7 min-w-0"
-          >
-            {/* Toggle Switch */}
-            <div className="mb-8 flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface)] p-1 w-max">
-              <button
-                type="button"
-                onClick={() => setViewMode("ui")}
-                className={`relative rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
-                  viewMode === "ui" ? "text-[var(--bg)]" : "text-[var(--muted)] hover:text-[var(--text)]"
-                }`}
-              >
-                {viewMode === "ui" && (
-                  <motion.span
-                    layoutId="about-toggle"
-                    className="absolute inset-0 rounded-full bg-[var(--accent)]"
-                    style={{ zIndex: -1 }}
-                  />
-                )}
-                UI View
-              </button>
-              <button
-                type="button"
-                onClick={() => setViewMode("json")}
-                className={`relative flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
-                  viewMode === "json" ? "text-[var(--bg)]" : "text-[var(--muted)] hover:text-[var(--text)]"
-                }`}
-              >
-                {viewMode === "json" && (
-                  <motion.span
-                    layoutId="about-toggle"
-                    className="absolute inset-0 rounded-full bg-[var(--accent)]"
-                    style={{ zIndex: -1 }}
-                  />
-                )}
-                <TerminalSquare size={14} />
-                API View
-              </button>
-            </div>
-
-            <div className="relative min-h-[220px] w-full max-w-full">
-              <AnimatePresence mode="wait">
-                {viewMode === "ui" ? (
-                  <motion.div
-                    key="ui-view"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="space-y-6 text-lg leading-8 text-[var(--muted)] md:text-xl"
-                  >
-                    <p>
-                      I am Muhammed Mubashir, a Kerala-based Jr Application Developer shipping web and mobile applications at ENKE Consulting Services LLP.
-                    </p>
-                    <p>
-                      I build with React, Next.js, Flutter, and React Native across e-commerce, POS, logistics, and business networking. From multi-tenant storefronts to mobile point-of-sale workflows, I focus on practical software that survives real business use: localization, payments, printing, API edge cases, and release readiness.
-                    </p>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="json-view"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.2 }}
-                    className="overflow-hidden rounded-lg border border-[var(--border-soft)] bg-[#0a0a0a] p-5 shadow-2xl"
-                  >
-                    <pre className="text-sm leading-relaxed md:text-base overflow-x-auto">
-                      <code className="text-[#e5c07b]">
-                        {jsonProfile.split("\n").map((line, i) => {
-                          // Simple mock syntax highlighting
-                          let coloredLine = line
-                          coloredLine = coloredLine.replace(/"(.*?)":/g, '<span class="text-[#e06c75]">"$1"</span>:')
-                          coloredLine = coloredLine.replace(/: "(.*?)"/g, ': <span class="text-[#98c379]">"$1"</span>')
-                          coloredLine = coloredLine.replace(/: ([0-9]+)/g, ': <span class="text-[#d19a66]">$1</span>')
-                          return (
-                            <span key={i} className="block" dangerouslySetInnerHTML={{ __html: coloredLine }} />
-                          )
-                        })}
-                      </code>
-                    </pre>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <div className="mt-10 grid gap-3 md:grid-cols-3">
-              {strengths.map(({ title, description, icon: Icon }, index) => (
-                <motion.article
-                  key={title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ delay: 0.18 + index * 0.06 }}
-                  className="surface-panel p-5"
-                >
-                  <AnimatedTechIcon icon={Icon} className="text-[var(--accent)]" size={19} strokeWidth={1.8} />
-                  <h3 className="mt-5 text-xl">{title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{description}</p>
-                </motion.article>
-              ))}
+        <motion.div className="work-heading" {...reveal()}>
+          <div><p className="section-kicker">PROFILE</p><h2>About me</h2></div>
+          <p>Mobile and web development experience across retail, logistics, and business networking.</p>
+        </motion.div>
+        <div className="about-layout">
+          <motion.aside className="about-identity" {...reveal(0.04)} aria-label="Professional profile">
+            <p className="about-name">{profile.name}</p>
+            <p className="about-role">{profile.role}</p>
+            <p className="about-company">{profile.company}</p>
+            <div className="about-location"><MapPin size={15} aria-hidden="true" /> Kerala, India</div>
+            <div className="about-availability"><span className="status-dot" /> Open to mobile developer opportunities</div>
+            <a href="#contact" className="about-contact">Contact me <ArrowUpRight size={16} /></a>
+          </motion.aside>
+          <motion.div className="about-content" {...reveal(0.08)}>
+            <p className="about-intro">I am a {profile.role} at {profile.company}, with a primary focus on Flutter mobile and point-of-sale applications.</p>
+            <p className="about-description">My work includes billing and inventory workflows, reporting, payments, and pickup/delivery applications. I also develop React Native features for Android and iOS and contribute to React/Next.js commerce storefronts.</p>
+            <p className="about-description">I work within existing company codebases, coordinate API contracts with backend developers, investigate application issues, and verify changes through regression tests and release checks.</p>
+            <div className="about-capabilities">
+              {capabilities.map(item => <div key={item.title} className="about-capability"><span className="about-capability-icon"><BrandIcon name={item.brand} size={22} /></span><div><h3>{item.title}</h3><p>{item.text}</p></div></div>)}
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          className="mt-16 grid gap-8 border-t border-[var(--border-soft)] pt-10 lg:grid-cols-12"
-        >
-          <div className="lg:col-span-4">
-            <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border-soft)] px-4 py-2">
-              <BriefcaseBusiness size={16} strokeWidth={1.8} className="text-[var(--accent)]" />
-              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-                Currently at ENKE Consulting Services
-              </span>
-            </div>
-          </div>
-
-          <div className="lg:col-span-8">
-            <div className="border-t border-[var(--border-soft)]">
-              {experienceRows.map((item, index) => (
-                <div
-                  key={item}
-                  className="flex gap-5 border-b border-[var(--border-soft)] py-5"
-                >
-                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p className="text-[var(--text)] font-medium">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+        <div className="about-strengths">
+          {strengths.map(({ icon: Icon, title, text }, index) => <motion.article key={title} className="about-strength" {...reveal(index * 0.04)}>
+            <Icon size={20} aria-hidden="true" /><h3>{title}</h3><p>{text}</p>
+          </motion.article>)}
+        </div>
       </div>
     </section>
   )
