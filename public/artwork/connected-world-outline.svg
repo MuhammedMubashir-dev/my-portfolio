@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" width="960" height="780" data-mode="outline" role="img" aria-labelledby="title description">
+  <title id="title">A world of connected applications</title>
+  <desc id="description">An original architectural illustration of a mobile application inside an orange arch, surrounded by commerce, delivery, and software services on floating platforms.</desc>
+  <defs>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#47493b" /><stop offset="1" stop-color="#20251e" /></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#292e28" /><stop offset="1" stop-color="#141914" /></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b8b8a3" /><stop offset=".3" stop-color="#626956" /><stop offset="1" stop-color="#30382d" /></linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#ffb373" /><stop offset=".45" stop-color="#ff8139" /><stop offset="1" stop-color="#d94d1e" /></linearGradient>
+    <linearGradient id="orange-side" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b33d1a" /><stop offset="1" stop-color="#76311e" /></linearGradient>
+    <linearGradient id="ivory" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4efdf" /><stop offset="1" stop-color="#c8cdb8" /></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9e0ba" stop-opacity=".12" /><stop offset="1" stop-color="#a8b897" stop-opacity=".02" /></linearGradient>
+    <radialGradient id="ambient"><stop stop-color="#ff8a43" stop-opacity=".12" /><stop offset="1" stop-color="#ff8a43" stop-opacity="0" /></radialGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse" patternTransform="matrix(1 .5 -1 .5 0 0)"><path d="M36 0H0V36" fill="none" stroke="#acb494" stroke-opacity=".17" stroke-width="1" /></pattern>
+    <clipPath id="floor"><path d="m85 547 355-177 437 218-355 177Z" /></clipPath>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="13" stdDeviation="12" flood-color="#000" flood-opacity=".32" /></filter>
+  </defs>
+  <style>
+    .slab{fill:url(#stone);stroke:#68725a;stroke-width:1.4}.side{fill:#161e17;stroke:#525e48;stroke-width:1.2}.dark{fill:url(#dark);stroke:#849177;stroke-width:1.3}.frame{fill:url(#metal);stroke:#a0ab8e;stroke-width:1.3}.glass{fill:url(#glass);stroke:#95a384;stroke-width:1.2}.screen{fill:#1a241b;stroke:#7c8b6c;stroke-width:1}.orange{fill:url(#orange);stroke:#ffab70;stroke-width:1}.orange-side{fill:url(#orange-side);stroke:#e6783b;stroke-width:1}.ivory{fill:url(#ivory);stroke:#e8edda;stroke-width:1}.sage{fill:#a3b487;stroke:#c2cea6;stroke-width:1}.muted{fill:#55664c;stroke:#778567;stroke-width:.8}.ink{fill:#465440}.line{fill:none;stroke:#a8b494;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.ink-line{fill:none;stroke:#4f6048;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.route{fill:none;stroke:#ff9852;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.fine{fill:none;stroke:#a6b18c;stroke-width:1;stroke-opacity:.32}.label{fill:#dce1cc;font:500 11px ui-sans-serif,system-ui,sans-serif;letter-spacing:1.8px}.dark-label{fill:#41533c;font:600 10px ui-sans-serif,system-ui,sans-serif;letter-spacing:1.4px}.shadow{filter:url(#shadow)}
+    [data-mode="outline"] .slab,[data-mode="outline"] .side,[data-mode="outline"] .dark,[data-mode="outline"] .frame,[data-mode="outline"] .glass,[data-mode="outline"] .screen,[data-mode="outline"] .orange,[data-mode="outline"] .orange-side,[data-mode="outline"] .ivory,[data-mode="outline"] .sage,[data-mode="outline"] .muted,[data-mode="outline"] .ink{fill:#111710;stroke:#c2ceb0;stroke-width:1.5}
+    [data-mode="outline"] .line,[data-mode="outline"] .ink-line{stroke:#c2ceb0}[data-mode="outline"] .orange,[data-mode="outline"] .orange-side{stroke:#ffa666}[data-mode="outline"] .label,[data-mode="outline"] .dark-label{fill:#c2ceb0}[data-mode="outline"] .shadow{filter:none}[data-mode="outline"] .ambient{opacity:0}
+  </style>
+  <g data-layer="architecture" transform="translate(0 -16)">
+    <ellipse class="ambient" cx="475" cy="377" rx="377" ry="340" fill="url(#ambient)" />
+    
+    <path class="fine" d="m53 555 396-198 458 229M70 604l450 225 405-202M119 423v248M845 466v229M477 80v630" />
+    <path class="side" d="m85 570 437 218v-23L85 547Z" />
+    <path class="side" d="m522 788 355-177v-23L522 765Z" />
+    <path class="slab" d="m85 547 355-177 437 218-355 177Z" />
+    <rect x="80" y="366" width="804" height="405" fill="url(#grid)" clip-path="url(#floor)" />
+    <path class="route" d="m146 568 190 95 122-61 117 58 129-65" />
+    <path class="fine" d="m146 577 190 95 122-61 117 58 129-65" />
+    <circle class="orange" cx="336" cy="663" r="5" /><circle class="sage" cx="575" cy="660" r="5" />
+    
+    <g class="shadow">
+      <path class="orange-side" d="M267 485V265c0-148 104-217 217-174 77 29 114 102 114 182v248l-38 19V277c0-60-27-111-83-132-74-27-150 17-150 121v230Z" transform="translate(24 13)" />
+      <path class="orange" d="M267 485V265c0-148 104-217 217-174 77 29 114 102 114 182v248l-38 19V277c0-60-27-111-83-132-74-27-150 17-150 121v230Z" />
+      <path d="M280 480V265c0-130 91-198 199-158 69 26 103 91 103 166" fill="none" stroke="#ffd09d" stroke-opacity=".55" stroke-width="2" />
+      <path class="orange-side" d="m267 485 24 13 60 11-24-13Z" />
+      <path class="orange-side" d="m560 540 24 13 38-19-24-13Z" />
+    </g>
+    
+    <path class="glass" d="m633 152 101 50v276l-101-50Z" />
+    <path class="fine" d="m645 183 76 38m-76-14 76 38m-76-14 76 38m-76-14 76 38m-76-14 76 38m-76-14 76 38" />
+    <path class="side" d="m593 440 129 64 60-30v28l-60 30-129-64Z" />
+    <path class="slab" d="m593 440 60-30 129 64-60 30Z" />
+    <path class="side" d="m604 461 117 58 80-40v24l-80 40-117-58Z" />
+    <path class="side" d="m617 486 104 52 96-48v24l-96 48-104-52Z" />
+    <path class="line" d="m619 487 102 51 96-48" />
+    
+    <path class="side" d="m304 550 225 112 125-62v-56l-225-112-125 62Z" />
+    <path class="slab" d="m304 494 125-62 225 112-125 62Z" />
+    <path class="line" d="m529 606 125-62m-125 62v56" />
+    <path class="orange" d="m329 539 108 54v12l-108-54Z" />
+    <path class="fine" d="m449 599 54 27m-54-18 54 27m-54-18 54 27" />
+    <path class="side" d="m160 526 91 45 62-31v-20l-91-45-62 31Z" />
+    <path class="slab" d="m160 506 62-31 91 45-62 31Z" />
+    <path class="fine" d="M175 627v23m-11-12h22M840 377v20m-10-10h20M590 67v16m-8-8h16" />
+  </g>
+  <g data-layer="interfaces" transform="translate(0 -16)">
+    
+    <g transform="rotate(-8 190 341)" class="shadow">
+      <rect class="frame" x="86" y="266" width="216" height="166" rx="12" />
+      <rect class="dark" x="94" y="274" width="200" height="150" rx="7" />
+      <path class="line" d="M94 305h200" />
+      <circle class="orange" cx="109" cy="290" r="3" /><circle class="sage" cx="122" cy="290" r="3" /><circle class="muted" cx="135" cy="290" r="3" />
+      <path class="route" d="m124 333-12 10 12 10m143-20 12 10-12 10m-68-22-9 24" />
+      <path class="line" d="M150 333h26m37 0h32M149 346h22m31 0h31" />
+      <path class="route" d="M112 373h43m14 0h17" />
+      <path class="line" d="M113 388h106m-106 13h75" opacity=".6" />
+      <path class="line" d="m156 437 63 32 36-18" />
+    </g>
+    
+    <g transform="rotate(-12 470 358)" class="shadow">
+      <rect class="side" x="368" y="155" width="259" height="434" rx="32" />
+      <rect class="frame" x="357" y="146" width="259" height="434" rx="32" />
+      <rect class="dark" x="362" y="151" width="249" height="424" rx="28" />
+      <rect class="ivory" x="372" y="161" width="229" height="404" rx="20" />
+      <rect class="dark" x="451" y="166" width="73" height="12" rx="6" />
+      <path class="line" d="M618 236v44M354 225v25m0 12v25" />
+      <text class="dark-label" x="390" y="203">APPLICATION</text><circle class="ink" cx="579" cy="199" r="3" />
+      <rect class="orange" x="389" y="217" width="195" height="113" rx="13" />
+      <path d="M405 290v-45h13l21 27 21-27h13v45h-14v-23l-20 25-20-25v23Z" fill="#432d20" />
+      <path d="M495 244h70m-70 13h46" stroke="#f9ddbd" stroke-width="4" stroke-linecap="round" />
+      <path d="m493 306 19-10 15 4 15-16 17 7 9-13" fill="none" stroke="#6f321d" stroke-width="2" stroke-linecap="round" />
+      <text class="dark-label" x="390" y="352">DAILY WORKFLOWS</text>
+      <rect class="sage" x="389" y="365" width="195" height="55" rx="10" />
+      <rect class="ink" x="401" y="377" width="30" height="30" rx="8" />
+      <path d="m409 393 5 5 10-12" fill="none" stroke="#dce2c9" stroke-width="2" stroke-linecap="round" />
+      <path class="ink-line" d="M444 381h85m-85 12h62" stroke-width="3" />
+      <path class="ink-line" d="m566 386 5 5-5 5" />
+      <rect class="sage" x="389" y="431" width="195" height="55" rx="10" />
+      <rect class="muted" x="401" y="443" width="30" height="30" rx="8" />
+      <path class="line" d="M408 452h16m-16 6h12m-12 6h8" />
+      <path class="ink-line" d="M444 447h99m-99 12h72" stroke-width="3" />
+      <path class="ink-line" d="m566 452 5 5-5 5" />
+      <path class="ink-line" d="M394 518h43m11 0h31" opacity=".5" />
+      <circle class="orange" cx="566" cy="515" r="17" />
+      <path class="ink-line" d="M559 515h14m-5-5 5 5-5 5" />
+      <path class="ink-line" d="M457 551h57" stroke-width="3" />
+    </g>
+    
+    <g transform="rotate(9 733 331)" class="shadow">
+      <rect class="side" x="627" y="263" width="237" height="161" rx="13" />
+      <rect class="frame" x="621" y="257" width="237" height="161" rx="13" />
+      <rect class="dark" x="629" y="265" width="221" height="145" rx="7" />
+      <text class="label" x="644" y="287">COMMERCE</text><path class="line" d="M630 299h219" opacity=".45" />
+      <rect class="muted" x="644" y="315" width="49" height="34" rx="5" /><rect class="sage" x="707" y="315" width="49" height="34" rx="5" />
+      <rect class="orange" x="644" y="362" width="49" height="32" rx="5" /><rect class="muted" x="707" y="362" width="49" height="32" rx="5" />
+      <path class="line" d="m658 327 10-5 10 5v11h-20Zm61-3h22v14h-22m-2-12h26" />
+      <path class="ink-line" d="M659 374h19m-19 6h14" />
+      <path class="line" d="M776 319h55m-55 13h38m-38 13h48" />
+      <rect class="orange" x="775" y="371" width="57" height="22" rx="5" />
+      <path class="dark" d="m711 418-7 25h70l-7-25Z" /><path class="line" d="M687 443h104" />
+    </g>
+  </g>
+  <g data-layer="details" transform="translate(0 -16)">
+    
+    <g transform="rotate(-9 213 201)" class="shadow">
+      <rect class="glass" x="132" y="149" width="159" height="111" rx="12" />
+      <path class="fine" d="m139 185 42 22 38-51m-3 94-41-21 105-32m-118-36 75 36 39 23" />
+      <path class="route" d="m154 224 26-13 38 19 41-49" /><circle class="ivory" cx="154" cy="224" r="4" />
+      <path class="orange" d="M246 173a12 12 0 1 1 24 0c0 10-12 23-12 23s-12-13-12-23Z" /><circle cx="258" cy="172" r="4" fill="#66351f" />
+    </g>
+    
+    <g class="shadow">
+      <path class="orange-side" d="m140 439 62 31v52l-62-31Z" /><path class="orange" d="m202 470 55-27v52l-55 27Z" />
+      <path class="orange" d="m140 439 55-27 62 31-55 27Z" />
+      <path d="m166 426 62 31v52l-13 6v-52l-62-31Z" fill="#f2cd9e" />
+      <path class="ink-line" d="m221 481 21-10m-21 17 14-7" />
+      <path class="side" d="m79 503 60 30v34l-60-30Z" /><path class="dark" d="m139 533 44-22v34l-44 22Z" />
+      <path class="slab" d="m79 503 44-22 60 30-44 22Z" />
+      <path class="line" d="m94 521 31 15" /><circle class="orange" cx="165" cy="533" r="3" />
+    </g>
+    
+    <g transform="rotate(10 753 562)" class="shadow">
+      <rect class="dark" x="692" y="462" width="145" height="44" rx="10" />
+      <path class="line" d="M705 483h119" stroke-width="3" />
+      <path class="ivory" d="M708 480h110v167l-7-5-7 5-7-5-7 5-7-5-7 5-7-5-7 5-7-5-7 5-7-5-7 5-7-5-7 5-12-6Z" />
+      <text class="dark-label" x="721" y="506">RECEIPT</text>
+      <path class="ink-line" d="M721 519h84" stroke-dasharray="2 4" opacity=".5" />
+      <path class="ink-line" d="M721 534h37m29 0h18m-84 14h49m17 0h18m-84 14h26m40 0h18" stroke-width="3" />
+      <path class="ink-line" d="M721 578h84" opacity=".5" />
+      <path class="ink-line" d="M721 590h43m24 0h17" stroke-width="4" />
+      <path class="ink-line" d="M726 610v20m5-20v20m3-20v20m7-20v20m4-20v20m6-20v20m3-20v20m7-20v20m4-20v20m6-20v20m4-20v20m6-20v20m4-20v20" stroke-width="2" />
+    </g>
+    <g transform="rotate(8 739 163)" class="shadow">
+      <rect class="ivory" x="671" y="123" width="135" height="75" rx="11" />
+      <circle class="ink" cx="695" cy="147" r="9" />
+      <path d="m691 147 3 3 5-6" fill="none" stroke="#dce1cb" stroke-width="1.5" />
+      <path class="ink-line" d="M714 141h71m-71 12h43" stroke-width="3" />
+      <path class="ink-line" d="M687 176h23m8 0h34" opacity=".4" />
+    </g>
+    
+    <g transform="matrix(1 .5 -1 .5 241 619)">
+      <rect class="dark" width="63" height="63" rx="7" />
+      <path d="M14 46V17h8l10 15 10-15h8v29h-9V32l-9 14-9-14v14Z" fill="#dce0ca" /><circle class="orange" cx="53" cy="53" r="3" />
+    </g>
+    <path class="route" d="M219 127c36-39 91-52 147-35M815 213c51 15 75 60 60 97" stroke-dasharray="3 9" opacity=".5" />
+    <circle class="sage" cx="219" cy="127" r="4" /><circle class="orange" cx="875" cy="310" r="4" />
+    <path class="line" d="m139 113 14-7 14 7-14 7Z" opacity=".5" /><circle class="sage" cx="630" cy="86" r="3" />
+  </g>
+</svg>

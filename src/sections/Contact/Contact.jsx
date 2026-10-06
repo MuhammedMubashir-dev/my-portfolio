@@ -110,10 +110,10 @@ export default function Contact() {
               </div>
               <div className="contact-resumes" aria-label="Résumé downloads">
                 {resumeDownloads.map(resume => <div key={resume.id} className="resume-download-row">
-                  <div><h3>{resume.label} résumé</h3><p>{resume.description}</p></div>
+                  <div><h3>{resume.label}</h3><p>{resume.description}</p></div>
                   <div className="resume-download-links">
-                    <a href={resume.pdf} download={`${resume.filename}.pdf`}><Download size={16} /> PDF<span className="sr-only"> · {resume.label} résumé</span></a>
-                    <a href={resume.word} download={`${resume.filename}.docx`}><FileText size={16} /> Word<span className="sr-only"> · {resume.label} résumé</span></a>
+                    <a href={resume.pdf} download={`${resume.filename}.pdf`}><Download size={16} /> PDF<span className="sr-only"> · {resume.label}</span></a>
+                    <a href={resume.word} download={`${resume.filename}.docx`}><FileText size={16} /> Word<span className="sr-only"> · {resume.label}</span></a>
                   </div>
                 </div>)}
               </div>
@@ -226,4 +226,3 @@ export default function Contact() {
     </section>
   )
 }
-

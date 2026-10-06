@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" width="960" height="780" data-mode="colour" role="img" aria-labelledby="title description">
+  <title id="title">A world of connected applications</title>
+  <desc id="description">An original architectural illustration of a mobile application inside an orange arch, surrounded by commerce, delivery, and software services on floating platforms.</desc>
+  <defs>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#47493b" /><stop offset="1" stop-color="#20251e" /></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#292e28" /><stop offset="1" stop-color="#141914" /></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b8b8a3" /><stop offset=".3" stop-color="#626956" /><stop offset="1" stop-color="#30382d" /></linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#ffb373" /><stop offset=".45" stop-color="#ff8139" /><stop offset="1" stop-color="#d94d1e" /></linearGradient>
+    <linearGradient id="orange-side" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b33d1a" /><stop offset="1" stop-color="#76311e" /></linearGradient>
+    <linearGradient id="ivory" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4efdf" /><stop offset="1" stop-color="#c8cdb8" /></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9e0ba" stop-opacity=".12" /><stop offset="1" stop-color="#a8b897" stop-opacity=".02" /></linearGradient>
+    <radialGradient id="ambient"><stop stop-color="#ff8a43" stop-opacity=".12" /><stop offset="1" stop-color="#ff8a43" stop-opacity="0" /></radialGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse" patternTransform="matrix(1 .5 -1 .5 0 0)"><path d="M36 0H0V36" fill="none" stroke="#acb494" stroke-opacity=".17" stroke-width="1" /></pattern>
+    <clipPath id="floor"><path d="m85 547 355-177 437 218-355 177Z" /></clipPath>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="13" stdDeviation="12" flood-color="#000" flood-opacity=".32" /></filter>
+  </defs>
+  <style>
+    .slab{fill:url(#stone);stroke:#68725a;stroke-width:1.4}.side{fill:#161e17;stroke:#525e48;stroke-width:1.2}.dark{fill:url(#dark);stroke:#849177;stroke-width:1.3}.frame{fill:url(#metal);stroke:#a0ab8e;stroke-width:1.3}.glass{fill:url(#glass);stroke:#95a384;stroke-width:1.2}.screen{fill:#1a241b;stroke:#7c8b6c;stroke-width:1}.orange{fill:url(#orange);stroke:#ffab70;stroke-width:1}.orange-side{fill:url(#orange-side);stroke:#e6783b;stroke-width:1}.ivory{fill:url(#ivory);stroke:#e8edda;stroke-width:1}.sage{fill:#a3b487;stroke:#c2cea6;stroke-width:1}.muted{fill:#55664c;stroke:#778567;stroke-width:.8}.ink{fill:#465440}.line{fill:none;stroke:#a8b494;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.ink-line{fill:none;stroke:#4f6048;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.route{fill:none;stroke:#ff9852;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.fine{fill:none;stroke:#a6b18c;stroke-width:1;stroke-opacity:.32}.label{fill:#dce1cc;font:500 11px ui-sans-serif,system-ui,sans-serif;letter-spacing:1.8px}.dark-label{fill:#41533c;font:600 10px ui-sans-serif,system-ui,sans-serif;letter-spacing:1.4px}.shadow{filter:url(#shadow)}
+    [data-mode="outline"] .slab,[data-mode="outline"] .side,[data-mode="outline"] .dark,[data-mode="outline"] .frame,[data-mode="outline"] .glass,[data-mode="outline"] .screen,[data-mode="outline"] .orange,[data-mode="outline"] .orange-side,[data-mode="outline"] .ivory,[data-mode="outline"] .sage,[data-mode="outline"] .muted,[data-mode="outline"] .ink{fill:#111710;stroke:#c2ceb0;stroke-width:1.5}
+    [data-mode="outline"] .line,[data-mode="outline"] .ink-line{stroke:#c2ceb0}[data-mode="outline"] .orange,[data-mode="outline"] .orange-side{stroke:#ffa666}[data-mode="outline"] .label,[data-mode="outline"] .dark-label{fill:#c2ceb0}[data-mode="outline"] .shadow{filter:none}[data-mode="outline"] .ambient{opacity:0}
+  </style>
+  <g data-layer="architecture" transform="translate(0 -16)">
+    <ellipse class="ambient" cx="475" cy="377" rx="377" ry="340" fill="url(#ambient)" />
+    
+    <path class="fine" d="m53 555 396-198 458 229M70 604l450 225 405-202M119 423v248M845 466v229M477 80v630" />
+    <path class="side" d="m85 570 437 218v-23L85 547Z" />
+    <path class="side" d="m522 788 355-177v-23L522 765Z" />
+    <path class="slab" d="m85 547 355-177 437 218-355 177Z" />
+    <rect x="80" y="366" width="804" height="405" fill="url(#grid)" clip-path="url(#floor)" />
+    <path class="route" d="m146 568 190 95 122-61 117 58 129-65" />
+    <path class="fine" d="m146 577 190 95 122-61 117 58 129-65" />
+    <circle class="orange" cx="336" cy="663" r="5" /><circle class="sage" cx="575" cy="660" r="5" />
+    
+    <g class="shadow">
+      <path class="orange-side" d="M267 485V265c0-148 104-217 217-174 77 29 114 102 114 182v248l-38 19V277c0-60-27-111-83-132-74-27-150 17-150 121v230Z" transform="translate(24 13)" />
+      <path class="orange" d="M267 485V265c0-148 104-217 217-174 77 29 114 102 114 182v248l-38 19V277c0-60-27-111-83-132-74-27-150 17-150 121v230Z" />
+      <path d="M280 480V265c0-130 91-198 199-158 69 26 103 91 103 166" fill="none" stroke="#ffd09d" stroke-opacity=".55" stroke-width="2" />
+      <path class="orange-side" d="m267 485 24 13 60 11-24-13Z" />
+      <path class="orange-side" d="m560 540 24 13 38-19-24-13Z" />
+    </g>
+    
+    <path class="glass" d="m633 152 101 50v276l-101-50Z" />
+    <path class="fine" d="m645 183 76 38m-76-14 76 38m-76-14 76 38m-76-14 76 38m-76-14 76 38m-76-14 76 38" />
+    <path class="side" d="m593 440 129 64 60-30v28l-60 30-129-64Z" />
+    <path class="slab" d="m593 440 60-30 129 64-60 30Z" />
+    <path class="side" d="m604 461 117 58 80-40v24l-80 40-117-58Z" />
+    <path class="side" d="m617 486 104 52 96-48v24l-96 48-104-52Z" />
+    <path class="line" d="m619 487 102 51 96-48" />
+    
+    <path class="side" d="m304 550 225 112 125-62v-56l-225-112-125 62Z" />
+    <path class="slab" d="m304 494 125-62 225 112-125 62Z" />
+    <path class="line" d="m529 606 125-62m-125 62v56" />
+    <path class="orange" d="m329 539 108 54v12l-108-54Z" />
+    <path class="fine" d="m449 599 54 27m-54-18 54 27m-54-18 54 27" />
+    <path class="side" d="m160 526 91 45 62-31v-20l-91-45-62 31Z" />
+    <path class="slab" d="m160 506 62-31 91 45-62 31Z" />
+    <path class="fine" d="M175 627v23m-11-12h22M840 377v20m-10-10h20M590 67v16m-8-8h16" />
+  </g>
+  </svg>

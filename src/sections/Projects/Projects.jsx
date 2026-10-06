@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { projects } from "../../data/projects"
 import { caseStudies } from "../../data/caseStudies"
 import Bug from "../../components/shared/Bug"
+import { openProject, projectNavigationEvent } from "../../lib/projectNavigation"
 
 const stories = {
   1: { problem: "Different storefronts. One shared platform.", contribution: "Built reusable themes, product discovery, and tenant-aware Stripe and Razorpay checkout flows.", result: "Localized storefronts with shared commerce components." },
@@ -65,15 +66,18 @@ export default function Projects() {
       frame = requestAnimationFrame(() => document.getElementById(`project-${id}`)?.scrollIntoView({ block: "start", behavior: reducedMotion ? "auto" : "smooth" }))
     }
     const onHashChange = () => revealProject(window.location.hash)
+    const onProjectRequest = event => revealProject(event.detail)
     const onProjectLink = event => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
       const link = event.target instanceof Element ? event.target.closest('a[href^="#project-"]') : null
-      if (link) revealProject(link.getAttribute("href"))
+      if (link) openProject(link.getAttribute("href"), { updateHash: false })
     }
     window.addEventListener("hashchange", onHashChange)
+    window.addEventListener(projectNavigationEvent, onProjectRequest)
     document.addEventListener("click", onProjectLink)
     return () => {
       window.removeEventListener("hashchange", onHashChange)
+      window.removeEventListener(projectNavigationEvent, onProjectRequest)
       document.removeEventListener("click", onProjectLink)
       cancelAnimationFrame(frame)
     }

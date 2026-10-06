@@ -1,6 +1,6 @@
 export const profile = {
   name: "Muhammed Mubashir",
-  role: "Junior Full Stack Developer",
+  role: "Junior Application Developer",
   company: "ENKE Consulting Services LLP",
   email: "muhammedmubashirwork@gmail.com",
   phone: "+91 8089433955",
@@ -12,7 +12,7 @@ export const profile = {
 export const resumeDownloads = [
   {
     id: "flutter",
-    label: "Flutter",
+    label: "Résumé",
     description: "POS, reporting, payments, and delivery apps",
     pdf: "/muhammed-mubashir-k-resume-flutter.pdf",
     word: "/muhammed-mubashir-k-resume-flutter.docx",

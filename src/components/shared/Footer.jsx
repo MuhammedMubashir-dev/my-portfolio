@@ -46,6 +46,7 @@ export default function Footer() {
           <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
             Copyright {currentYear}. Built with React and Vite.
           </p>
+          <a href="/models/credits.html" className="mt-2 inline-block text-xs text-[var(--muted)] underline underline-offset-4 hover:text-[var(--text)]">3D asset credits</a>
           <div className="bug-hunt">
             <span aria-live="polite">A little debugging? {squashedBugs.length}/{totalBugs} bugs found.</span>
             {squashedBugs.length === totalBugs

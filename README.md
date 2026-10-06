@@ -1,6 +1,6 @@
 # Muhammed Mubashir Portfolio
 
-Personal portfolio website for Muhammed Mubashir, a Junior Full Stack Developer focused on
+Personal portfolio website for Muhammed Mubashir, a Junior Application Developer focused on
 Flutter mobile and POS applications, with React Native experience on Android/iOS and supporting
 React/Next.js commerce work.
 

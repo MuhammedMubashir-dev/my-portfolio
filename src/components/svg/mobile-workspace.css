@@ -1,0 +1,35 @@
+.mobile-workspace { width: 100%; min-width: 0; margin: 0; position: relative; }
+.workspace-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--muted); font-size: 9px; letter-spacing: .12em; }
+.workspace-heading > span { display: inline-flex; align-items: center; gap: 8px; }
+.workspace-heading .status-dot { background: var(--accent); width: 4px; height: 4px; }
+.workspace-view { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 36px; padding: 7px 10px; font-size: 10px; letter-spacing: 0; color: var(--muted-strong); border: 1px solid var(--border-soft); border-radius: 6px; flex-shrink: 0; transition: color .2s, border-color .2s; }
+.workspace-view:hover, .workspace-view[aria-pressed="true"] { color: var(--accent); border-color: #745237; }
+.workspace-scene { display: block; width: 100%; height: auto; aspect-ratio: 960 / 780; overflow: visible; margin-block: -12px -2px; }
+.workspace-parallax { transform: translate(calc(var(--workspace-x, 0px) * var(--depth)), calc(var(--workspace-y, 0px) * var(--depth))); }
+.workspace-layer-interfaces .workspace-drift { animation: workspace-float 7s ease-in-out infinite; }
+.workspace-layer-details .workspace-drift { animation: workspace-float 8.5s ease-in-out -2.5s infinite reverse; }
+.workspace-drift { animation-play-state: paused !important; }
+.workspace-signals { fill: none; stroke: var(--accent-strong); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 130; opacity: .8; animation: workspace-flow 7s linear infinite; animation-play-state: paused; }
+.mobile-workspace[data-animate="true"] .workspace-drift { animation-play-state: running !important; }
+.mobile-workspace[data-animate="true"] .workspace-signals { animation-play-state: running; }
+.mobile-workspace[data-outline="true"] .workspace-signals { opacity: 0; }
+@keyframes workspace-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes workspace-flow { to { stroke-dashoffset: -264; } }
+.workspace-caption { display: flex; align-items: center; justify-content: space-between; gap: 14px; color: var(--muted); font-size: 10px; border-top: 1px solid var(--border-soft); padding-top: 12px; }
+.workspace-caption > span, .workspace-caption a { display: inline-flex; align-items: center; gap: 7px; }
+.workspace-caption a { min-height: 32px; color: var(--muted-strong); padding-inline: 6px; }
+.workspace-caption a:hover { color: var(--accent); }
+.workspace-tools { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.workspace-motion { display: inline-flex; align-items: center; gap: 5px; min-height: 32px; padding-inline: 4px; color: var(--muted-strong); font-size: inherit; }
+.workspace-motion:hover { color: var(--accent); }
+.workspace-view:focus-visible, .workspace-motion:focus-visible, .workspace-caption a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.workspace-caption .workspace-static-hint { display: none; }
+@media (max-width:850px) { .mobile-workspace { max-width: 580px; margin: 20px auto 0; } }
+@media (max-width:600px) { .workspace-heading { font-size: 8px; letter-spacing: .08em; }.workspace-view { font-size: 9px; }.workspace-caption { font-size: 9px; } }
+@media (max-width:380px) { .workspace-tools { gap: 7px; }.workspace-caption { gap: 6px; }.workspace-static-hint { font-size: 8px; } }
+@media (hover:none), (pointer:coarse) { .workspace-caption .workspace-pointer-hint { display: none; }.workspace-caption .workspace-static-hint { display: inline-flex; } }
+.mobile-workspace[data-reduced-motion="true"] .workspace-pointer-hint { display: none; }
+.mobile-workspace[data-reduced-motion="true"] .workspace-static-hint { display: inline-flex; }
+.mobile-workspace:has(.workspace-motion[aria-pressed="true"]) .workspace-pointer-hint { display: none; }
+.mobile-workspace:has(.workspace-motion[aria-pressed="true"]) .workspace-static-hint { display: inline-flex; }
+@media (prefers-reduced-motion:reduce) { .workspace-view { transition: none; }.workspace-drift, .workspace-signals { animation: none !important; }.workspace-parallax { transform: none; } }

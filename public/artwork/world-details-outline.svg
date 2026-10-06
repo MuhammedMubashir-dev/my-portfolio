@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" width="960" height="780" data-mode="outline" role="img" aria-labelledby="title description">
+  <title id="title">A world of connected applications</title>
+  <desc id="description">An original architectural illustration of a mobile application inside an orange arch, surrounded by commerce, delivery, and software services on floating platforms.</desc>
+  <defs>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#47493b" /><stop offset="1" stop-color="#20251e" /></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#292e28" /><stop offset="1" stop-color="#141914" /></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b8b8a3" /><stop offset=".3" stop-color="#626956" /><stop offset="1" stop-color="#30382d" /></linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#ffb373" /><stop offset=".45" stop-color="#ff8139" /><stop offset="1" stop-color="#d94d1e" /></linearGradient>
+    <linearGradient id="orange-side" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b33d1a" /><stop offset="1" stop-color="#76311e" /></linearGradient>
+    <linearGradient id="ivory" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4efdf" /><stop offset="1" stop-color="#c8cdb8" /></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9e0ba" stop-opacity=".12" /><stop offset="1" stop-color="#a8b897" stop-opacity=".02" /></linearGradient>
+    <radialGradient id="ambient"><stop stop-color="#ff8a43" stop-opacity=".12" /><stop offset="1" stop-color="#ff8a43" stop-opacity="0" /></radialGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse" patternTransform="matrix(1 .5 -1 .5 0 0)"><path d="M36 0H0V36" fill="none" stroke="#acb494" stroke-opacity=".17" stroke-width="1" /></pattern>
+    <clipPath id="floor"><path d="m85 547 355-177 437 218-355 177Z" /></clipPath>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="13" stdDeviation="12" flood-color="#000" flood-opacity=".32" /></filter>
+  </defs>
+  <style>
+    .slab{fill:url(#stone);stroke:#68725a;stroke-width:1.4}.side{fill:#161e17;stroke:#525e48;stroke-width:1.2}.dark{fill:url(#dark);stroke:#849177;stroke-width:1.3}.frame{fill:url(#metal);stroke:#a0ab8e;stroke-width:1.3}.glass{fill:url(#glass);stroke:#95a384;stroke-width:1.2}.screen{fill:#1a241b;stroke:#7c8b6c;stroke-width:1}.orange{fill:url(#orange);stroke:#ffab70;stroke-width:1}.orange-side{fill:url(#orange-side);stroke:#e6783b;stroke-width:1}.ivory{fill:url(#ivory);stroke:#e8edda;stroke-width:1}.sage{fill:#a3b487;stroke:#c2cea6;stroke-width:1}.muted{fill:#55664c;stroke:#778567;stroke-width:.8}.ink{fill:#465440}.line{fill:none;stroke:#a8b494;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.ink-line{fill:none;stroke:#4f6048;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.route{fill:none;stroke:#ff9852;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.fine{fill:none;stroke:#a6b18c;stroke-width:1;stroke-opacity:.32}.label{fill:#dce1cc;font:500 11px ui-sans-serif,system-ui,sans-serif;letter-spacing:1.8px}.dark-label{fill:#41533c;font:600 10px ui-sans-serif,system-ui,sans-serif;letter-spacing:1.4px}.shadow{filter:url(#shadow)}
+    [data-mode="outline"] .slab,[data-mode="outline"] .side,[data-mode="outline"] .dark,[data-mode="outline"] .frame,[data-mode="outline"] .glass,[data-mode="outline"] .screen,[data-mode="outline"] .orange,[data-mode="outline"] .orange-side,[data-mode="outline"] .ivory,[data-mode="outline"] .sage,[data-mode="outline"] .muted,[data-mode="outline"] .ink{fill:#111710;stroke:#c2ceb0;stroke-width:1.5}
+    [data-mode="outline"] .line,[data-mode="outline"] .ink-line{stroke:#c2ceb0}[data-mode="outline"] .orange,[data-mode="outline"] .orange-side{stroke:#ffa666}[data-mode="outline"] .label,[data-mode="outline"] .dark-label{fill:#c2ceb0}[data-mode="outline"] .shadow{filter:none}[data-mode="outline"] .ambient{opacity:0}
+  </style>
+  <g data-layer="details" transform="translate(0 -16)">
+    
+    <g transform="rotate(-9 213 201)" class="shadow">
+      <rect class="glass" x="132" y="149" width="159" height="111" rx="12" />
+      <path class="fine" d="m139 185 42 22 38-51m-3 94-41-21 105-32m-118-36 75 36 39 23" />
+      <path class="route" d="m154 224 26-13 38 19 41-49" /><circle class="ivory" cx="154" cy="224" r="4" />
+      <path class="orange" d="M246 173a12 12 0 1 1 24 0c0 10-12 23-12 23s-12-13-12-23Z" /><circle cx="258" cy="172" r="4" fill="#66351f" />
+    </g>
+    
+    <g class="shadow">
+      <path class="orange-side" d="m140 439 62 31v52l-62-31Z" /><path class="orange" d="m202 470 55-27v52l-55 27Z" />
+      <path class="orange" d="m140 439 55-27 62 31-55 27Z" />
+      <path d="m166 426 62 31v52l-13 6v-52l-62-31Z" fill="#f2cd9e" />
+      <path class="ink-line" d="m221 481 21-10m-21 17 14-7" />
+      <path class="side" d="m79 503 60 30v34l-60-30Z" /><path class="dark" d="m139 533 44-22v34l-44 22Z" />
+      <path class="slab" d="m79 503 44-22 60 30-44 22Z" />
+      <path class="line" d="m94 521 31 15" /><circle class="orange" cx="165" cy="533" r="3" />
+    </g>
+    
+    <g transform="rotate(10 753 562)" class="shadow">
+      <rect class="dark" x="692" y="462" width="145" height="44" rx="10" />
+      <path class="line" d="M705 483h119" stroke-width="3" />
+      <path class="ivory" d="M708 480h110v167l-7-5-7 5-7-5-7 5-7-5-7 5-7-5-7 5-7-5-7 5-7-5-7 5-7-5-7 5-12-6Z" />
+      <text class="dark-label" x="721" y="506">RECEIPT</text>
+      <path class="ink-line" d="M721 519h84" stroke-dasharray="2 4" opacity=".5" />
+      <path class="ink-line" d="M721 534h37m29 0h18m-84 14h49m17 0h18m-84 14h26m40 0h18" stroke-width="3" />
+      <path class="ink-line" d="M721 578h84" opacity=".5" />
+      <path class="ink-line" d="M721 590h43m24 0h17" stroke-width="4" />
+      <path class="ink-line" d="M726 610v20m5-20v20m3-20v20m7-20v20m4-20v20m6-20v20m3-20v20m7-20v20m4-20v20m6-20v20m4-20v20m6-20v20m4-20v20" stroke-width="2" />
+    </g>
+    <g transform="rotate(8 739 163)" class="shadow">
+      <rect class="ivory" x="671" y="123" width="135" height="75" rx="11" />
+      <circle class="ink" cx="695" cy="147" r="9" />
+      <path d="m691 147 3 3 5-6" fill="none" stroke="#dce1cb" stroke-width="1.5" />
+      <path class="ink-line" d="M714 141h71m-71 12h43" stroke-width="3" />
+      <path class="ink-line" d="M687 176h23m8 0h34" opacity=".4" />
+    </g>
+    
+    <g transform="matrix(1 .5 -1 .5 241 619)">
+      <rect class="dark" width="63" height="63" rx="7" />
+      <path d="M14 46V17h8l10 15 10-15h8v29h-9V32l-9 14-9-14v14Z" fill="#dce0ca" /><circle class="orange" cx="53" cy="53" r="3" />
+    </g>
+    <path class="route" d="M219 127c36-39 91-52 147-35M815 213c51 15 75 60 60 97" stroke-dasharray="3 9" opacity=".5" />
+    <circle class="sage" cx="219" cy="127" r="4" /><circle class="orange" cx="875" cy="310" r="4" />
+    <path class="line" d="m139 113 14-7 14 7-14 7Z" opacity=".5" /><circle class="sage" cx="630" cy="86" r="3" />
+  </g>
+</svg>

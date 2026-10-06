@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local drafts, caches and downloaded sources
+tmp/
+__pycache__/
+output/artwork/
+output/ganvin-redacted/
+output/linkedin/
+output/resume/
+scripts/build_ifza_resume.py

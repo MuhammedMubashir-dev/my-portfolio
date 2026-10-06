@@ -1,0 +1,24 @@
+.profile-avatar { position: relative; width: 210px; max-width: 100%; aspect-ratio: 1; margin: 4px auto 28px; }
+.profile-avatar::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent), transparent 30%, transparent 60%, rgba(255,122,47,.5), var(--accent)); animation: profile-avatar-spin 9s linear infinite; }
+.profile-avatar::after { content: ""; position: absolute; inset: -30px; z-index: -1; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,47,.18), transparent 65%); }
+.profile-avatar-stage { position: absolute; inset: 0; overflow: hidden; border-radius: 50%; background: #f6f2e8; box-shadow: 0 0 0 5px var(--bg-soft); animation: profile-avatar-float 5s ease-in-out infinite; }
+.profile-avatar-pose { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity .35s ease, transform .5s var(--ease-out); }
+.profile-avatar-wave { opacity: 0; transform: rotate(-3deg) scale(.98); transform-origin: 50% 100%; }
+.profile-avatar.is-waving .profile-avatar-wave { opacity: 1; transform: none; animation: profile-avatar-hello .45s ease-in-out .2s 3 alternate; }
+.profile-avatar.is-waving .profile-avatar-phone { opacity: 0; }
+.profile-avatar-badge { position: absolute; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--border-soft); border-radius: 50%; background: var(--surface); box-shadow: 0 10px 22px -12px rgba(0,0,0,.9); animation: profile-avatar-bob 4s ease-in-out infinite; }
+.profile-avatar-badge-a { top: 4%; left: -6%; }
+.profile-avatar-badge-b { top: 30%; right: -12%; animation-delay: -1.3s; }
+.profile-avatar-badge-c { bottom: 6%; left: -10%; animation-delay: -2.6s; }
+.profile-avatar-greet { position: absolute; left: 50%; bottom: -16px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 6px 13px; border: 1px solid var(--border-soft); border-radius: 999px; background: var(--surface-strong); color: var(--muted-strong); font-size: 10px; white-space: nowrap; transition: color .2s, border-color .2s; }
+.profile-avatar-greet:hover { color: var(--accent); border-color: rgba(255,122,47,.4); }
+.profile-avatar-greet:hover svg { animation: profile-avatar-hello .3s ease-in-out 2 alternate; }
+.profile-avatar-greet:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@keyframes profile-avatar-spin { to { transform: rotate(360deg); } }
+@keyframes profile-avatar-float { 50% { transform: translateY(-4px); } }
+@keyframes profile-avatar-bob { 50% { transform: translateY(-6px); } }
+@keyframes profile-avatar-hello { to { transform: rotate(4deg); } }
+@media (max-width: 600px) { .profile-avatar { width: 180px; } }
+@media (prefers-reduced-motion: reduce) {
+  .profile-avatar::before, .profile-avatar-stage, .profile-avatar-badge, .profile-avatar.is-waving .profile-avatar-wave { animation: none; }
+}
