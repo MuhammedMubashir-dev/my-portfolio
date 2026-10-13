@@ -10,8 +10,12 @@
   --bg-soft: #151611;
   --surface: #1b1c16;
   --surface-strong: #24251d;
+  --surface-project: #161712;
+  --surface-media: #22241c;
+  --surface-media-web: #2b221d;
   --border: #343428;
   --border-soft: rgba(246, 242, 232, 0.1);
+  --border-accent: rgba(255, 122, 47, 0.34);
   --text: #f6f2e8;
   --muted: #a9a291;
   --muted-strong: #cfc7b8;
@@ -19,6 +23,7 @@
   --accent-strong: #ff9a5f;
   --accent-dim: rgba(255, 122, 47, 0.12);
   --success: #b8f06a;
+  --shadow-card: 0 24px 70px rgba(0, 0, 0, 0.24);
 
   --font-display: "Syne", sans-serif;
   --font-body: "DM Sans", sans-serif;

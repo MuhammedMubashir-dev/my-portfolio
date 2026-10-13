@@ -19,6 +19,12 @@ export default function SmoothScroll({ children }) {
       infinite: false,
     })
 
+    const onScreenshotViewer = event => {
+      if (event.detail?.open) lenis.stop()
+      else lenis.start()
+    }
+    window.addEventListener('portfolio:screenshot-viewer', onScreenshotViewer)
+
     // Animation frame loop for Lenis
     let frameId
     function raf(time) {
@@ -30,6 +36,7 @@ export default function SmoothScroll({ children }) {
 
     // Cleanup on unmount
     return () => {
+      window.removeEventListener('portfolio:screenshot-viewer', onScreenshotViewer)
       cancelAnimationFrame(frameId)
       lenis.destroy()
     }

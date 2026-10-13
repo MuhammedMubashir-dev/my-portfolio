@@ -14,13 +14,13 @@ export default function Hero() {
           <motion.div className="hero-copy" initial={reducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
             <p className="hero-eyebrow"><span className="status-dot" /> AVAILABLE FOR NEW OPPORTUNITIES</p>
             <p className="hero-introduction">Hi, I&rsquo;m <strong>{profile.name}</strong></p>
-            <h1 className="hero-headline">Mobile App<br /><span>Developer</span></h1>
-            <p className="hero-specialization">Flutter · React Native · React · Next.js</p>
+            <h1 className="hero-headline">Flutter &amp;<br /><span>React Native</span><br />Developer</h1>
+            <p className="hero-specialization">Mobile apps · POS · Supporting React &amp; Next.js experience</p>
             <p className="hero-description">I build Flutter and React Native apps for retail, POS, and delivery, covering billing, ordering, payments, and authentication.</p>
             <div className="hero-actions">
               <a href="#projects" className="button-primary">View projects <ArrowUpRight size={18} /></a>
               <div className="hero-resumes" aria-label="Download a résumé">
-                {resumeDownloads.map(resume => <a key={resume.id} href={resume.pdf} download={`${resume.filename}.pdf`} className="hero-resume"><Download size={16} /> {resume.label} (PDF)</a>)}
+                {resumeDownloads.map(resume => <a key={resume.id} href={resume.pdf} download={`${resume.filename}.pdf`} className="hero-resume" aria-label={`Download ${resume.label.toLowerCase()} (PDF)`}><Download size={16} aria-hidden="true" /> Download {resume.label.toLowerCase()}</a>)}
               </div>
               <div className="hero-socials">
                 <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub profile"><Github size={17} /></a>

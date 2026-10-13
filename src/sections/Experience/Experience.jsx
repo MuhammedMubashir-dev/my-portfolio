@@ -56,7 +56,7 @@ export default function Experience() {
     <section id="experience" className="section-shell experience-section">
       <div className="section-container">
         <div className="work-heading experience-heading">
-          <div><p className="section-kicker">EMPLOYMENT</p><h2>Professional experience</h2></div>
+          <div><p className="section-kicker">03 / EMPLOYMENT</p><h2>Professional experience</h2></div>
           <p>From trainee to {profile.role}, building across company products since April 2026.</p>
         </div>
         <div className="experience-company"><BriefcaseBusiness size={19} aria-hidden="true" /><div><strong>{profile.company}</strong><span>Apr 2026 – Present · Kerala, India</span></div></div>
