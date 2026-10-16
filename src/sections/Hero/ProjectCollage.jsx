@@ -1,6 +1,6 @@
 import { Component, lazy, Suspense, useCallback, useState } from "react"
 import { useMotionValue, useReducedMotion, useSpring } from "framer-motion"
-import { ArrowUpRight, RotateCcw } from "lucide-react"
+import { Play, RotateCcw } from "lucide-react"
 import { projects } from "../../data/projects"
 import "./project-collage.css"
 
@@ -45,13 +45,15 @@ function DevicePoster({ views }) {
 
 export default function ProjectCollage() {
   const reducedMotion = useReducedMotion()
-  const [views, setViews] = useState([0, 0])
+  const saveData = typeof navigator !== "undefined" && Boolean(navigator.connection?.saveData)
+  const views = [0, 0]
+  const [previewEnabled, setPreviewEnabled] = useState(false)
   const [attempt, setAttempt] = useState(0)
   const [retrying, setRetrying] = useState(false)
   const [replay, setReplay] = useState(0)
   const [previewReady, setPreviewReady] = useState(false)
   const [previewFailed, setPreviewFailed] = useState(false)
-  const onReady = useCallback(() => setPreviewReady(true), [])
+  const onReady = useCallback(() => { setPreviewReady(true); setPreviewFailed(false) }, [])
   const onError = useCallback(() => { setPreviewReady(false); setPreviewFailed(true) }, [])
   const pointerX = useMotionValue(0)
   const pointerY = useMotionValue(0)
@@ -59,7 +61,13 @@ export default function ProjectCollage() {
   const springY = useSpring(pointerY, { stiffness: 110, damping: 24 })
   const laptopImage = featuredProjects[0].views[views[0]].src
   const phoneImage = featuredProjects[1].views[views[1]].src
-  const previewState = previewFailed ? "failed" : previewReady ? "ready" : "loading"
+  const previewState = !previewEnabled ? "poster" : previewFailed ? "failed" : previewReady ? "ready" : "loading"
+
+  function enablePreview() {
+    setPreviewReady(false)
+    setPreviewFailed(false)
+    setPreviewEnabled(true)
+  }
 
   async function retryPreview() {
     setRetrying(true)
@@ -85,48 +93,32 @@ export default function ProjectCollage() {
   }
 
   return <figure className="project-collage" aria-label="Selected company projects: EPOSMOB and Ganvin Customer">
-    <div className="collage-heading"><span>SELECTED WORK</span><span>Mobile / Point of sale</span></div>
     <div id="featured-device-preview" className="device-stage" data-preview-state={previewState}
       aria-busy={previewState === "loading"} onPointerMove={moveDevices}
       onPointerLeave={() => { pointerX.set(0); pointerY.set(0) }}>
       <DevicePoster views={views} />
-      <DeviceSceneBoundary key={attempt} onError={onError} fallback={<button type="button" className="device-retry"
+      {!previewEnabled && <button type="button" className="device-enable" onClick={enablePreview}>
+        <span className="device-enable-icon" aria-hidden="true"><Play size={13} fill="currentColor" /></span>
+        <span><strong>Explore in 3D</strong><small>{saveData ? "Data saver is on · loads on request" :
+          reducedMotion ? "Reduced motion · opens without animation" : "Optional interactive preview"}</small></span>
+      </button>}
+      {previewEnabled && <DeviceSceneBoundary key={attempt} onError={onError} fallback={<button type="button" className="device-retry"
         onClick={retryPreview} disabled={retrying}>{retrying ? "Retrying preview…" : "Retry 3D preview"}</button>}>
         <Suspense fallback={null}>
           <DeviceScene laptopImage={laptopImage} phoneImage={phoneImage}
             springX={springX} springY={springY} reducedMotion={reducedMotion} replay={replay}
             onReady={onReady} />
         </Suspense>
-      </DeviceSceneBoundary>
-      <p className="device-load-status" role="status">
+      </DeviceSceneBoundary>}
+      {previewEnabled && <p className="device-load-status" role="status" aria-live="polite">
         {previewState === "loading" ? <><span className="device-load-spinner" aria-hidden="true" />Loading 3D preview</> :
           previewState === "failed" ? "Image preview available" : <span className="sr-only">3D preview ready</span>}
-      </p>
+      </p>}
       {previewReady && !reducedMotion && <button type="button" className="device-replay"
         onClick={() => setReplay(value => value + 1)} aria-label="Replay device animation">
         <RotateCcw size={13} aria-hidden="true" /><span>Replay</span>
       </button>}
     </div>
-    <figcaption className="collage-projects">
-      {featuredProjects.map((project, projectIndex) => <div className="collage-project" key={project.id}>
-        <a className="collage-project-link" href={"#project-" + project.id}>
-          <span className="collage-project-number">{project.number}</span>
-          <span><strong>{project.label}</strong><span>{project.description}</span></span>
-          <ArrowUpRight size={18} aria-hidden="true" />
-        </a>
-        <div className="collage-views" role="group" aria-label={project.label + " screenshots"}>
-          {project.views.map((view, viewIndex) => <button key={view.src} type="button"
-            aria-pressed={views[projectIndex] === viewIndex} aria-controls="featured-device-preview"
-            onClick={() => setViews(current => current.map((value, index) => index === projectIndex ? viewIndex : value))}>
-            {view.label}
-          </button>)}
-        </div>
-        <a className="collage-full-image" href={project.views[views[projectIndex]].src} target="_blank" rel="noreferrer"
-          aria-label={`View full-size ${project.label} ${project.views[views[projectIndex]].label} screenshot`}>
-          Full-size screenshot <ArrowUpRight size={12} aria-hidden="true" />
-        </a>
-        <p className="sr-only" aria-live="polite">{project.label + ": " + project.views[views[projectIndex]].label + " screenshot"}</p>
-      </div>)}
-    </figcaption>
+    <figcaption className="collage-caption">{featuredProjects[0].label} billing on desktop · {featuredProjects[1].label} order bag on mobile</figcaption>
   </figure>
 }

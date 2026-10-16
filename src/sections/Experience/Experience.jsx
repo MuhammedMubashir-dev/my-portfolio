@@ -1,69 +1,64 @@
-import { motion, useInView, useReducedMotion, useScroll } from "framer-motion"
-import { BriefcaseBusiness } from "lucide-react"
-import { useRef } from "react"
+import { motion, useReducedMotion } from "framer-motion"
 import Bug from "../../components/shared/Bug"
 import BrandIcon from "../../components/shared/BrandIcon"
 import { profile } from "../../data/profile"
 
-const timelineNodes = [
+const roles = [
   {
-    id: 3, title: profile.role, date: "Jul 2026 – Present",
-    description: "Developing mobile and web features across ENKE's company products.",
+    id: "developer", title: profile.role, date: "Jul 2026 – Present", current: true,
+    description: "Responsible for mobile and web feature development across ENKE's product portfolio.",
     bullets: [
-      "EPOSMOB: billing, inventory, purchases, Day Close, filtered reports, validated exports, and bilingual printing.",
-      "Connect App: LinkedIn authentication on Android/iOS, native modules, deferred deep links, and regression tests.",
-      "Supporting commerce work: tenant-aware payment integration and React/Next.js storefront features.",
+      "Developed EPOSMOB point-of-sale features including billing, inventory, purchasing, Day Close, filtered reporting with validated exports, and bilingual receipt printing.",
+      "Implemented LinkedIn authentication for the Connect App on Android and iOS, including native modules, deferred deep linking, and regression test coverage.",
+      "Contributed tenant-aware payment integration and storefront features to the company's React and Next.js commerce platform.",
     ],
     brands: ["Flutter", "React Native", "Next.js"], tags: ["POS & mobile applications"],
   },
   {
-    id: 1, title: "Full Stack Developer Trainee", date: "Apr – Jul 2026",
-    description: "Contributed to existing Flutter and Next.js applications while working with backend developers on API integration.",
+    id: "trainee", title: "Full Stack Developer Trainee", date: "Apr – Jul 2026",
+    description: "Contributed to production Flutter and Next.js applications in collaboration with backend developers on API integration.",
     bullets: [
       "Implemented Flutter interfaces and REST API integration for pickup and delivery workflows.",
-      "Built shared React/Next.js components and contributed to company storefront development.",
+      "Developed shared React and Next.js components for the company's storefront platform.",
     ],
     brands: ["Flutter", "Next.js"], tags: ["API integration", "Commerce & logistics"],
   },
 ]
-function ExperienceRow({ node }) {
-  const rowRef = useRef(null)
-  const reducedMotion = useReducedMotion()
-  const revealed = useInView(rowRef, { once: true, amount: 0.15 })
-  const visible = reducedMotion || revealed
-  return (
-    <li ref={rowRef} className={`experience-row ${node.id === 3 ? "experience-promotion" : ""}`}>
-      <span className={`experience-dot ${visible ? "is-revealed" : ""}`} aria-hidden="true"><span /></span>
-      <motion.div className="experience-date" initial={false} animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 10 }} transition={{ duration: reducedMotion ? 0 : 0.4 }}>{node.date}</motion.div>
-      <motion.article className="experience-copy" initial={false} animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 16 }} transition={{ duration: reducedMotion ? 0 : 0.55 }}>
-        {node.id === 3 && <span className="experience-milestone">CURRENT ROLE</span>}
-        <h3>{node.title}</h3>
-        <p className="experience-description">{node.description}</p>
-        <ul className="experience-bullets">{node.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul>
-        <div className="experience-tags">
-          {node.brands.map(brand => <span key={brand}><BrandIcon name={brand} size={14} />{brand}</span>)}
-          {node.tags.map(tag => <span key={tag}>{tag}</span>)}
-        </div>
-      </motion.article>
-    </li>
-  )
-}
+
 export default function Experience() {
-  const timelineRef = useRef(null)
   const reducedMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: timelineRef, offset: ["start 75%", "end 75%"] })
+  const reveal = (delay = 0) => ({
+    initial: reducedMotion ? false : { opacity: 0, y: 14 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.12 },
+    transition: { duration: 0.45, delay: reducedMotion ? 0 : delay },
+  })
   return (
     <section id="experience" className="section-shell experience-section">
       <div className="section-container">
-        <div className="work-heading experience-heading">
-          <div><p className="section-kicker">03 / EMPLOYMENT</p><h2>Professional experience</h2></div>
-          <p>From trainee to {profile.role}, building across company products since April 2026.</p>
-        </div>
-        <div className="experience-company"><BriefcaseBusiness size={19} aria-hidden="true" /><div><strong>{profile.company}</strong><span>Apr 2026 – Present · Kerala, India</span></div></div>
-        <div ref={timelineRef} className="experience-timeline">
-          <div className="experience-track" aria-hidden="true"><motion.div className="experience-progress" style={{ scaleY: reducedMotion ? 1 : scrollYProgress }} /></div>
-          <ol className="experience-rows">{timelineNodes.map(node => <ExperienceRow key={node.id} node={node} />)}</ol>
-        </div>
+        <motion.div className="work-heading experience-heading" {...reveal()}>
+          <div><p className="section-kicker">03 / EXPERIENCE</p><h2>Professional experience</h2></div>
+          <p>From trainee to {profile.role} at {profile.company}, building across company products since April 2026.</p>
+        </motion.div>
+        <motion.div className="experience-block" {...reveal(0.05)}>
+          <div className="experience-block-head"><strong>{profile.company}</strong><span>Apr 2026 – Present · Kerala, India</span></div>
+          <ol className="experience-roles">
+            {roles.map(role => (
+              <li key={role.id} className="experience-role">
+                <div className="experience-date">{role.date}{role.current && <span className="experience-milestone">CURRENT ROLE</span>}</div>
+                <article className="experience-copy">
+                  <h3>{role.title}</h3>
+                  <p className="experience-description">{role.description}</p>
+                  <ul className="experience-bullets">{role.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul>
+                  <div className="experience-tags">
+                    {role.brands.map(brand => <span key={brand}><BrandIcon name={brand} size={14} />{brand}</span>)}
+                    {role.tags.map(tag => <span key={tag}>{tag}</span>)}
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ol>
+        </motion.div>
       </div>
       <Bug id="exp-bug" className="bottom-8 right-6" />
     </section>

@@ -28,7 +28,7 @@ export default function App() {
         </a>
         <ScrollProgress />
         <Navbar />
-        <main id="main">
+        <main id="main" tabIndex={-1}>
           <Hero />
           <Projects />
           <About />

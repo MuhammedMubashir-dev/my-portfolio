@@ -6,7 +6,7 @@ export const caseStudies = {
       { heading: "The problem", text: "The Customer app fetched active and past orders repeatedly: the parent screen requested counts, while each list requested the same data separately for its content and count. Across both lists, this produced six API calls." },
       { heading: "My contribution", text: "I refactored the Flutter order-loading flow so each list could use one response for both its displayed orders and its Provider-backed count." },
       { heading: "The solution", text: "I removed the redundant requests from the parent screen and reused each list's existing response to update its count. This reduced the combined active and past order requests from six to two." },
-      { heading: "Evidence and scope", text: "Commit 4d51aaa records the change across the parent, active-order, and past-order screens. The before-and-after code supports the request-count reduction; it does not establish a measured loading-time improvement." },
+      { heading: "Evidence and scope", text: "The change spans the parent screen and both order lists. The reduction in request count is verifiable in the code; a loading-time improvement was not separately measured." },
     ],
   },
   5: {

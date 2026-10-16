@@ -5,16 +5,18 @@ import { useReducedMotion } from 'framer-motion'
 export default function SmoothScroll({ children }) {
   const reducedMotion = useReducedMotion()
   useEffect(() => {
-    if (reducedMotion) return
-    // Initialize Lenis
+    const touchPrimaryPointer = window.matchMedia("(pointer: coarse) and (hover: none)").matches
+    if (reducedMotion || touchPrimaryPointer) return undefined
+
     const lenis = new Lenis({
+      autoRaf: true,
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // standard Apple-like ease
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      syncTouch: false,
       touchMultiplier: 2,
       infinite: false,
     })
@@ -25,19 +27,8 @@ export default function SmoothScroll({ children }) {
     }
     window.addEventListener('portfolio:screenshot-viewer', onScreenshotViewer)
 
-    // Animation frame loop for Lenis
-    let frameId
-    function raf(time) {
-      lenis.raf(time)
-      frameId = requestAnimationFrame(raf)
-    }
-
-    frameId = requestAnimationFrame(raf)
-
-    // Cleanup on unmount
     return () => {
       window.removeEventListener('portfolio:screenshot-viewer', onScreenshotViewer)
-      cancelAnimationFrame(frameId)
       lenis.destroy()
     }
   }, [reducedMotion])

@@ -13,7 +13,7 @@ const navLinks = [
   { label: "Contact", href: "#contact", sectionId: "contact" },
 ]
 
-const sectionIds = navLinks.map((link) => link.sectionId)
+const sectionIds = ["hero", ...navLinks.map((link) => link.sectionId)]
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -31,7 +31,10 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    if (!menuOpen) return
+    if (!menuOpen) {
+      delete document.body.dataset.menuOpen
+      return
+    }
     const navigation = navigationRef.current
     const menu = menuRef.current
     const trigger = triggerRef.current
@@ -40,6 +43,7 @@ export default function Navbar() {
       .filter(element => element !== navigation)
       .map(element => ({ element, inert: element.inert }))
     menu.inert = false
+    document.body.dataset.menuOpen = "true"
     document.body.style.overflow = "hidden"
     siblings.forEach(({ element }) => { element.inert = true })
 
@@ -78,6 +82,7 @@ export default function Navbar() {
       document.removeEventListener("focusin", onFocus)
       desktop.removeEventListener("change", onDesktop)
       document.body.style.overflow = previousOverflow
+      delete document.body.dataset.menuOpen
       siblings.forEach(({ element, inert }) => { element.inert = inert })
       // AnimatePresence retains the closing overlay briefly; it must not receive focus.
       menu.inert = true
@@ -110,6 +115,7 @@ export default function Navbar() {
           <a
             href="#hero"
             aria-label="Mubashir home"
+            aria-current={activeSection === "hero" ? "location" : undefined}
             className="flex items-center gap-3 font-bold"
             style={{ fontFamily: "var(--font-display)" }}
             onClick={closeMenu}
@@ -128,7 +134,7 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  aria-current={isActive ? "page" : undefined}
+                  aria-current={isActive ? "location" : undefined}
                   className={`group relative text-[0.7rem] font-bold uppercase tracking-[0.18em] transition-colors ${
                     isActive ? "text-[var(--text)]" : "text-[var(--muted)] hover:text-[var(--text)]"
                   }`}
@@ -146,7 +152,7 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <a href="#contact" className="button-primary min-h-[38px] px-5 text-xs">
-              Hire me
+              Get in touch
             </a>
           </div>
 
@@ -203,7 +209,7 @@ export default function Navbar() {
                     }}
                     href={link.href}
                     onClick={closeMenu}
-                    aria-current={isActive ? "page" : undefined}
+                    aria-current={isActive ? "location" : undefined}
                     className={`group flex items-center gap-5 border-b border-[var(--border-soft)] py-5 ${
                       isActive ? "text-[var(--text)]" : ""
                     }`}
@@ -230,7 +236,7 @@ export default function Navbar() {
                 onClick={closeMenu}
                 className="button-primary mt-8 w-full min-h-[48px]"
               >
-                Start a conversation
+                Get in touch
               </motion.a>
             </motion.nav>
           </motion.div>

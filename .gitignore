@@ -31,3 +31,5 @@ output/ganvin-redacted/
 output/linkedin/
 output/resume/
 scripts/build_ifza_resume.py
+output/archive/
+.claude/settings.local.json

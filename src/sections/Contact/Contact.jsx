@@ -1,6 +1,6 @@
-import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUpRight, Download, FileText, Github, Linkedin, Mail, MessageCircle, Send, Truck, Check } from "lucide-react"
-import { useState } from "react"
+import { motion } from "framer-motion"
+import { ArrowUpRight, Check, Copy, Download, FileText, Github, Linkedin, Mail, MessageCircle, Send } from "lucide-react"
+import { useEffect, useState } from "react"
 import AnimatedArrow from "../../components/svg/AnimatedArrow"
 import AnimatedTechIcon from "../../components/svg/AnimatedTechIcon"
 import ContactNetwork from "../../components/svg/ContactNetwork"
@@ -46,22 +46,24 @@ const fitItems = [
 ]
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false)
+  const [copyStatus, setCopyStatus] = useState("idle")
 
-  const handleCopyEmail = async (e) => {
-    e.preventDefault()
-    const email = profile.email
+  useEffect(() => {
+    if (copyStatus === "idle") return undefined
+    const timeout = window.setTimeout(() => setCopyStatus("idle"), 2500)
+    return () => window.clearTimeout(timeout)
+  }, [copyStatus])
 
+  const handleCopyEmail = async () => {
     try {
       if (!navigator.clipboard?.writeText) {
-        window.location.href = `mailto:${email}`
+        setCopyStatus("failed")
         return
       }
-      await navigator.clipboard.writeText(email)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2500)
+      await navigator.clipboard.writeText(profile.email)
+      setCopyStatus("copied")
     } catch {
-      window.location.href = `mailto:${email}`
+      setCopyStatus("failed")
     }
   }
 
@@ -77,8 +79,8 @@ export default function Contact() {
               viewport={{ once: true, amount: 0.3 }}
               className="min-w-0 border-b border-[var(--border-soft)] p-6 md:p-10 lg:col-span-7 lg:border-b-0 lg:border-r"
             >
-              <SectionKicker>Contact</SectionKicker>
-              <h2 className="mt-4 max-w-full text-4xl md:text-6xl">
+              <SectionKicker>06 / Contact</SectionKicker>
+              <h2 className="mt-4 max-w-full text-4xl md:text-5xl">
                 Need product features built with care?
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
@@ -138,53 +140,40 @@ export default function Contact() {
                   {contacts.map(({ id, label, value, href, icon: Icon }) => {
                     if (id === "email") {
                       return (
-                        <button
-                          type="button"
-                          key={label}
-                          onClick={handleCopyEmail}
-                          className="group relative flex w-full items-center justify-between gap-4 border-b border-[var(--border-soft)] py-5 text-left overflow-hidden"
-                          aria-live="polite"
-                        >
-                          <div className="flex min-w-0 items-center gap-4 relative z-10 bg-[var(--surface)]">
+                        <div key={label} className="contact-email-row group flex items-center gap-3 border-b border-[var(--border-soft)] py-5">
+                          <a href={href} className="flex min-w-0 flex-1 items-center justify-between gap-4">
+                            <span className="flex min-w-0 items-center gap-4">
                             <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)] text-[var(--accent)] transition-colors group-hover:border-[var(--accent)]">
-                              <AnimatedTechIcon icon={copied ? Check : Icon} size={18} strokeWidth={1.8} />
+                                <AnimatedTechIcon icon={Icon} size={18} strokeWidth={1.8} />
                             </span>
                             <span className="min-w-0">
                               <span className="block text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">
-                                {label} {copied ? "(Copied!)" : ""}
+                                  {label}
                               </span>
-                              <span className="mt-1 block truncate text-sm text-[var(--text)] md:text-base">
+                              <span className="mt-1 block break-all text-sm text-[var(--text)] md:text-base">
                                 {value}
                               </span>
                             </span>
-                          </div>
-
-                          <AnimatePresence>
-                            {copied && (
-                              <motion.div
-                                initial={{ x: -60, opacity: 0 }}
-                                animate={{ x: "100%", opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 1.5, ease: "easeInOut" }}
-                                className="absolute left-0 z-0 flex items-center"
-                              >
-                                <Truck size={24} strokeWidth={1.5} className="text-[var(--accent)]" />
-                                <motion.div
-                                  initial={{ width: 0 }}
-                                  animate={{ width: 100 }}
-                                  transition={{ duration: 1.5 }}
-                                  className="h-px bg-[var(--accent)] ml-2"
-                                />
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-
-                          <ArrowUpRight
-                            size={17}
-                            strokeWidth={1.8}
-                            className="relative z-10 flex-none text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100"
-                          />
-                        </button>
+                            </span>
+                            <ArrowUpRight
+                              size={17}
+                              strokeWidth={1.8}
+                              className="flex-none text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100"
+                            />
+                          </a>
+                          <button
+                            type="button"
+                            onClick={handleCopyEmail}
+                            className="contact-copy-button inline-flex min-h-10 flex-none items-center gap-2 rounded-lg border border-[var(--border-soft)] bg-[var(--bg-soft)] px-3 text-xs font-bold text-[var(--muted-strong)] transition-colors hover:border-[var(--accent)] hover:text-[var(--text)]"
+                            aria-label="Copy email address"
+                          >
+                            {copyStatus === "copied" ? <Check size={15} aria-hidden="true" /> : <Copy size={15} aria-hidden="true" />}
+                            <span>{copyStatus === "copied" ? "Copied" : copyStatus === "failed" ? "Copy failed" : "Copy"}</span>
+                          </button>
+                          <span className="sr-only" role="status" aria-live="polite">
+                            {copyStatus === "copied" ? "Email address copied to clipboard." : copyStatus === "failed" ? "Could not copy the email address." : ""}
+                          </span>
+                        </div>
                       )
                     }
 

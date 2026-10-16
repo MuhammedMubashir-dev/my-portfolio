@@ -9,12 +9,12 @@ import { detailInsertionIndex } from "../../lib/projectLayout"
 import ScreenshotViewer from "./ScreenshotViewer"
 
 const stories = {
-  1: { problem: "Different storefronts. One shared platform.", contribution: "Built reusable themes, product discovery, and tenant-aware Stripe and Razorpay checkout flows.", result: "Localized storefronts with shared commerce components." },
-  2: { problem: "Help delivery staff manage each pickup and handoff.", contribution: "Built date-filtered bag lists, independent pagination, maps, and OTP verification workflows.", result: "Four delivery stages with fixes for OTP failures and endless loading." },
-  6: { problem: "Customer laundry ordering and payment workflows.", contribution: "Integrated Razorpay checkout, improved order-history data handling, and added app-update and maintenance flows.", result: "Checkout, order tracking, and update handling in the customer app." },
-  3: { problem: "A storefront for English and Arabic customers.", contribution: "Connected CMS content and commerce APIs, added localization, and improved the Next.js architecture.", result: "Bilingual storefront with SEO, sitemaps, and ISR-backed content." },
-  4: { problem: "Connect people to the right business profile.", contribution: "Built React Native LinkedIn authentication with PKCE, native Android/iOS modules, and deferred deep-link navigation.", result: "Android and iOS sign-in, shareable profiles, and navigation after login." },
-  5: { problem: "Bring everyday retail operations into one app.", contribution: "Built Flutter POS workflows, shared reporting filters, and complete Excel exports with isolated Provider state.", result: "Validated report exports, bilingual printing, and Day Close workflows." },
+  5: { problem: "A single point-of-sale platform for everyday retail operations.", metric: { value: "25+", label: "listing and reporting screens consolidated onto a shared interface with Excel export" }, result: "Delivered 52 merged pull requests since July, covering validated report exports, bilingual invoice generation, Day Close, and a three-language interface." },
+  6: { problem: "A customer app for ordering, paying, and tracking laundry services.", metric: { value: "67%", label: "reduction in API requests on the order-history screen, from six calls to two" }, result: "Delivered Razorpay checkout, saved-address management, and update and maintenance prompts for Android and iOS." },
+  2: { problem: "A field app that guides delivery staff through every pickup and handoff.", metric: { value: "4", label: "delivery stages, each with independent pagination and date filtering" }, result: "Resolved OTP verification and loading failures, and identified a server-side timezone mismatch behind missing orders." },
+  4: { problem: "A networking app that connects professionals to the right business profile.", metric: { value: "2", label: "native platforms behind a single LinkedIn sign-in flow, with Kotlin on Android and Swift on iOS" }, result: "Implemented PKCE-based authentication, deferred deep linking that persists through startup, and shareable company profiles." },
+  1: { problem: "One commerce platform serving many branded storefronts.", metric: { value: "7", label: "storefront theme packs developed and maintained on a shared Next.js codebase" }, result: "Delivered tenant-aware Stripe and Razorpay checkout, a WhatsApp ordering flow, and localized themes." },
+  3: { problem: "A bilingual storefront for English- and Arabic-speaking customers.", metric: { value: "2", label: "languages supported with right-to-left layouts, SEO metadata, and sitemaps" }, result: "Delivered CMS-driven content and product pages with Incremental Static Regeneration." },
 }
 const filters = ["All work", "Web", "Mobile", "POS"]
 const projectOrder = [5, 6, 2, 4, 1, 3]
@@ -34,7 +34,7 @@ const linkedProject = hash => {
   return projects.some(project => project.id === id) ? id : null
 }
 
-const singleColumnQuery = "(max-width: 600px)"
+const singleColumnQuery = "(max-width: 960px)"
 const isSingleColumn = () => window.matchMedia(singleColumnQuery).matches
 const subscribeToWorkLayout = onChange => {
   const media = window.matchMedia(singleColumnQuery)
@@ -42,7 +42,7 @@ const subscribeToWorkLayout = onChange => {
   return () => media.removeEventListener("change", onChange)
 }
 
-function ProjectDetails({ project, onClose }) {
+function ProjectDetails({ project, featured, onClose }) {
   const caseStudy = caseStudies[project.id]
   return (
     <section id={`details-${project.id}`} className="work-detail-panel" role="region" aria-labelledby={`details-title-${project.id}`}
@@ -55,7 +55,10 @@ function ProjectDetails({ project, onClose }) {
         </div>
         <button type="button" className="work-detail-close" aria-label={`Close ${project.name} details`} onClick={onClose}>Close details <X size={17} /></button>
       </header>
-      <div className="case-study-details">
+      <div className={`work-detail-body ${featured ? "no-gallery" : ""}`}>
+        {!featured && <ProjectGallery project={project} />}
+        <div className="case-study-details">
+          {!featured && <p className="work-detail-result">{stories[project.id].result}</p>}
         {caseStudy ? <>
           <h5 className="case-study-title">{caseStudy.title}</h5>
           <div className="case-study-sections">
@@ -64,6 +67,7 @@ function ProjectDetails({ project, onClose }) {
           <details className="case-study-more"><summary>Other work on this project</summary><ul>{project.highlights.map(item => <li key={item}>{item}</li>)}</ul></details>
         </> : <><p className="work-detail-description">{project.description}</p><ul className="work-detail-highlights">{project.highlights.map(item => <li key={item}>{item}</li>)}</ul></>}
         <p className="case-study-role work-detail-stack">Tech stack: {project.stack.join(" · ")}</p>
+        </div>
       </div>
     </section>
   )
@@ -156,7 +160,7 @@ export default function Projects() {
     <section id="projects" className="section-shell selected-work">
       <div className="section-container">
         <div className="work-heading">
-          <div><p className="section-kicker">01 / SELECTED WORK</p><h2>Ideas into<br /><span className="accent">everyday products.</span></h2></div>
+          <div><p className="section-kicker">01 / PROJECTS</p><h2>Ideas into<br /><span className="accent">everyday products.</span></h2></div>
           <p>A few things I’ve helped bring to life.<br />Real constraints, real releases, real users.</p>
         </div>
         <div className="work-toolbar">
@@ -174,15 +178,15 @@ export default function Projects() {
             const card = (
               <motion.article id={`project-${project.id}`} key={project.id} tabIndex={-1}
                 style={{ "--project-accent": projectAccents[project.id] }}
-                className={`work-card ${featured ? "work-card-featured" : ""}`}
+                className={`work-card ${featured ? "work-card-featured" : "work-card-compact"}`}
                 initial={reducedMotion ? false : { opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.08 }} transition={{ duration: 0.5 }}>
-                <ProjectGallery project={project} featured={featured} />
+                {featured ? <ProjectGallery project={project} featured /> : <div className={`compact-thumb ${project.screenshotType === "mobile" ? "compact-thumb-mobile" : "compact-thumb-web"}`} aria-hidden="true"><img src={project.images[0]} alt="" loading="lazy" decoding="async" /></div>}
                 <div className="work-card-copy">
                   <div className="work-meta"><span>{featured ? `FEATURED / ${project.id === 5 ? "FLUTTER POS" : "FLUTTER MOBILE"}` : project.type}</span><span className="production-label"><span className="status-dot" />{project.status}</span></div>
                   <h3>{project.name}</h3>
                   <p className="work-problem">{story.problem}</p>
-                  <p className="work-contribution">{story.contribution}</p>
-                  <div className="work-result"><span>DELIVERED</span><p>{story.result}</p></div>
+                  <div className="work-metric"><strong>{story.metric.value}</strong><span>{story.metric.label}</span></div>
+                  {featured && <p className="work-result-line">{story.result}</p>}
                   <div className="work-stack">{project.stack.slice(0, 4).map(tech => <span key={tech}>{tech}</span>)}</div>
                   <button id={`project-toggle-${project.id}`} type="button" className="case-study-toggle" aria-expanded={isOpen} aria-controls={isOpen ? `details-${project.id}` : undefined} onClick={() => setExpanded(isOpen ? null : project.id)}>
                     {isOpen ? "Close details" : caseStudy ? "Read case study" : "My contribution"}<ChevronDown size={17} style={{ transform: isOpen ? "rotate(180deg)" : undefined }} />
@@ -191,11 +195,11 @@ export default function Projects() {
               </motion.article>
             )
             return index === detailsAfter && expandedProject
-              ? [card, <ProjectDetails key={`details-${expandedProject.id}`} project={expandedProject} onClose={closeDetails} />]
+              ? [card, <ProjectDetails key={`details-${expandedProject.id}`} project={expandedProject} featured={filter === "All work" && filtered[0]?.id === expandedProject.id} onClose={closeDetails} />]
               : [card]
           })}
         </div>
-        <div className="work-endnote"><p>Have something in mind? Let’s talk through it.</p><a href="#contact">Start a conversation <ArrowUpRight size={18} /></a></div>
+        <div className="work-endnote"><p>Have something in mind? Let’s talk through it.</p><a href="#contact">Get in touch <ArrowUpRight size={18} /></a></div>
       </div>
       <Bug id="proj-bug" className="top-12 right-8" />
     </section>
