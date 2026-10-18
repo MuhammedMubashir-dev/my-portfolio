@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, Download, Github, Linkedin } from "lucide-react"
 import ProjectCollage from "./ProjectCollage"
 import Bug from "../../components/shared/Bug"
+import ClaudeMascot from "../../components/svg/ClaudeMascot"
 import { profile, resumeDownloads } from "../../data/profile"
 
 export default function Hero() {
@@ -29,6 +30,7 @@ export default function Hero() {
           </motion.div>
           <ProjectCollage />
         </div>
+        <div className="hero-floor" title="Claude Code pairs with me on reviews, refactors, and release checks"><ClaudeMascot size={32} className="hero-mascot" /></div>
       </div>
       <Bug id="hero-bug" className="hero-hidden-bug" />
     </section>

@@ -442,6 +442,7 @@
 .skill-group-head h3 { font-size: 20px; letter-spacing: -.02em; line-height: 1.2; }
 .skill-group-head span { display: block; margin-top: 4px; font-size: 10px; letter-spacing: .12em; color: var(--muted); }
 .skill-group > p { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.skill-items li { display: inline-flex; align-items: center; gap: 6px; }
 .skill-items { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 14px 0 0; padding: 0; list-style: none; font-size: 12px; line-height: 1.7; color: var(--muted-strong); }
 .skill-items li + li::before { content: "/"; margin: 0 10px; color: #635c4b; }
 .skill-group .skill-project-link { border-top: 0; margin-top: 14px; padding-top: 0; }
@@ -465,3 +466,17 @@
 @media (max-width:700px) { .experience-role { grid-template-columns: 1fr; gap: 10px; padding: 22px 20px; } .experience-block-head { padding: 16px 20px; } .skills-list { grid-template-columns: 1fr; gap: 0; } }
 @media (max-width:600px) { .work-card-compact { grid-template-columns: 100px minmax(0,1fr); } .compact-thumb { padding: 14px 10px; } .work-card-compact .work-card-copy { padding: 16px 16px 14px; } .work-card-compact .work-metric strong { font-size: 22px; } }
 @media (max-width:960px) { .work-grid { grid-template-columns: 1fr; } .work-card-compact { grid-template-columns: 150px minmax(0,1fr); } }
+/* Hero: Claude Code mascot pacing under the copy. */
+.hero-floor { position: relative; height: 36px; margin-top: 12px; border-bottom: 1px solid var(--border-soft); }
+.hero-mascot { position: absolute; left: 0; bottom: 0; display: block; cursor: help; animation: claude-mascot-walk 26s linear infinite; }
+.hero-mascot:hover { animation-play-state: paused; }
+.claude-mascot-body { transform-box: fill-box; transform-origin: center bottom; animation: claude-mascot-bounce .5s ease-in-out infinite; }
+.claude-mascot-leg { transform-box: fill-box; transform-origin: center top; animation: claude-mascot-step .5s ease-in-out infinite; }
+.claude-mascot-leg-b { animation-delay: .25s; }
+.claude-mascot-eye { transform-box: fill-box; transform-origin: center; animation: claude-mascot-blink 3.6s ease-in-out infinite; }
+@keyframes claude-mascot-walk { 0% { left: 0; transform: scaleX(1); } 46% { left: calc(100% - 32px); transform: scaleX(1); } 50% { left: calc(100% - 32px); transform: scaleX(-1); } 96% { left: 0; transform: scaleX(-1); } 100% { left: 0; transform: scaleX(1); } }
+@keyframes claude-mascot-step { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.45); } }
+@keyframes claude-mascot-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-.6px); } }
+@keyframes claude-mascot-blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
+@media (max-width:600px) { .hero-floor { height: 30px; margin-top: 8px; } .hero-mascot { animation-duration: 16s; } }
+@media (prefers-reduced-motion: reduce) { .hero-mascot, .claude-mascot-body, .claude-mascot-leg, .claude-mascot-eye { animation: none; } }

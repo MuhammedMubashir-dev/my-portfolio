@@ -42,6 +42,6 @@ export const skills = [
     appliedIn: "Debugging, reviews & release checks",
     projectId: 5,
     summary: "Tools I use to investigate issues, review changes, and prepare features for release.",
-    items: ["Git", "GitHub", "Postman", "VS Code", "Chrome DevTools", "Figma", "Vite", "ESLint"],
+    items: ["Git", "GitHub", "Postman", "VS Code", "Chrome DevTools", "Figma", "Vite", "ESLint", "Claude Code", "Codex"],
   },
 ]

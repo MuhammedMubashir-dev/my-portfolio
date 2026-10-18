@@ -26,7 +26,7 @@ export default function Skills() {
                 <div><h3>{group.category}</h3><span>{group.label}</span></div>
               </div>
               <p>{group.summary}</p>
-              <ul className="skill-items">{group.items.map(item => <li key={item}>{item}</li>)}</ul>
+              <ul className="skill-items">{group.items.map(item => <li key={item}><BrandIcon name={item} size={12} />{item}</li>)}</ul>
               <a href={`#project-${group.projectId}`} className="skill-project-link"><span>APPLIED IN</span><strong>{group.appliedIn}</strong><ArrowUpRight size={16} aria-hidden="true" /></a>
             </motion.article>
           ))}

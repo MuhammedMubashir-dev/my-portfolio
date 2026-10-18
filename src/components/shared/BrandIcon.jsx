@@ -20,6 +20,7 @@ import {
   siTypescript,
   siVite,
 } from "simple-icons"
+import ClaudeMascot from "../svg/ClaudeMascot"
 
 const brandIcons = {
   Flutter: siFlutter,
@@ -92,6 +93,10 @@ function CodexMark({ size }) {
 export default function BrandIcon({ name, size = 18 }) {
   if (name === "Codex") {
     return <CodexMark size={size} />
+  }
+
+  if (name === "Claude Code") {
+    return <ClaudeMascot size={Math.round(size * 1.3)} label="" />
   }
 
   const icon = brandIcons[name]
