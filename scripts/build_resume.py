@@ -404,7 +404,7 @@ def build(variant_key):
     set_run(sep, size=9.5, color=MUTED)
 
     curr_months = months_since(PROMOTION_DATE)
-    add_role_header(doc, "Junior Application Developer", f"Jul 2026 - Present | {curr_months} mo{'s' if curr_months != 1 else ''}")
+    add_role_header(doc, "Junior Full Stack Developer", f"Jul 2026 - Present | {curr_months} mo{'s' if curr_months != 1 else ''}")
     for item in v["current_bullets"]:
         add_bullet(doc, item)
 

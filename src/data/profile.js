@@ -1,6 +1,6 @@
 export const profile = {
   name: "Muhammed Mubashir",
-  role: "Junior Application Developer",
+  role: "Junior Full Stack Developer",
   company: "ENKE Consulting Services LLP",
   email: "muhammedmubashirwork@gmail.com",
   phone: "+91 8089433955",

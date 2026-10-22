@@ -179,7 +179,7 @@ def build_pdf(variant_key):
     )
     story.append(
         Paragraph(
-            f"<b>Junior Application Developer</b> | Jul 2026 - Present | {current_months} mos",
+            f"<b>Junior Full Stack Developer</b> | Jul 2026 - Present | {current_months} mos",
             styles["compact"],
         )
     )

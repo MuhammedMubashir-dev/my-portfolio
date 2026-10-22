@@ -244,7 +244,7 @@ def build_resume(variant, content):
 
     heading(doc, "Work Experience")
     paragraph(doc, "ENKE Consulting Services LLP | Apr 2026 \u2013 Present", bold=True, keep=True)
-    paragraph(doc, "Junior Application Developer | Jul 2026 \u2013 Present", bold=True, keep=True)
+    paragraph(doc, "Junior Full Stack Developer | Jul 2026 \u2013 Present", bold=True, keep=True)
     for text in content["experience"]:
         bullet(doc, text)
     paragraph(doc, "Full Stack Developer Trainee | Apr 2026 \u2013 Jul 2026", before=2, keep=True)

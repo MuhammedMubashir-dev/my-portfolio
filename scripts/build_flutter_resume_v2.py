@@ -55,7 +55,7 @@ for i, (label, url) in enumerate([
     add_hyperlink(p, label, url, size=10)
 
 heading('Professional Summary')
-para('Flutter developer with production experience building POS, customer ordering, and delivery applications using Dart, Provider, and REST APIs. Delivered cash-management workflows, payment integrations, bilingual printing, and API optimizations, with regression tests for pricing and stock handling. Promoted to Junior Application Developer after three months at ENKE Consulting.')
+para('Flutter developer with production experience building POS, customer ordering, and delivery applications using Dart, Provider, and REST APIs. Delivered cash-management workflows, payment integrations, bilingual printing, and API optimizations, with regression tests for pricing and stock handling. Promoted to Junior Full Stack Developer after three months at ENKE Consulting.')
 
 heading('Technical Skills')
 for label, value in [
@@ -70,7 +70,7 @@ for label, value in [
 
 heading('Work Experience')
 para('ENKE Consulting Services LLP | Apr 2026 - Present', True)
-para('Junior Application Developer | Jul 2026 - Present', True)
+para('Junior Full Stack Developer | Jul 2026 - Present', True)
 bullet('Delivered production Flutter features across POS and logistics applications; diagnosed API edge cases, authentication failures, and Android and iOS release issues.')
 bullet('Integrated LinkedIn sign-in in Connect App (React Native, Android), with PKCE, backend API integration, and deep-link callback handling.')
 para('Full Stack Developer Trainee | Apr 2026 - Jul 2026', True)
