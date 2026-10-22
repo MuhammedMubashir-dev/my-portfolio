@@ -13,7 +13,7 @@ export const resumeDownloads = [
   {
     id: "flutter",
     label: "Résumé",
-    description: "POS, reporting, payments, and delivery apps",
+    description: "Flutter, React Native, Next.js and Node.js, one page",
     pdf: "/muhammed-mubashir-k-resume-flutter.pdf",
     word: "/muhammed-mubashir-k-resume-flutter.docx",
     filename: "Muhammed-Mubashir-Resume",
