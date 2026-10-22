@@ -16,6 +16,6 @@ export const resumeDownloads = [
     description: "POS, reporting, payments, and delivery apps",
     pdf: "/muhammed-mubashir-k-resume-flutter.pdf",
     word: "/muhammed-mubashir-k-resume-flutter.docx",
-    filename: "Muhammed-Mubashir-Flutter-Resume",
+    filename: "Muhammed-Mubashir-Resume",
   },
 ]

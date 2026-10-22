@@ -166,20 +166,20 @@ def build_docx(path, v):
     doc = Document()
     sec = doc.sections[0]
     sec.page_width, sec.page_height = Inches(8.27), Inches(11.69)
-    sec.top_margin = sec.bottom_margin = Inches(0.45)
-    sec.left_margin = sec.right_margin = Inches(0.6)
+    sec.top_margin = sec.bottom_margin = Inches(0.4)
+    sec.left_margin = sec.right_margin = Inches(0.55)
     for name in ["Normal", "Title", "Heading 1", "List Bullet"]:
         st = doc.styles[name]
         st.font.name = "Calibri"
-        st.font.size = Pt(9.5)
+        st.font.size = Pt(9.1)
         st.font.color.rgb = RGBColor(0, 0, 0)
-        st.paragraph_format.space_after = Pt(2)
-        st.paragraph_format.line_spacing = 1.04
-    doc.styles["Title"].font.size = Pt(20)
+        st.paragraph_format.space_after = Pt(1.2)
+        st.paragraph_format.line_spacing = 1.0
+    doc.styles["Title"].font.size = Pt(18)
     doc.styles["Title"].font.bold = True
-    doc.styles["Heading 1"].font.size = Pt(10.5)
+    doc.styles["Heading 1"].font.size = Pt(10)
     doc.styles["Heading 1"].font.bold = True
-    doc.styles["Heading 1"].paragraph_format.space_before = Pt(6)
+    doc.styles["Heading 1"].paragraph_format.space_before = Pt(5)
     doc.styles["Heading 1"].paragraph_format.keep_with_next = True
 
     def para(text, bold=False):
