@@ -1,10 +1,11 @@
-"""Build the résumé tailored to Kulfi's Software Engineer I (Product / Full-Stack) role.
+"""Build the one-page résumé in two variants from one content model.
 
-Produces a DOCX (python-docx) and a PDF (reportlab) from one content model so the
-two stay identical. Run from anywhere:
+    python scripts/build_tailored_resume.py            # general résumé, apply anywhere
+    python scripts/build_tailored_resume.py kulfi      # tailored to Kulfi's Software Engineer I role
 
-    python scripts/build_kulfi_resume.py
+Produces a DOCX (python-docx) and a PDF (reportlab) that carry identical text.
 """
+import sys
 from html import escape
 from pathlib import Path
 
@@ -22,12 +23,38 @@ from build_resume import add_hyperlink
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "output" / "resume"
 OUT.mkdir(parents=True, exist_ok=True)
-STEM = "Muhammed-Mubashir-Resume-Kulfi"
 
 NAME = "MUHAMMED MUBASHIR K"
-HEADLINE = "Junior Full Stack Developer  |  Flutter, React Native, Node.js"
-CONTACT = [
-    ("Malappuram, Kerala, India (open to relocating to Bengaluru)", None),
+
+VARIANTS = {
+    "general": {
+        "stem": "Muhammed-Mubashir-Resume",
+        "headline": "Junior Full Stack Developer  |  Flutter, React Native, Next.js, Node.js",
+        "location": "Malappuram, Kerala, India (open to remote and relocation)",
+        "summary": (
+            "Junior full stack developer with six production apps shipped at ENKE Consulting since April 2026 and "
+            "71 merged pull requests across Flutter, React Native, and Next.js codebases. Flutter is my main stack: "
+            "point-of-sale, delivery, and customer ordering apps with payments, bilingual interfaces, and regression "
+            "tests. I also build the other layers, with Next.js storefronts at work and a Node.js, Express, and "
+            "PostgreSQL backend for my own marketplace project, and I ship complete flows with the loading, empty, "
+            "error, and retry states handled."
+        ),
+    },
+    "kulfi": {
+        "stem": "Muhammed-Mubashir-Resume-Kulfi",
+        "headline": "Junior Full Stack Developer  |  Flutter, React Native, Node.js",
+        "location": "Malappuram, Kerala, India (open to relocating to Bengaluru)",
+        "summary": (
+            "Application developer who ships product features end to end. At ENKE Consulting I have worked on "
+            "six production apps since April 2026, with 71 merged pull requests across Flutter, React Native, and "
+            "Next.js codebases. Outside work I built a three-app laundry marketplace from the Flutter clients to the "
+            "Express and PostgreSQL API. I handle the loading, empty, error, and retry states, write regression "
+            "tests before handoff, and use Claude Code and Codex with every line reviewed before it ships."
+        ),
+    },
+}
+
+CONTACT_LINKS = [
     ("+91 8089433955", "tel:+918089433955"),
     ("muhammedmubashir720@gmail.com", "mailto:muhammedmubashir720@gmail.com"),
 ]
@@ -36,14 +63,6 @@ LINKS = [
     ("GitHub", "https://github.com/MuhammedMubashir-dev"),
     ("LinkedIn", "https://www.linkedin.com/in/muhammed-mubashir-k"),
 ]
-
-SUMMARY = (
-    "Application developer who ships product features end to end. At ENKE Consulting I have worked on "
-    "six production apps since April 2026, with 71 merged pull requests across Flutter, React Native, and "
-    "Next.js codebases. Outside work I built a three-app laundry marketplace from the Flutter clients to the "
-    "Express and PostgreSQL API. I handle the loading, empty, error, and retry states, write regression "
-    "tests before handoff, and use Claude Code and Codex with every line reviewed before it ships."
-)
 
 # Each project: (title line, [bullets], optional (label, url) link)
 SHIPPED = [
@@ -116,9 +135,9 @@ PERSONAL = [
 
 SKILLS = [
     ("Mobile", "Flutter, Dart, Provider, Riverpod, React Native, TypeScript, Android and iOS releases"),
-    ("Backend and data", "Node.js, Express, PostgreSQL and PostGIS, REST APIs, JWT, Socket.io, Firebase"),
     ("Web", "React, Next.js, Tailwind CSS, ISR, SEO"),
-    ("Practice", "Unit, widget, and regression tests; GitHub Actions CI; Postman; Git; Claude Code and Codex with every change reviewed"),
+    ("Backend and data", "Node.js, Express, PostgreSQL and PostGIS, REST APIs, JWT, Socket.io, Firebase"),
+    ("Practice", "Unit, widget, and regression tests; GitHub Actions CI; Postman; Git; AI-assisted development with Claude Code and Codex, every change reviewed"),
 ]
 
 EXPERIENCE = [
@@ -138,9 +157,12 @@ EDUCATION = (
     "Priyadarshini Arts and Science College, Melmuri, Malappuram  |  University of Calicut",
 )
 
+SHIPPED_HEADING = "Shipped at ENKE Consulting (production, since April 2026)"
+PERSONAL_HEADING = "Personal projects (built end to end)"
+
 
 # ----------------------------------------------------------------------------- DOCX
-def build_docx(path):
+def build_docx(path, v):
     doc = Document()
     sec = doc.sections[0]
     sec.page_width, sec.page_height = Inches(8.27), Inches(11.69)
@@ -183,15 +205,12 @@ def build_docx(path):
             add_hyperlink(p, link[0], link[1], size=9.5)
 
     doc.add_paragraph(NAME, style="Title")
-    para(HEADLINE, True)
+    para(v["headline"], True)
     p = doc.add_paragraph()
-    for i, (text, url) in enumerate(CONTACT):
-        if i:
-            p.add_run("  |  ")
-        if url:
-            add_hyperlink(p, text, url, size=9.5)
-        else:
-            p.add_run(text)
+    p.add_run(v["location"])
+    for text, url in CONTACT_LINKS:
+        p.add_run("  |  ")
+        add_hyperlink(p, text, url, size=9.5)
     p = doc.add_paragraph()
     for i, (label, url) in enumerate(LINKS):
         if i:
@@ -199,28 +218,23 @@ def build_docx(path):
         add_hyperlink(p, label, url, size=9.5)
 
     heading("Summary")
-    para(SUMMARY)
-
-    heading("Shipped at ENKE Consulting (production, since April 2026)")
+    para(v["summary"])
+    heading(SHIPPED_HEADING)
     for title, bullets, link in SHIPPED:
         project(title, bullets, link)
-
-    heading("Personal projects (built end to end)")
+    heading(PERSONAL_HEADING)
     for title, bullets, link in PERSONAL:
         project(title, bullets, link)
-
     heading("Skills")
     for label, value in SKILLS:
         p = doc.add_paragraph()
         p.add_run(label + ": ").bold = True
         p.add_run(value)
-
     heading("Experience")
     for title, bullets in EXPERIENCE:
         para(title, True)
         for b in bullets:
             bullet(b)
-
     heading("Education")
     para(EDUCATION[0], True)
     para(EDUCATION[1])
@@ -255,21 +269,22 @@ def a(text, url):
     return f'<link href="{escape(url)}" color="#1a4fa3">{escape(text)}</link>'
 
 
-def build_pdf(path):
+def build_pdf(path, v):
     s = pdf_styles()
     doc = SimpleDocTemplate(
         str(path), pagesize=A4, leftMargin=0.6 * inch, rightMargin=0.6 * inch,
         topMargin=0.45 * inch, bottomMargin=0.45 * inch,
         title="Muhammed Mubashir K Resume", author="Muhammed Mubashir K",
     )
+    contact = "  |  ".join([escape(v["location"])] + [a(t, u) for t, u in CONTACT_LINKS])
     story = [
         Paragraph(escape(NAME), s["name"]),
-        Paragraph(escape(HEADLINE), s["headline"]),
-        Paragraph("  |  ".join(a(t, u) if u else escape(t) for t, u in CONTACT), s["contact"]),
+        Paragraph(escape(v["headline"]), s["headline"]),
+        Paragraph(contact, s["contact"]),
         Paragraph("  |  ".join(a(t, u) for t, u in LINKS), s["contact"]),
         Spacer(1, 2),
         Paragraph("Summary", s["h"]),
-        Paragraph(escape(SUMMARY), s["p"]),
+        Paragraph(escape(v["summary"]), s["p"]),
     ]
 
     def project(title, bullets, link):
@@ -279,9 +294,9 @@ def build_pdf(path):
             block.append(Paragraph(a(link[0], link[1]), s["link"]))
         return KeepTogether(block)
 
-    story.append(Paragraph("Shipped at ENKE Consulting (production, since April 2026)", s["h"]))
+    story.append(Paragraph(SHIPPED_HEADING, s["h"]))
     story += [project(*item) for item in SHIPPED]
-    story.append(Paragraph("Personal projects (built end to end)", s["h"]))
+    story.append(Paragraph(PERSONAL_HEADING, s["h"]))
     story += [project(*item) for item in PERSONAL]
     story.append(Paragraph("Skills", s["h"]))
     story += [Paragraph(f"<b>{escape(label)}:</b> {escape(value)}", s["p"]) for label, value in SKILLS]
@@ -296,9 +311,13 @@ def build_pdf(path):
 
 
 if __name__ == "__main__":
-    docx_path = OUT / f"{STEM}.docx"
-    pdf_path = OUT / f"{STEM}.pdf"
-    build_docx(docx_path)
-    pages = build_pdf(pdf_path)
+    key = sys.argv[1] if len(sys.argv) > 1 else "general"
+    if key not in VARIANTS:
+        sys.exit(f"unknown variant {key!r}; choose from {', '.join(VARIANTS)}")
+    v = VARIANTS[key]
+    docx_path = OUT / f"{v['stem']}.docx"
+    pdf_path = OUT / f"{v['stem']}.pdf"
+    build_docx(docx_path, v)
+    pages = build_pdf(pdf_path, v)
     print(docx_path)
     print(pdf_path, "pages:", pages)
