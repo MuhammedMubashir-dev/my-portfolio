@@ -1,13 +1,13 @@
-// Figures counted on 16 October 2026 from pull requests authored by Muhammed Mubashir
+// Figures counted on 11 November 2026 from pull requests authored by Muhammed Mubashir
 // in the company repositories enkeit/eposmob, enkeit/cloudposcom, enkeit/connect-app,
 // enkeit/web-juiceworld, ganvin-enke/ganvin-app, and ganvin-enke/ganvin-app-exe.
 // Refresh with: gh pr list --repo <owner/repo> --author @me --state merged --limit 200
-export const metricsAsOf = "October 2026"
+export const metricsAsOf = "November 2026"
 
 export const metrics = [
   {
     id: "pull-requests",
-    value: "71",
+    value: "118",
     label: "merged pull requests",
     detail: "Contributed across six company repositories since April 2026.",
     projectId: 5,

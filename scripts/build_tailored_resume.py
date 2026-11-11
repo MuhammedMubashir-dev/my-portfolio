@@ -33,7 +33,7 @@ VARIANTS = {
         "location": "Malappuram, Kerala, India (open to remote and relocation)",
         "summary": (
             "Junior full stack developer with six production apps shipped at ENKE Consulting since April 2026 and "
-            "71 merged pull requests across Flutter, React Native, and Next.js codebases. Flutter is my main stack: "
+            "118 merged pull requests across Flutter, React Native, and Next.js codebases. Flutter is my main stack: "
             "point-of-sale, delivery, and customer ordering apps with payments, bilingual interfaces, and regression "
             "tests. I also build the other layers, with Next.js storefronts at work and a Node.js, Express, and "
             "PostgreSQL backend for my own marketplace project, and I ship complete flows with the loading, empty, "
@@ -46,7 +46,7 @@ VARIANTS = {
         "location": "Malappuram, Kerala, India (open to relocating to Bengaluru)",
         "summary": (
             "Application developer who ships product features end to end. At ENKE Consulting I have worked on "
-            "six production apps since April 2026, with 71 merged pull requests across Flutter, React Native, and "
+            "six production apps since April 2026, with 118 merged pull requests across Flutter, React Native, and "
             "Next.js codebases. Outside work I built a three-app laundry marketplace from the Flutter clients to the "
             "Express and PostgreSQL API. I handle the loading, empty, error, and retry states, write regression "
             "tests before handoff, and use Claude Code and Codex with every line reviewed before it ships."
@@ -67,12 +67,13 @@ LINKS = [
 # Each project: (title line, [bullets], optional (label, url) link)
 SHIPPED = [
     (
-        "EPOSMOB  |  Flutter point of sale  |  52 merged PRs since July 2026",
+        "EPOSMOB  |  Flutter point of sale  |  86 merged PRs since July 2026",
         [
             "Consolidated 25+ list and report screens onto one shared listing UI with validated Excel export "
             "that fetches every page and rejects duplicate or incomplete results.",
-            "Built Day Close with cash-denomination validation, bilingual English/Arabic receipts and PDF "
-            "invoices, and regression tests for pagination, stale responses, and filter state.",
+            "Cut client-reported restaurant order lag from 7-8 s to 2-4 s per action by removing fixed waits and "
+            "duplicate order-list downloads; built Day Close with cash-denomination validation and bilingual "
+            "English/Arabic receipts and PDF invoices.",
         ],
         ("EPOSMOB case study", "https://muhammed-mubashir-portfolio.netlify.app/#project-5"),
     ),
@@ -97,7 +98,7 @@ SHIPPED = [
     (
         "CloudPOS and Juice World  |  Next.js storefronts",
         [
-            "Delivered tenant-aware Stripe and Razorpay checkout, reusable theme packs, and an English/Arabic "
+            "Delivered tenant-aware Stripe and Razorpay checkout, eight theme packs, a QR table menu, and an English/Arabic "
             "right-to-left storefront with ISR and SEO metadata.",
         ],
         None,
